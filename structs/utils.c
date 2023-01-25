@@ -7,6 +7,10 @@
 #include "utils.h"
 
 struct graph buildGraph(const char *filepath){
+    /* buildGraph prends en paramètre la string filepath et retourne
+    le Graph G remplis avec tous les sommets et leurs informations
+    telles qu'indiquées dans le fichier filepath.
+    */
     FILE* file;
     char tmp;
     file = fopen(filepath, "r");
@@ -110,6 +114,8 @@ struct graph buildGraph(const char *filepath){
 
 struct inter initInter(size_t nbInter, size_t x, size_t y, size_t nblinks)
 {
+    /* initInter initialise une nouvelle intersection soit un nouveau sommet que
+    l'on peut ensuite ajouter a un graph*/
     struct inter *newInter = calloc(1, sizeof(struct inter));
     newInter->number = nbInter;
     newInter->x = x;
@@ -120,6 +126,7 @@ struct inter initInter(size_t nbInter, size_t x, size_t y, size_t nblinks)
 }
 
 void setLink(struct inter inter, size_t index, size_t end, size_t length, int traffic, size_t maxSpeed) {
+    /* setLink remplis les attributs du lien inter.links[index]*/
     struct link *newLink = inter.links + index;//calloc(1, sizeof(struct link));
     newLink->end = end;
     newLink->length = length;
@@ -128,10 +135,12 @@ void setLink(struct inter inter, size_t index, size_t end, size_t length, int tr
 }
 
 void setInter(struct graph G, size_t index, struct inter inter) {
+    /* setInter ajoute l'intersection inter dans le graph G à l'index index*/
     G.inters[index] = inter;
 }
 
 struct graph initGraph(size_t order) {
+    /* alloue la mémoire nécéssaire à un Graph G vide et le retourne*/
     struct graph *newGraph = calloc(1, sizeof(struct graph));
     newGraph->order = order;
     newGraph->inters = calloc(order, sizeof(struct inter));
@@ -141,6 +150,7 @@ struct graph initGraph(size_t order) {
 void freeGraph(struct graph *G);
 
 void freeInter(struct inter *inter) {
+    /* libère la mémoire de l'intersection inter et de tous ses attributs*/
     if (inter == NULL) return;
 
     // loop through all links to free names

@@ -1,0 +1,17 @@
+'/' pour indiquer un nouveau sommet/intersection
+'n' numero du sommet
+'x' position x du sommet sur la carte
+'y' position y du sommet sur la carte
+'t' nombre de lien que le sommet possède
+'m' numéro du 2e sommet du lien en question
+'b' numéro correspondant au degré de bouchons sur la route/lien en question
+'v' vitesse max sur la route en question
+chaque lien est séparé par un '_' underscore et chaque caractéristique du lien par un '-'
+chaque caractéristique du sommet est séparé par une virgule ","
+'*' a chaque fin de ligne/sommet --> une ligne == un sommet
+
+par exemple :
+
+/n,x,y,t,m1-b1-v1_m2-b2-v2*
+
+dans l'exemple on note que t = 2 car le sommet n contient 2 liens avec m1 et m2.

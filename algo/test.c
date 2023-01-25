@@ -2,6 +2,10 @@
 #include <string.h>
 #include "../structs/utils.h"
 
+/* this is the test file for the algorithm part
+
+*/
+
 int main(){
     struct graph G = initGraph(5000000);
     struct inter tmp;
