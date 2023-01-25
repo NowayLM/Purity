@@ -71,7 +71,7 @@ struct graph buildGraph(const char *filepath){
                     fclose(file);
                     err(3, "error in file format : link -> traffic");
                 }
-                fscanf(file, "%zu", &traffic);
+                fscanf(file, "%i", &traffic);
                 if (fgetc(file) != '-') {
                     fclose(file);
                     err(3, "error in file format : link -> maxSpeed");
@@ -93,16 +93,16 @@ struct graph buildGraph(const char *filepath){
             G.inters[interIndex].nblinks = nbLinks;
         }
     }
-    for (size_t i = 0; i < G.order; i++) {
-        for () {
-            //remplissage des distances
-            double dx = x;
-                double dy = y;
-                double Dlength = sqrt((dx * dx) + (y * y));
-                size_t length = Dlength;
-                G.inters[interIndex].links[i].length = length;
-        }
-    }
+    // for (size_t i = 0; i < G.order; i++) {
+    //     for () {
+    //         //remplissage des distances
+    //         double dx = x;
+    //             double dy = y;
+    //             double Dlength = sqrt((dx * dx) + (y * y));
+    //             size_t length = Dlength;
+    //             G.inters[interIndex].links[i].length = length;
+    //     }
+    //}
     fclose(file);
 }
 
