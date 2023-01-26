@@ -48,7 +48,8 @@ struct graph buildGraph(const char *filepath){
     while (!(feof(file))) {
         tmp = fgetc(file);
         if(tmp == '/') {
-            fscanf(file, "%zu", &interIndex);
+            fscanf(file, "/%zu,%zu,%zu,%zu,", &interIndex, &x, &y, &nbLinks);
+            /*fscanf(file, "%zu", &interIndex);
             if (fgetc(file) != ',') {
                 fclose(file);
                 err(3, "error in file format : X");
@@ -68,9 +69,14 @@ struct graph buildGraph(const char *filepath){
                 fclose(file);
                 err(3, "error in file format : link -> end");
             }
+            */
             size_t i = 0;
-            while((tmp != '*') && (i < nbLinks)) {
-                fscanf(file, "%zu", &end);
+            while (i < nbLinks) {
+                if ((i + 1) == nbLinks)
+                    fscanf(file, "%zu-%i-%zu*\n", &end, &traffic, &maxSpeed);
+                else
+                    fscanf(file, "%zu-%i-%zu_", &end, &traffic, &maxSpeed);
+                /*fscanf(file, "%zu", &end);
                 if (fgetc(file) != '-') {
                     fclose(file);
                     err(3, "error in file format : link -> traffic");
@@ -86,10 +92,13 @@ struct graph buildGraph(const char *filepath){
                     fclose(file);
                     err(3, "error in file format : too many arguments for a link");
                 }
+                */
                 i++;
+                /*
                 G.inters[interIndex].links[i].end = end;
                 G.inters[interIndex].links[i].traffic = traffic;
-                G.inters[interIndex].links[i].maxSpeed = maxSpeed;
+                G.inters[interIndex].links[i].maxSpeed = maxSpeed; */
+                setLink(G.inters[interIndex], i, end, 0, traffic, maxSpeed);
             }
             G.inters[interIndex].x = x;
             G.inters[interIndex].number = interIndex;
