@@ -30,6 +30,8 @@ struct graph* buildGraph(const char *filepath){
         tmp = getc(file);
     }
 
+    printf("number of lines of the file is : %zu\n", numberOfLines);
+
     int returnCode = fseek(file, 0, SEEK_SET);
     if (returnCode != 0) {
         err(3, "impossible to go back to file start");
@@ -45,10 +47,14 @@ struct graph* buildGraph(const char *filepath){
     size_t maxSpeed;
     int traffic;
 
+    printf("just before loop all good\n");
+
     while (!(feof(file))) {
         tmp = fgetc(file);
         if(tmp == '/') {
             fscanf(file, "/%zu,%zu,%zu,%zu,", &interIndex, &x, &y, &nbLinks);
+            printf("/%ln,%ln,%ln,%ln,\n", &interIndex, &x, &y, &nbLinks);
+            printf("interIndex = %zu\n", interIndex);
             initInter(*G, interIndex, nbLinks);
             setInter(*G, interIndex, x, y, nbLinks);
             /*fscanf(file, "%zu", &interIndex);
@@ -74,6 +80,7 @@ struct graph* buildGraph(const char *filepath){
             */
             size_t i = 0;
             while (i < nbLinks) {
+                printf("i = %zu\n", i);
                 if ((i + 1) == nbLinks)
                     fscanf(file, "%zu-%i-%zu*\n", &end, &traffic, &maxSpeed);
                 else
