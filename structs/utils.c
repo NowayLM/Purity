@@ -18,13 +18,9 @@ struct graph* buildGraph(const char *filepath){
     if (file == NULL) {
         err(3, "file can't be opened");
     }
-
     size_t numberOfLines = 0;
-
-    while (tmp != EOF)
-    {
-        if (tmp == '/')
-        {
+    while (tmp != EOF){
+        if (tmp == '/'){
             numberOfLines += 1;
         }
         tmp = getc(file);
@@ -47,67 +43,21 @@ struct graph* buildGraph(const char *filepath){
     size_t maxSpeed;
     int traffic;
 
-    printf("just before loop all good\n");
-
     while (!(feof(file))) {
         tmp = fgetc(file);
         if(tmp == '/') {
-            fscanf(file, "/%zu,%zu,%zu,%zu,", &interIndex, &x, &y, &nbLinks);
-            printf("/%ln,%ln,%ln,%ln,\n", &interIndex, &x, &y, &nbLinks);
-            printf("interIndex = %zu\n", interIndex);
+            fscanf(file, "%zu,%zu,%zu,%zu,", &interIndex, &x, &y, &nbLinks);
+            //printf("interIndex = %zu\n", interIndex);
             initInter(*G, interIndex, nbLinks);
-            setInter(*G, interIndex, x, y, nbLinks);
-            /*fscanf(file, "%zu", &interIndex);
-            if (fgetc(file) != ',') {
-                fclose(file);
-                err(3, "error in file format : X");
-            }
-            fscanf(file, "%zu", &x);
-            if (fgetc(file) != ',') {
-                fclose(file);
-                err(3, "error in file format : Y");
-            }
-            fscanf(file, "%zu", &y);
-            if (fgetc(file) != ',') {
-                fclose(file);
-                err(3, "error in file format : nbLinks");
-            }
-            fscanf(file, "%zu", &nbLinks);
-            if (fgetc(file) != ',') {
-                fclose(file);
-                err(3, "error in file format : link -> end");
-            }
-            */
-            size_t i = 0;
-            while (i < nbLinks) {
-                printf("i = %zu\n", i);
+            setInter(*G, interIndex, x, y, nbLinks);           
+            //printf("/%zu,%zu,%zu,%zu,\n", interIndex, x, y, nbLinks);
+            for (size_t i = 0; i < nbLinks; i++) {
                 if ((i + 1) == nbLinks)
                     fscanf(file, "%zu-%i-%zu*\n", &end, &traffic, &maxSpeed);
                 else
                     fscanf(file, "%zu-%i-%zu_", &end, &traffic, &maxSpeed);
-                /*fscanf(file, "%zu", &end);
-                if (fgetc(file) != '-') {
-                    fclose(file);
-                    err(3, "error in file format : link -> traffic");
-                }
-                fscanf(file, "%i", &traffic);
-                if (fgetc(file) != '-') {
-                    fclose(file);
-                    err(3, "error in file format : link -> maxSpeed");
-                }
-                fscanf(file, "%zu", &maxSpeed);
-                tmp = fgetc(file);
-                if ((tmp != '_') || (tmp != '*')) {
-                    fclose(file);
-                    err(3, "error in file format : too many arguments for a link");
-                }
-                */
-                i++;
-                /*
-                G.inters[interIndex].links[i].end = end;
-                G.inters[interIndex].links[i].traffic = traffic;
-                G.inters[interIndex].links[i].maxSpeed = maxSpeed; */
                 setLink(G->inters[interIndex], i, end, 0, traffic, maxSpeed);
+                
             }
         }
     }
@@ -121,8 +71,8 @@ struct graph* buildGraph(const char *filepath){
     //             G.inters[interIndex].links[i].length = length;
     //     }
     //}
-    return G;
     fclose(file);
+    return G;
 }
 
 
@@ -163,7 +113,6 @@ void freeGraph(struct graph *G) {
     if (G == NULL) return;
     for (size_t i = 0; i < G->order; i++)
         freeInter(G->inters + i);
-    free(G->inters);
     free(G);
 }
 
