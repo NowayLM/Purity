@@ -5,14 +5,14 @@
 struct queue {
     size_t *arr;
     size_t size;
-    int Rear;
-    int Front;
+    size_t Rear;
+    size_t Front;
 };
 
 
-struct queue initQueue(size_t size);
-void enqueue(struct queue queue, size_t elm);
-size_t dequeue(struct queue queue);
-int isempty(struct queue queue);
+struct queue *initQueue(size_t size);
+void enqueue(struct queue *queue, size_t elm);
+size_t dequeue(struct queue *queue);
+int isempty(struct queue *queue);
 
 #endif
