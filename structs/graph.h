@@ -1,5 +1,5 @@
-#ifndef UTILS_H
-#define UTILS_H
+#ifndef GRAPH_H
+#define GRAPH_H
 #include <stddef.h>
 
 struct graph {

@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <err.h>
 #include <math.h>
-#include "utils.h"
+#include "graph.h"
 
 struct graph* buildGraph(const char *filepath){
     /* buildGraph prends en paramètre la string filepath et retourne
