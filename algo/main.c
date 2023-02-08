@@ -14,6 +14,7 @@ int main(){
     size_t elm = 2;
     printf("inserting element : %zu\n", elm);
     enqueue(queue, elm);
+    printf("queue.arr[queue.front] = %zu\n", queue->arr[queue->Front]);
     size_t test = dequeue(queue);
     if (isempty(queue) == 1)
         printf("isempty = True\ninserted element was : %zu\n", test);
