@@ -53,7 +53,7 @@
               <item id="&lt;1&gt;" translatable="yes">clury</item>
               <item id="&lt;2&gt;" translatable="yes">Saint michel</item>
               <item id="&lt;3&gt;" translatable="yes">Maubert</item>
-              <item id="&lt;4&gt;" translatable="yes">&lt;Odeon&gt;</item>
+              <item id="&lt;4&gt;" translatable="yes">Odeon</item>
             </items>
           </object>
           <packing>
@@ -87,7 +87,7 @@
             <items>
               <item id="&lt;1&gt;" translatable="yes">Saint Michel</item>
               <item id="&lt;2&gt;" translatable="yes">Cluny-La Sorbonne</item>
-              <item id="&lt;3&gt;" translatable="yes">&lt;Maubert Mutualite&gt;</item>
+              <item id="&lt;3&gt;" translatable="yes">Maubert Mutualite</item>
             </items>
           </object>
           <packing>
