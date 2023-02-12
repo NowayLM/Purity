@@ -11,14 +11,13 @@ int main(){
     char *filepath = "maps/1.txt";
     struct graph *G = buildGraph(filepath);
     struct queue *queue = initQueue(G->order);
-    size_t elm = 2;
-    printf("inserting element : %zu\n", elm);
-    enqueue(queue, elm);
-    printf("queue.arr[queue.front] = %zu\n", queue->arr[queue->Front]);
-    size_t test = dequeue(queue);
-    if (isempty(queue) == 1)
-        printf("isempty = True\ninserted element was : %zu\n", test);
-    printf("%zu\n", G->order);
+    for (size_t i = 0; i < 100; i++)
+    {
+        enqueue(queue, i);
+        printf("front = %zu    rear = %zu\n", queue->Front, queue->Rear);
+        printf("dequeued elm = %zu\n", dequeue(queue));
+    }
     freeGraph(G);
     free(queue->arr);
+    free(queue);
 }
