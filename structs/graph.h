@@ -1,5 +1,5 @@
-#ifndef UTILS_H
-#define UTILS_H
+#ifndef GRAPH_H
+#define GRAPH_H
 #include <stddef.h>
 
 struct graph {
@@ -23,15 +23,15 @@ struct link {
     size_t maxSpeed;
 };
 
-struct graph buildGraph(const char *filepath);
+struct graph *buildGraph(const char *filepath);
 
-struct inter initInter(size_t nbInter, size_t x, size_t y, size_t nblinks);
+void initInter(struct graph G, size_t nbInter, size_t nblinks);
 
 void setLink(struct inter inter, size_t index, size_t end, size_t length, int traffic, size_t maxSpeed);
 
-void setInter(struct graph G, size_t index, struct inter inter);
+void setInter(struct graph G, size_t index, size_t x, size_t y, size_t nblinks);
 
-struct graph initGraph(size_t order);
+struct graph* initGraph(size_t order);
 
 void freeGraph(struct graph *G);
 
