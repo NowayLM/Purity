@@ -25,9 +25,8 @@ void enqueue(struct queue *queue, size_t elm){
         queue->Rear++;
     printf("queue.Rear = %zu\n", queue->Rear);
     printf("queue.Front = %zu\n", queue->Front);
-    queue->arr[queue->Front]++;
     printf("queue.arr[queue.front] = %zu\n", queue->arr[queue->Front]);
-    if (queue->arr[queue->Rear] != queue->size) {
+    if (queue->Rear == queue->Front) {
         printf("queue overflow\n");
         return;
     }
@@ -35,6 +34,7 @@ void enqueue(struct queue *queue, size_t elm){
     //queue.Rear = ((queue.Rear + 1)%queue.size);
     printf("queue rear = %i\n", queue->Rear);
     queue->arr[queue->Rear] = elm;
+    printf("queue.arr[ELM] = %zu\n", queue->arr[queue->Rear]);
 }
 
 size_t dequeue(struct queue *queue){
