@@ -14,5 +14,6 @@ struct queue *initQueue(size_t size);
 void enqueue(struct queue *queue, size_t elm);
 size_t dequeue(struct queue *queue);
 int isempty(struct queue *queue);
+void freeQueue(struct queue *queue);
 
 #endif

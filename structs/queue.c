@@ -44,3 +44,11 @@ int isempty(struct queue *queue) {
         return 1;
     return 0;
 }
+
+void freeQueue(struct queue *queue)
+{
+    if (queue != NULL) {
+        free(queue->arr);
+        free(queue);
+    }
+}
