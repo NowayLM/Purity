@@ -13,7 +13,7 @@ int main(){
     printf("\n\n##########\n\nWelcome to Purity, the best guidance system.\n\n##########\n\n");
     char *filepath = "maps/1.txt";
     struct graph *G = buildGraph(filepath);
-    printf("Enter the starting point and the destination, they must belong to [0 ; %zu] (format : start dest)\n\n", G->order);
+    printf("Enter the starting point and the destination, they must belong to [0 ; %zu] (format : start dest)\n\n", G->order - 1);
     size_t start;
     size_t end;
     scanf("%zu %zu", &start, &end);
