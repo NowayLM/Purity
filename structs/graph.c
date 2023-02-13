@@ -26,7 +26,7 @@ struct graph* buildGraph(const char *filepath){
         tmp = getc(file);
     }
 
-    printf("number of lines of the file is : %zu\n", numberOfLines);
+    //printf("number of lines of the file is : %zu\n", numberOfLines);
 
     int returnCode = fseek(file, 0, SEEK_SET);
     if (returnCode != 0) {
