@@ -2,6 +2,8 @@ Purity's final version will be a functionnuing guidance system and will contain 
 It is starring Lancelot Martin, Quentin Arbaut, Yanis Coper and Yazid Kouicem.
 It was made in the context of a S4 group project at Epita and will be mostly written in C language.
 
+You can check out our website : https://purityepita.online
+
 HOW TO USE : make pathfinder
              ./pathfinder
              follow the instructions given on the console
