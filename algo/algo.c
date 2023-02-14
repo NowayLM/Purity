@@ -52,5 +52,6 @@ size_t *ladder(struct graph *G, size_t start, size_t end) {
     }
     res[i - 1] = G->order;
     res = realloc(res, (i)*sizeof(size_t));
+    free(L);
     return res;
 }
