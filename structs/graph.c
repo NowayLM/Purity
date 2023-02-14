@@ -113,6 +113,7 @@ void freeGraph(struct graph *G) {
     if (G == NULL) return;
     for (size_t i = 0; i < G->order; i++)
         freeInter(G->inters + i);
+    free(G->inters);
     free(G);
 }
 
