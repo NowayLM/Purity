@@ -11,9 +11,13 @@ int main(){
     char filepath[100];
     scanf("%s", filepath);*/
     printf("\n\n##########\n\nWelcome to Purity, the best guidance system.\n\n##########\n\n");
-    char *filepath = "maps/1.txt";
+    printf("Choose which map you want to use (1-2)\n");
+    size_t mapNumber;
+    scanf("%zu", &mapNumber);
+    char *filepath = calloc(50, sizeof(char));
+    sprintf(filepath, "maps/%zu.txt", mapNumber);
     struct graph *G = buildGraph(filepath);
-    printf("Enter the starting point and the destination, they must belong to [0 ; %zu] (format : start dest)\n\n", G->order - 1);
+    printf("\nEnter the starting point and the destination, they must belong to [0 ; %zu] (format : start dest)\n", G->order - 1);
     size_t start;
     size_t end;
     scanf("%zu %zu", &start, &end);
@@ -32,5 +36,6 @@ int main(){
     printf("%zu]\n\n", path[i]);
     freeAll(G, path);
     printf("Thank you for choosing Purity to guide you once again.\n");
+    free(filepath);
     return 1;
 }
