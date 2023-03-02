@@ -4,6 +4,7 @@
 #include <err.h>
 #include "../structs/graph.h"
 #include "../structs/queue.h"
+#include "dijkstra.h"
 #include "algo.h"
 
 int main(){
@@ -26,14 +27,17 @@ int main(){
     if (start >= G->order || end >= G->order)
         errx(3, "start point and dest must be less than %zu.\n", G->order);
     printf("\n\nComputing path from %zu to %zu.\n\n", start, end); 
-    size_t *path = ladder(G, start, end);
+    //size_t *path = ladder(G, start, end);
+    size_t path_length = 0;
+    size_t *path = dijkstra(G, start, end, &path_length);
     size_t i = 0;
     printf("[");
     while(path[i] != end) {
       printf("%zu, ", path[i]);
       i++;
     }
-    printf("%zu]\n\n", path[i]);
+    printf("%zu]\n", path[i]);
+    printf("The distance is : %zu\n\n", path_length);
     freeAll(G, path);
     printf("Thank you for choosing Purity to guide you once again.\n");
     free(filepath);

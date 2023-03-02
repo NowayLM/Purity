@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -MMD -MP
 EXECUTABLE = pathfinder
 TEST_EXECUTABLE = testQueue
-SOURCES = algo/main.c structs/graph.c structs/queue.c algo/algo.c
+SOURCES = algo/main.c structs/graph.c structs/queue.c algo/algo.c algo/dijkstra.c
 TEST_SOURCES = test/testqueue.c
 OBJECTS = $(SOURCES:.c=.o)
 TEST_OBJECTS = $(TEST_SOURCES:.c=.o)
