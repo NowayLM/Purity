@@ -42,6 +42,10 @@ size_t* dijkstra(struct graph *g, size_t source, size_t dest, size_t *path_lengt
     // Set the distance of the source vertex to 0
     distances[source] = 0;
 
+    for (size_t i = 0; i < g->order; i++)
+        printf("%zu, ", distances[i]);
+    printf("\n\n");
+
     // Loop through all vertices
     for (size_t i = 0; i < g->order - 1; i++) {
         // Find the vertex with the minimum distance
@@ -81,6 +85,12 @@ size_t* dijkstra(struct graph *g, size_t source, size_t dest, size_t *path_lengt
 
     // Set the path length
     *path_length = distances[dest];
+    printf("distances : ");
+    for (size_t i = 0; i < g->order; i++) {
+        printf("%zu, ", distances[i]);
+    }
+    printf("\nSIZE_MAX = %zu\n", SIZE_MAX);
+
 
     // Free the memory used by the arrays
     free(distances);
