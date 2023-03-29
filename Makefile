@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -MMD -MP
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -MMD -MP -lm
 EXECUTABLE = pathfinder
 TEST_EXECUTABLE = testQueue
 SOURCES = algo/main.c structs/graph.c structs/queue.c algo/algo.c algo/dijkstra.c
