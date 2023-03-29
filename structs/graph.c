@@ -5,6 +5,7 @@
 #include <err.h>
 #include <math.h>
 #include "graph.h"
+#include "../algo/dijkstra.h"
 
 struct graph* buildGraph(const char *filepath){
     /* buildGraph prends en paramètre la string filepath et retourne
@@ -41,6 +42,7 @@ struct graph* buildGraph(const char *filepath){
     size_t nbLinks;
     size_t end;
     size_t maxSpeed;
+    size_t distance;
     int traffic;
 
     while (!(feof(file))) {
@@ -56,21 +58,12 @@ struct graph* buildGraph(const char *filepath){
                     fscanf(file, "%zu-%i-%zu*\n", &end, &traffic, &maxSpeed);
                 else
                     fscanf(file, "%zu-%i-%zu_", &end, &traffic, &maxSpeed);
-                setLink(G->inters[interIndex], i, end, 0, traffic, maxSpeed);
+                distance = euclidean_distance(G->inters[interIndex].x, G->inters[interIndex].y, G->inters[end].x, G->inters[end].y);
+                setLink(G->inters[interIndex], i, end, distance, traffic, maxSpeed);
                 
             }
         }
     }
-    // for (size_t i = 0; i < G.order; i++) {
-    //     for () {
-    //         //remplissage des distances
-    //         double dx = x;
-    //             double dy = y;
-    //             double Dlength = sqrt((dx * dx) + (y * y));
-    //             size_t length = Dlength;
-    //             G.inters[interIndex].links[i].length = length;
-    //     }
-    //}
     fclose(file);
     return G;
 }
