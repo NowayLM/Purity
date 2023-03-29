@@ -1,8 +1,8 @@
-Purity's final version will be a functionnuing guidance system and will contain a functionning UI, a map importation system and a path finding algorithm.
+Purity's final version will be a functionning guidance system and will contain a functionning UI, a map importation system and a path finding algorithm (a custom Dijkstra's algorithm version).
 It is starring Lancelot Martin, Quentin Arbaut, Yanis Coper and Yazid Kouicem.
 It was made in the context of a S4 group project at Epita and will be mostly written in C language.
 
-You can check out our website : https://purityepita.online
+You can check out our website : https://purityepita.online (currently down)
 
 HOW TO USE : make pathfinder
              ./pathfinder
@@ -11,4 +11,6 @@ HOW TO USE : make pathfinder
 you can also use : make testQueue
                    ./testQueue
 
-finally after you're done, we recommand using : make clean
+After you're done, we recommand using : make clean
+
+Please be reminded that this is project has an educational purpose only so please stay constructive in your comments.
