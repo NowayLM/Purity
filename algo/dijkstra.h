@@ -6,7 +6,9 @@
 
 size_t find_min_distance(size_t *distances, bool *visited, size_t order);
 
-size_t euclidean_distance(size_t x1, size_t y1, size_t x2, size_t y2);
+size_t cost (size_t x, size_t y, struct graph *G);
+
+size_t euclidean_distance(double x1, double y1, double x2, double y2);
 
 //size_t* dijkstra(struct graph *g, size_t source, size_t dest, size_t *path_length);
 

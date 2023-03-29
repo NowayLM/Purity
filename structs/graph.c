@@ -7,27 +7,21 @@
 #include "graph.h"
 #include "../algo/dijkstra.h"
 
-struct graph* buildGraph(const char *filepath){
-    /* buildGraph prends en paramètre la string filepath et retourne
-    le Graph G remplis avec tous les sommets et leurs informations
-    telles qu'indiquées dans le fichier filepath.
-    */
-    FILE* file;
+struct graph *buildGraph(const char *filepath) {
+    FILE *file;
     char tmp;
     file = fopen(filepath, "r");
- 
+
     if (file == NULL) {
         err(3, "file can't be opened");
     }
     size_t numberOfLines = 0;
-    while (tmp != EOF){
-        if (tmp == '/'){
+    while (tmp != EOF) {
+        if (tmp == '/') {
             numberOfLines += 1;
         }
         tmp = getc(file);
     }
-
-    //printf("number of lines of the file is : %zu\n", numberOfLines);
 
     int returnCode = fseek(file, 0, SEEK_SET);
     if (returnCode != 0) {
@@ -45,28 +39,43 @@ struct graph* buildGraph(const char *filepath){
     size_t distance;
     int traffic;
 
+    // Read the intersections first
     while (!(feof(file))) {
         tmp = fgetc(file);
         if(tmp == '/') {
             fscanf(file, "%zu,%zu,%zu,%zu,", &interIndex, &x, &y, &nbLinks);
-            //printf("interIndex = %zu\n", interIndex);
             initInter(*G, interIndex, nbLinks);
-            setInter(*G, interIndex, x, y, nbLinks);           
-            //printf("/%zu,%zu,%zu,%zu,\n", interIndex, x, y, nbLinks);
+            setInter(*G, interIndex, x, y, nbLinks);
+        }
+    }
+
+    // Reset file pointer to the beginning
+    fseek(file, 0, SEEK_SET);
+
+    // Read the links and set distances
+    while (!(feof(file))) {
+        tmp = fgetc(file);
+        if (tmp == '/') {
+            fscanf(file, "%zu,%zu,%zu,%zu,", &interIndex, &x, &y, &nbLinks);
             for (size_t i = 0; i < nbLinks; i++) {
                 if ((i + 1) == nbLinks)
                     fscanf(file, "%zu-%i-%zu*\n", &end, &traffic, &maxSpeed);
                 else
                     fscanf(file, "%zu-%i-%zu_", &end, &traffic, &maxSpeed);
-                distance = euclidean_distance(G->inters[interIndex].x, G->inters[interIndex].y, G->inters[end].x, G->inters[end].y);
+
+                distance = euclidean_distance((double)G->inters[interIndex].x, (double)G->inters[interIndex].y, (double)G->inters[end].x, (double)G->inters[end].y);
+                //printf("Link between %zu and %zu with length: %zu\n", interIndex, end, distance);
                 setLink(G->inters[interIndex], i, end, distance, traffic, maxSpeed);
-                
             }
         }
     }
+
     fclose(file);
     return G;
 }
+
+
+
 
 
 
