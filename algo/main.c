@@ -31,20 +31,8 @@ int main(){
     size_t path_length = 0;
     size_t *path = dijkstra(G, start, end, &path_length);
     size_t i = 0;
-
-    // Calculate the total length of the path
-    size_t total_length = 0;
-    for (i = 0; i < path_length - 1; i++) {
-        size_t u = path[i];
-        size_t v = path[i + 1];
-        for (size_t j = 0; j < G->inters[u].nblinks; j++) {
-            if (G->inters[u].links[j].end == v) {
-                total_length += G->inters[u].links[j].length;
-                //printf("distance between %zu and %zu is %zu\n", u, v, G->inters[u].links[j].length);
-                break;
-            }
-        }
-    }
+    
+    size_t total_length = compute_path_length(path_length, path, G);
 
     printf("[");
     for (i = 0; i < path_length - 1; i++) {
