@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-size_t cost (size_t x, size_t y, struct graph *G);
+size_t cost (size_t x, size_t y, struct graph *G, size_t mode);
 
 size_t euclidean_distance(double x1, double y1, double x2, double y2);
 
