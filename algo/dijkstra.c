@@ -137,8 +137,7 @@ size_t *groupeFunction(char *filepath, size_t start, size_t end, size_t *total_l
     printf("\n\nComputing path from %zu to %zu.\n\n", start, end);
     size_t path_length = 0;
     size_t *path = dijkstra(G, start, end, &path_length);
-    size_t i = 0;  
-    total_length = compute_path_length(path_length, path, G);
+    *total_length = compute_path_length(path_length, path, G);
     freeGraph(G);
     free(filepath);
     return path;
