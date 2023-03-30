@@ -12,30 +12,34 @@
 #include <stdbool.h>
 
 
-/*size_t find_min_distance(size_t *distances, bool *visited, size_t order)
-{
-    size_t min_distance = SIZE_MAX;
-    size_t min_index = 0;
-
-    for (size_t i = 0; i < order; i++) {
-        if (!visited[i] && distances[i] <= min_distance) {
-            min_distance = distances[i];
-            min_index = i;
-        }
-    }
-
-    return min_index;
-}*/
-
 size_t cost (size_t x, size_t y, struct graph *G) {
     if (x == y) return 0;
     for (size_t i = 0; i < G->inters[x].nblinks; i++) {
         if (G->inters[x].links[i].end == y) {
-            size_t result = ((G->inters[x].links[i].length)*(10*(1 + G->inters[x].links[i].traffic)))/(1 + G->inters[x].links[i].length);
+            size_t length = G->inters[x].links[i].length;
+            size_t traffic = 1 + G->inters[x].links[i].traffic;
+            size_t maxSpeed = 1 + G->inters[x].links[i].maxSpeed;
+            size_t result = ((length)*(10*(traffic)))/(maxSpeed);
             return (result);
         }
     }
     return SIZE_MAX;
+}
+
+size_t compute_path_length (size_t path_length, size_t *path, struct graph *G) {
+    size_t total_length = 0;
+    for (size_t i = 0; i < path_length - 1; i++) {
+        size_t u = path[i];
+        size_t v = path[i + 1];
+        for (size_t j = 0; j < G->inters[u].nblinks; j++) {
+            if (G->inters[u].links[j].end == v) {
+                total_length += G->inters[u].links[j].length;
+                //printf("distance between %zu and %zu is %zu\n", u, v, G->inters[u].links[j].length);
+                break;
+            }
+        }
+    }
+    return total_length;
 }
 
 
