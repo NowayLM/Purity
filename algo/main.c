@@ -12,7 +12,7 @@ int main(){
     char filepath[100];
     scanf("%s", filepath);*/
     printf("\n\n##########\n\nWelcome to Purity, the best guidance system.\n\n##########\n\n");
-    printf("Choose which map you want to use (1-3)\n");
+    printf("Choose which map you want to use (1-4)\n");
     size_t mapNumber;
     scanf("%zu", &mapNumber);
     char *filepath = calloc(50, sizeof(char));
@@ -40,7 +40,7 @@ int main(){
         for (size_t j = 0; j < G->inters[u].nblinks; j++) {
             if (G->inters[u].links[j].end == v) {
                 total_length += G->inters[u].links[j].length;
-                printf("distance between %zu and %zu is %zu\n", u, v, G->inters[u].links[j].length);
+                //printf("distance between %zu and %zu is %zu\n", u, v, G->inters[u].links[j].length);
                 break;
             }
         }

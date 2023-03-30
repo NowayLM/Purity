@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-size_t find_min_distance(size_t *distances, bool *visited, size_t order);
+//size_t find_min_distance(size_t *distances, bool *visited, size_t order);
 
 size_t cost (size_t x, size_t y, struct graph *G);
 
