@@ -117,3 +117,29 @@ size_t *dijkstra(struct graph *g, size_t start, size_t end, size_t *path_length)
 
     return path;
 }
+
+
+size_t *groupeFunction(char *filepath, size_t start, size_t end, size_t *total_length) {
+    /*POUR UTILISER CETTE FONCTION : filepath doit être une string (char *) contenant le chemin à prendre depuis le dossier du Makefile
+                                     start et end sont des size_t devant être entre 0 et G.order - 1
+                                     En C, on ne peut retourner qu'une variable par fonction, donc je je peux pas retourner ET le tableau
+                                     qui contient le chemin ET sa longueur, donc on doit créer un size_t total_length avant d'appeler la
+                                     fonction puis passer son adresse en paramètre (&total_length), la fonction remplira donc la variable
+                                     total_length créée au préalable. Exemple : size_t total_length = 0;
+                                                                                size_t *path = groupeFunction("maps/1.txt", 0, 1, &total_length);
+                                    IL FAUT ABSOLUMENT FREE LA VARIABLE PATH QUAND VOUS AVEZ FINI, tout le reste est free automatiquement.
+    */
+    struct graph *G = buildGraph(filepath);
+    if (start == end)
+        errx(3, "start point can't be destination");
+    if (start >= G->order || end >= G->order)
+        errx(3, "start point and destination must be less than %zu.\n", G->order);
+    printf("\n\nComputing path from %zu to %zu.\n\n", start, end);
+    size_t path_length = 0;
+    size_t *path = dijkstra(G, start, end, &path_length);
+    size_t i = 0;  
+    total_length = compute_path_length(path_length, path, G);
+    freeGraph(G);
+    free(filepath);
+    return path;
+}
