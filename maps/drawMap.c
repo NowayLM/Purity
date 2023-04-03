@@ -27,6 +27,21 @@ void draw_map(SDL_Renderer *renderer, struct graph *G) {
     // Set the draw color for vertices
     SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
 
+    size_t minX = g->inters[0].x;
+    size_t maxX = g->inters[0].x;
+    size_t minY = g->inters[0].y;
+    size_t maxY = g->inters[0].y;
+
+    for (size_t i = 1; i < G->order; i++) {
+        if (G->inters[i].x < minX)
+            minX = G->inters[i].x;
+        if (G->inters[i].x > maxX)
+            maxX = G->inters[i].x;
+        if (G->inters[i].y < minY)
+            minY = G->inters[i].y;
+        if (G->inters[i].y > maxY)
+            maxY = G->inters[i].y;
+
     // Draw the vertices
     for (size_t i = 0; i < G->order; i++) {
         int x = G->inters[i].x;
