@@ -92,7 +92,7 @@ size_t *dijkstra(struct graph *g, size_t start, size_t end, size_t *path_length)
 
         for (size_t j = 0; j < g->inters[u].nblinks; j++) {
             size_t v = g->inters[u].links[j].end;
-            size_t alt = dist[u] + cost(u, v, g, 4);
+            size_t alt = dist[u] + cost(u, v, g, 3);
 
             if (alt < dist[v]) {
                 dist[v] = alt;

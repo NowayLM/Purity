@@ -23,7 +23,7 @@ void draw_vertex(SDL_Renderer *renderer, int x, int y, int radius) {
 }
 
 
-void draw_map(SDL_Renderer *renderer, struct graph *G) {
+void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t pathLength) {
     // Set the draw color for vertices
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
@@ -70,10 +70,18 @@ void draw_map(SDL_Renderer *renderer, struct graph *G) {
             G->inters[end].x * WINDOW_WIDTH / maxX, G->inters[end].y * WINDOW_HEIGHT / maxX);
         }
     }
+
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    for (size_t i = 0; i < pathLength - 1; i++) {
+        size_t start = path[i];
+        size_t end = path[i + 1];
+        SDL_RenderDrawLine(renderer, G->inters[start].x * WINDOW_WIDTH / maxX, G->inters[start].y * WINDOW_HEIGHT / maxX,
+        G->inters[end].x * WINDOW_WIDTH / maxX, G->inters[end].y * WINDOW_HEIGHT / maxX);
+    }
 }
 
 
-int doAll(size_t map) {
+int doAll(size_t map, size_t *path, size_t pathLength) {
     char *filepath = calloc(50, sizeof(char));
     sprintf(filepath, "maps/%zu.txt", map);
     struct graph *G = buildGraph(filepath); // Create your graph here
@@ -118,7 +126,7 @@ int doAll(size_t map) {
         SDL_RenderClear(renderer);
 
         // Draw the map
-        draw_map(renderer, G);
+        draw_map(renderer, G, path, pathLength);
 
         // Present the rendered scene
         SDL_RenderPresent(renderer);
