@@ -25,12 +25,12 @@ void draw_vertex(SDL_Renderer *renderer, int x, int y, int radius) {
 
 void draw_map(SDL_Renderer *renderer, struct graph *G) {
     // Set the draw color for vertices
-    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
-    size_t minX = g->inters[0].x;
-    size_t maxX = g->inters[0].x;
-    size_t minY = g->inters[0].y;
-    size_t maxY = g->inters[0].y;
+    size_t minX = G->inters[0].x;
+    size_t maxX = G->inters[0].x;
+    size_t minY = G->inters[0].y;
+    size_t maxY = G->inters[0].y;
 
     for (size_t i = 1; i < G->order; i++) {
         if (G->inters[i].x < minX)
@@ -41,22 +41,33 @@ void draw_map(SDL_Renderer *renderer, struct graph *G) {
             minY = G->inters[i].y;
         if (G->inters[i].y > maxY)
             maxY = G->inters[i].y;
+    }
+    //size_t diffX = maxX - minX;
+    //size_t diffY = maxY - minY;
+
+    //if (diffX > diffY) diffX = diffY;
+    maxX += (maxX / 10) + 2;
+    maxY += (maxY / 10) + 1;
 
     // Draw the vertices
     for (size_t i = 0; i < G->order; i++) {
-        int x = G->inters[i].x;
-        int y = G->inters[i].y;
-        draw_vertex(renderer, x, y, VERTEX_RADIUS);
+        size_t x = G->inters[i].x * WINDOW_WIDTH / maxX;
+        size_t y = G->inters[i].y * WINDOW_HEIGHT / maxX;
+        //printf("x %zu y %zu diffX %zu diffY %zu\n", x, y, diffX, diffY);
+        int fx = (int) x;
+        int fy = (int) y;
+        draw_vertex(renderer, fx, fy, VERTEX_RADIUS);
     }
 
     // Set the draw color for edges
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
     // Draw the edges
     for (size_t i = 0; i < G->order; i++) {
         for (size_t j = 0; j < G->inters[i].nblinks; j++) {
             size_t end = G->inters[i].links[j].end;
-            SDL_RenderDrawLine(renderer, G->inters[i].x, G->inters[i].y, G->inters[end].x, G->inters[end].y);
+            SDL_RenderDrawLine(renderer, G->inters[i].x * WINDOW_WIDTH / maxX, G->inters[i].y * WINDOW_HEIGHT / maxX,
+            G->inters[end].x * WINDOW_WIDTH / maxX, G->inters[end].y * WINDOW_HEIGHT / maxX);
         }
     }
 }
@@ -103,7 +114,7 @@ int doAll(size_t map) {
         }
 
         // Clear the screen
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL_SetRenderDrawColor(renderer, 174, 217, 158, 255);
         SDL_RenderClear(renderer);
 
         // Draw the map
