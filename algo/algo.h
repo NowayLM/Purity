@@ -1,6 +1,7 @@
 #ifndef ALGO_H
 #define ALGO_H
 #include <stddef.h>
+#include "../structs/graph.h"
 
 void freeAll(struct graph *G, size_t *path); //frees a graph* G and a size_t* path
 

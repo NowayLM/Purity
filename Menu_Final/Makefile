@@ -3,9 +3,9 @@ CC= gcc
 
 CFLAGS += `pkg-config --cflags gtk+-3.0`
 
-LIBS = `pkg-config --libs gtk+-3.0`
+LIBS = `pkg-config --libs gtk+-3.0` -lm 
 
-SRCS = menu.c
+SRCS = menu.c ../algo/algo.c ../structs/graph.c ../structs/queue.c ../algo/dijkstra.c
 
 GLADE_FILE = Interface.glade
 
