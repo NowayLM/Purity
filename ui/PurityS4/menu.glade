@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 -->
+<!-- Generated with glade 3.40.0 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
   <object class="GtkWindow">
@@ -13,8 +13,8 @@
         <child>
           <object class="GtkButton" id="button1">
             <property name="label" translatable="yes">Start</property>
-            <property name="width-request">118</property>
-            <property name="height-request">34</property>
+            <property name="width-request">143</property>
+            <property name="height-request">50</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
@@ -22,23 +22,8 @@
             <signal name="clicked" handler="on_button1_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">792</property>
-            <property name="y">683</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkImage">
-            <property name="width-request">717</property>
-            <property name="height-request">530</property>
-            <property name="visible">True</property>
-            <property name="sensitive">False</property>
-            <property name="can-focus">False</property>
-            <property name="is-focus">True</property>
-            <property name="pixbuf">map.png</property>
-          </object>
-          <packing>
-            <property name="x">483</property>
-            <property name="y">89</property>
+            <property name="x">362</property>
+            <property name="y">604</property>
           </packing>
         </child>
         <child>
@@ -57,24 +42,25 @@
             </items>
           </object>
           <packing>
-            <property name="x">182</property>
-            <property name="y">162</property>
+            <property name="x">27</property>
+            <property name="y">138</property>
           </packing>
         </child>
         <child>
           <object class="GtkLabel">
             <property name="width-request">172</property>
-            <property name="height-request">28</property>
+            <property name="height-request">34</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="label" translatable="yes">Position Actuel :</property>
+            <property name="label" translatable="yes">Position :</property>
+            <property name="width-chars">5</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold Italic 14"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">187</property>
-            <property name="y">112</property>
+            <property name="x">23</property>
+            <property name="y">69</property>
           </packing>
         </child>
         <child>
@@ -91,44 +77,124 @@
             </items>
           </object>
           <packing>
-            <property name="x">178</property>
-            <property name="y">342</property>
+            <property name="x">39</property>
+            <property name="y">331</property>
           </packing>
         </child>
         <child>
           <object class="GtkLabel">
-            <property name="width-request">101</property>
+            <property name="width-request">157</property>
             <property name="height-request">80</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="label" translatable="yes">Arrive :</property>
+            <property name="label" translatable="yes">Destination</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold Italic 18"/>
+              <attribute name="size" value="14350"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">212</property>
-            <property name="y">266</property>
+            <property name="x">36</property>
+            <property name="y">244</property>
           </packing>
         </child>
         <child>
-          <object class="GtkImage">
-            <property name="width-request">250</property>
-            <property name="height-request">250</property>
+          <object class="GtkLabel">
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="pixbuf">logo-color.png</property>
+            <property name="label" translatable="yes">Mode :</property>
+            <attributes>
+              <attribute name="font-desc" value="Sans Bold 14"/>
+            </attributes>
           </object>
           <packing>
-            <property name="x">121</property>
-            <property name="y">520</property>
+            <property name="x">69</property>
+            <property name="y">430</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkComboBoxText" id="mode_select">
+            <property name="width-request">209</property>
+            <property name="height-request">67</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="active">1</property>
+            <items>
+              <item id="1" translatable="yes">mode 1</item>
+              <item id="2" translatable="yes">mode 2</item>
+              <item id="3" translatable="yes">mode 3</item>
+            </items>
+          </object>
+          <packing>
+            <property name="x">18</property>
+            <property name="y">516</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkProgressBar" id="progress_bar">
+            <property name="width-request">168</property>
+            <property name="height-request">95</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="pulse-step">0.71999999999999997</property>
+            <property name="text" translatable="yes">loading
+</property>
+          </object>
+          <packing>
+            <property name="x">355</property>
+            <property name="y">591</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFileChooserButton">
+            <property name="name">file_selector</property>
+            <property name="width-request">146</property>
+            <property name="height-request">61</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="tooltip-text" translatable="yes">choose jpeg
+</property>
+            <property name="title" translatable="yes">choose map
+
+</property>
+          </object>
+          <packing>
+            <property name="x">661</property>
+            <property name="y">314</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Map :</property>
+            <attributes>
+              <attribute name="font-desc" value="Sans Bold 14"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">690</property>
+            <property name="y">209</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSeparator">
+            <property name="name">separator</property>
+            <property name="width-request">20</property>
+            <property name="height-request">688</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="hexpand">False</property>
+          </object>
+          <packing>
+            <property name="x">237</property>
           </packing>
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkMenu">
-    <property name="visible">True</property>
-    <property name="can-focus">False</property>
   </object>
 </interface>
