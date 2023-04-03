@@ -4,6 +4,7 @@
 #include <err.h>
 #include "../structs/graph.h"
 #include "../structs/queue.h"
+#include "../maps/drawMap.h"
 #include "dijkstra.h"
 #include "algo.h"
 
@@ -40,8 +41,9 @@ int main(){
     }
     printf("%zu]\n", path[path_length - 1]);
     printf("The distance is : %zu\n\n", total_length);
+    int a = doAll();
     freeAll(G, path);
     printf("Thank you for choosing Purity to guide you once again.\n");
     free(filepath);
-    return 1;
+    return a;
 }

@@ -1,8 +1,9 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -MMD -MP -lm
+CFLAGS = -Wall -Wextra -Werror -MMD -MP -g
+SDL_FLAGS = `sdl2-config --cflags --libs`
 EXECUTABLE = pathfinder
 TEST_EXECUTABLE = testQueue
-SOURCES = algo/main.c structs/graph.c structs/queue.c algo/algo.c algo/dijkstra.c
+SOURCES = algo/main.c structs/graph.c structs/queue.c algo/algo.c algo/dijkstra.c maps/drawMap.c
 TEST_SOURCES = test/testqueue.c
 OBJECTS = $(SOURCES:.c=.o)
 TEST_OBJECTS = $(TEST_SOURCES:.c=.o)
@@ -13,10 +14,10 @@ DEPFILES = $(SOURCES:.c=.d) $(TEST_SOURCES:.c=.d)
 all: $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) -o $(EXECUTABLE)
+	$(CC) $(CFLAGS) $(OBJECTS) $(SDL_FLAGS) -o $(EXECUTABLE) -lm
 
 $(TEST_EXECUTABLE): $(TEST_OBJECTS) $(OBJECTS)
-	$(CC) $(CFLAGS) $(TEST_OBJECTS) $(filter-out algo/main.o, $(OBJECTS)) -o $(TEST_EXECUTABLE)
+	$(CC) $(CFLAGS) $(TEST_OBJECTS) $(filter-out algo/main.o, $(OBJECTS)) $(SDL_FLAGS) -o $(TEST_EXECUTABLE) -lm
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
