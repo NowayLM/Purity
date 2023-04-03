@@ -41,20 +41,19 @@ int main(int argc, char **argv)
 
             // Parcours les noeuds fils du sommet pour récupérer les liens
             int link_count = 0;
-            int az = 0;
             for (xmlNode *node = cur_node->children; node; node = node->next) {
-                printf("boucle");
                 if (xmlStrcmp(node->name, (const xmlChar *)"tag") == 0) {
                     char *tag_key = (char *)xmlGetProp(node, (const xmlChar *)"k");
                     char *tag_value = (char *)xmlGetProp(node, (const xmlChar *)"v");
 
                     // Si le tag correspond au nombre de liens, récupère la valeur
-                    if (strcmp(tag_key, "link_count") == 0) {
+                    /*if (strcmp(tag_key, "link_count") == 0) {
                         link_count = atoi(tag_value);
-                    }
+                    }*/
                     xmlFree(tag_key);
                     xmlFree(tag_value);
                 }
+		link_count++;
             }
             // Ajoute les lignes pour chaque lien
             for (int i = 1; i <= link_count; i++) {
