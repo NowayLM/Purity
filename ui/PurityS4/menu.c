@@ -75,14 +75,14 @@ int main(int argc, char *argv[]) {
     window = GTK_WIDGET(gtk_builder_get_object(builder, "window"));
     g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
 
-    gtk_builder_connect_signals(builder, NULL)
+    gtk_builder_connect_signals(builder, NULL);
 
 
     fixed1 = GTK_WIDGET(gtk_builder_get_object(builder, "fixed1"));
     button1 = GTK_WIDGET(gtk_builder_get_object(builder, "button1"));
     label1 = GTK_WIDGET(gtk_builder_get_object(builder, "label1"));
 
-    g_signal_connect(button1, "clicked", G_CALLBACK(on_button_clicked), NULL);
+    g_signal_connect(button1, "clicked", G_CALLBACK(drawGraph), nodes);
 
     gtk_widget_show(window);
     gtk_main();
