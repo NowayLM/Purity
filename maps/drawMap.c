@@ -47,8 +47,11 @@ void draw_map(SDL_Renderer *renderer, struct graph *G) {
 }
 
 
-int doAll() {
-    struct graph *G = buildGraph("maps/1.txt"); // Create your graph here
+int doAll(size_t map) {
+    char *filepath = calloc(50, sizeof(char));
+    sprintf(filepath, "maps/%zu.txt", map);
+    struct graph *G = buildGraph(filepath); // Create your graph here
+    free(filepath);
 
     // Initialize SDL
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
