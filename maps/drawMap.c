@@ -6,9 +6,9 @@
 #include "../structs/graph.h"
 #include "../algo/dijkstra.h"
 
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 600
-#define VERTEX_RADIUS 5
+#define WINDOW_WIDTH 1280
+#define WINDOW_HEIGHT 720
+#define VERTEX_RADIUS 8
 
 void draw_vertex(SDL_Renderer *renderer, int x, int y, int radius) {
     for (int w = 0; w < radius * 2; w++) {
@@ -47,12 +47,14 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
 
     //if (diffX > diffY) diffX = diffY;
     maxX += (maxX / 10) + 2;
-    maxY += (maxY / 10) + 1;
+    maxY += (maxY / 10) + 2;
+
+    if (maxX < maxY) maxX = maxY;
 
     // Draw the vertices
     for (size_t i = 0; i < G->order; i++) {
-        size_t x = G->inters[i].x * WINDOW_WIDTH / maxX;
-        size_t y = G->inters[i].y * WINDOW_HEIGHT / maxX;
+        size_t x = G->inters[i].x * WINDOW_WIDTH / maxX + 50;
+        size_t y = G->inters[i].y * WINDOW_HEIGHT / maxX + 50;
         //printf("x %zu y %zu diffX %zu diffY %zu\n", x, y, diffX, diffY);
         int fx = (int) x;
         int fy = (int) y;
@@ -66,17 +68,19 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
     for (size_t i = 0; i < G->order; i++) {
         for (size_t j = 0; j < G->inters[i].nblinks; j++) {
             size_t end = G->inters[i].links[j].end;
-            SDL_RenderDrawLine(renderer, G->inters[i].x * WINDOW_WIDTH / maxX, G->inters[i].y * WINDOW_HEIGHT / maxX,
-            G->inters[end].x * WINDOW_WIDTH / maxX, G->inters[end].y * WINDOW_HEIGHT / maxX);
+            SDL_RenderDrawLine(renderer, G->inters[i].x * WINDOW_WIDTH / maxX + 50, G->inters[i].y * WINDOW_HEIGHT / maxX + 50,
+            G->inters[end].x * WINDOW_WIDTH / maxX + 50, G->inters[end].y * WINDOW_HEIGHT / maxX + 50);
         }
     }
 
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    draw_vertex(renderer, G->inters[path[pathLength - 1]].x * WINDOW_WIDTH / maxX + 50, G->inters[path[pathLength - 1]].y * WINDOW_HEIGHT / maxX + 50, VERTEX_RADIUS);
     for (size_t i = 0; i < pathLength - 1; i++) {
         size_t start = path[i];
+        draw_vertex(renderer, G->inters[start].x * WINDOW_WIDTH / maxX + 50, G->inters[start].y * WINDOW_HEIGHT / maxX + 50, VERTEX_RADIUS);
         size_t end = path[i + 1];
-        SDL_RenderDrawLine(renderer, G->inters[start].x * WINDOW_WIDTH / maxX, G->inters[start].y * WINDOW_HEIGHT / maxX,
-        G->inters[end].x * WINDOW_WIDTH / maxX, G->inters[end].y * WINDOW_HEIGHT / maxX);
+        SDL_RenderDrawLine(renderer, G->inters[start].x * WINDOW_WIDTH / maxX + 50, G->inters[start].y * WINDOW_HEIGHT / maxX + 50,
+        G->inters[end].x * WINDOW_WIDTH / maxX + 50, G->inters[end].y * WINDOW_HEIGHT / maxX + 50);
     }
 }
 
@@ -94,7 +98,7 @@ int doAll(size_t map, size_t *path, size_t pathLength) {
     }
 
     // Create a window
-    SDL_Window *window = SDL_CreateWindow("Map Visualization", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
+    SDL_Window *window = SDL_CreateWindow("Map Visualization", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH + 100, WINDOW_HEIGHT + 100, SDL_WINDOW_SHOWN);
     if (!window) {
         fprintf(stderr, "Error creating window: %s\n", SDL_GetError());
         SDL_Quit();
@@ -122,7 +126,7 @@ int doAll(size_t map, size_t *path, size_t pathLength) {
         }
 
         // Clear the screen
-        SDL_SetRenderDrawColor(renderer, 174, 217, 158, 255);
+        SDL_SetRenderDrawColor(renderer, 190, 190, 190, 255);
         SDL_RenderClear(renderer);
 
         // Draw the map
