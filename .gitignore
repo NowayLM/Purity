@@ -11,3 +11,7 @@ pathfinder
 *.o
 
 *.d
+
+.vs
+
+CppProperties.json
