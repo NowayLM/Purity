@@ -10,7 +10,7 @@ size_t euclidean_distance(double x1, double y1, double x2, double y2);
 
 size_t compute_path_length (size_t path_length, size_t *path, struct graph *G);
 
-size_t *dijkstra(struct graph *g, size_t start, size_t end, size_t *path_length);
+size_t *dijkstra(struct graph *g, size_t start, size_t end, size_t *path_length, size_t mode);
 
 size_t *groupeFunction(char *filepath, size_t start, size_t end, size_t *total_length);
 

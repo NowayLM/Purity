@@ -31,7 +31,7 @@ size_t cost (size_t x, size_t y, struct graph *G, size_t mode) {
                 result = ((length) * (10 * (traffic))) / ((maxSpeed * 30) / 100);  //eco mode
             }
             else if (mode == 4) {
-                result = ((length)) / maxSpeed;  //ultra max speed mode
+                result = length / maxSpeed;  //ultra max speed mode
             }
             return (result);
         }
@@ -61,7 +61,7 @@ size_t euclidean_distance(double x1, double y1, double x2, double y2) {
     return (size_t)round(sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2)));
 }
 
-size_t *dijkstra(struct graph *g, size_t start, size_t end, size_t *path_length){
+size_t *dijkstra(struct graph *g, size_t start, size_t end, size_t *path_length, size_t mode){
     size_t *dist = malloc(g->order * sizeof(size_t));
     size_t *prev = malloc(g->order * sizeof(size_t));
     bool *visited = calloc(g->order, sizeof(bool));
@@ -92,7 +92,7 @@ size_t *dijkstra(struct graph *g, size_t start, size_t end, size_t *path_length)
 
         for (size_t j = 0; j < g->inters[u].nblinks; j++) {
             size_t v = g->inters[u].links[j].end;
-            size_t alt = dist[u] + cost(u, v, g, 3);
+            size_t alt = dist[u] + cost(u, v, g, mode);
 
             if (alt < dist[v]) {
                 dist[v] = alt;
@@ -150,7 +150,7 @@ size_t *groupeFunction(char *filepath, size_t start, size_t end, size_t *total_l
         errx(3, "start point and destination must be less than %zu.\n", G->order);
     printf("\n\nComputing path from %zu to %zu.\n\n", start, end);
     size_t path_length = 0;
-    size_t *path = dijkstra(G, start, end, &path_length);
+    size_t *path = dijkstra(G, start, end, &path_length, 1);
     *total_length = compute_path_length(path_length, path, G);
     freeGraph(G);
     free(filepath);

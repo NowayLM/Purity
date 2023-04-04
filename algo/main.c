@@ -27,10 +27,12 @@ int main(){
         errx(3, "start point can't be destination");
     if (start >= G->order || end >= G->order)
         errx(3, "start point and dest must be less than %zu.\n", G->order);
-    printf("\n\nComputing path from %zu to %zu.\n\n", start, end); 
-    //size_t *path = ladder(G, start, end);
+    printf("\nPlease select the mode you want to use : \n1 for default mode \n2 for quick mode \n3 for economy mode \n4 for priority mode\n");
+    size_t mode;
+    scanf("%zu", &mode);
+    printf("\n\nComputing path from %zu to %zu with mode %zu.\n\n", start, end, mode);
     size_t path_length = 0;
-    size_t *path = dijkstra(G, start, end, &path_length);
+    size_t *path = dijkstra(G, start, end, &path_length, mode);
     size_t i = 0;
     
     size_t total_length = compute_path_length(path_length, path, G);
@@ -41,9 +43,9 @@ int main(){
     }
     printf("%zu]\n", path[path_length - 1]);
     printf("The distance is : %zu\n\n", total_length);
-    int a = doAll(mapNumber, path, path_length);
+    //int a = doAll(G, path, path_length);
     freeAll(G, path);
     printf("Thank you for choosing Purity to guide you once again.\n");
     free(filepath);
-    return a;
+    return 1;
 }
