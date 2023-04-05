@@ -1,25 +1,27 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-LDFLAGS = -lm pkg-config --cflags --libs gtk+-3.0
-SRC_DIR = src
-OBJ_DIR = obj
-BIN_DIR = bin
-
-SRC_FILES := $(wildcard $(SRC_DIR)/.c)
-OBJ_FILES := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
-
-TARGET = $(BIN_DIR)/Purity
-
-all: $(TARGET)
-
-$(TARGET): $(OBJ_FILES)
-	$(CC) $(LDFLAGS) $^ -o $@
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-clean:
-	rm -f $(OBJ_DIR)/.o $(TARGET)
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -MMD -MP -lm
+EXECUTABLE = pathfinder
+TEST_EXECUTABLE = testQueue
+SOURCES = algo/main.c structs/graph.c structs/queue.c algo/algo.c algo/dijkstra.c
+TEST_SOURCES = test/testqueue.c
+OBJECTS = $(SOURCES:.c=.o)
+TEST_OBJECTS = $(TEST_SOURCES:.c=.o)
+DEPFILES = $(SOURCES:.c=.d) $(TEST_SOURCES:.c=.d)
 
 .PHONY: all clean
 
+all: $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $(EXECUTABLE)
+
+$(TEST_EXECUTABLE): $(TEST_OBJECTS) $(OBJECTS)
+	$(CC) $(CFLAGS) $(TEST_OBJECTS) $(filter-out algo/main.o, $(OBJECTS)) -o $(TEST_EXECUTABLE)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJECTS) $(TEST_OBJECTS) $(EXECUTABLE) $(TEST_EXECUTABLE) $(DEPFILES)
+
+-include $(DEPFILES)
