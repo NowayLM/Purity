@@ -135,7 +135,6 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
-    freeGraph(G);
 
     return 0;
 }

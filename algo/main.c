@@ -43,9 +43,9 @@ int main(){
     }
     printf("%zu]\n", path[path_length - 1]);
     printf("The distance is : %zu\n\n", total_length);
-    //int a = doAll(G, path, path_length);
+    int a = doAll(G, path, path_length);
     freeAll(G, path);
     printf("Thank you for choosing Purity to guide you once again.\n");
     free(filepath);
-    return 1;
+    return a;
 }

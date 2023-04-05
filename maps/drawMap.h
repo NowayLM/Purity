@@ -11,6 +11,6 @@ void draw_vertex(SDL_Renderer *renderer, int x, int y, int radius);
 
 void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t pathLength);
 
-int doAll(size_t map, size_t *path, size_t pathLength);
+int doAll(struct graph *G, size_t *path, size_t pathLength);
 
 #endif
