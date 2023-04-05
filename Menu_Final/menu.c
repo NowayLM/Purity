@@ -52,7 +52,7 @@ void on_start_button_clicked(GtkWidget *button,gpointer user_data)
 	size_t total_length =0;
 	struct graph *G = buildGraph("../maps/1.txt");
 	//size_t *path = groupeFunction("../maps/1.txt", size_x, size_y, &total_length);
-	size_t *path = dijkstra(G, size_x, size_y, &total_length); 
+	size_t *path = dijkstra(G, size_x, size_y, &total_length, 1); 
 	final_length = compute_path_length(total_length, path, G);
 	g_print("\nOn calcule le chemin entre %zu et %zu \n", size_x, size_y);
 	g_print("\nLa distance  est : %zu\n",final_length);
