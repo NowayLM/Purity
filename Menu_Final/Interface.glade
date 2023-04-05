@@ -90,15 +90,10 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBoxText">
+                          <object class="GtkEntry" id="gtk_entry1">
                             <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <items>
-                              <item id="1" translatable="yes">Point A</item>
-                              <item id="2" translatable="yes">Point B</item>
-                              <item id="3" translatable="yes">Point C</item>
-                              <item id="4" translatable="yes">Point D</item>
-                            </items>
+                            <property name="can-focus">True</property>
+                            <property name="max-width-chars">3</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -131,15 +126,9 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBoxText">
+                          <object class="GtkEntry" id="gtk_entry2">
                             <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <items>
-                              <item id="1" translatable="yes">Point A</item>
-                              <item id="2" translatable="yes">Point B</item>
-                              <item id="3" translatable="yes">Point C</item>
-                              <item id="3" translatable="yes">Point D</item>
-                            </items>
+                            <property name="can-focus">True</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
