@@ -14,4 +14,6 @@ size_t *dijkstra(struct graph *g, size_t start, size_t end, size_t *path_length,
 
 size_t *groupeFunction(char *filepath, size_t start, size_t end, size_t *total_length);
 
+size_t *groupeFunction(char *filepath, size_t start, size_t end, size_t *total_length);
+
 #endif

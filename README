@@ -7,6 +7,8 @@ You can check out our website : https://purityepita.online (currently down)
 HOW TO USE : make pathfinder
              ./pathfinder
              follow the instructions given on the console
+             you can also go in the Menu_Final directory and type make
+             then ./Purity
 
 you can also use : make testQueue
                    ./testQueue
