@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stddef.h>
+#include <math.h>
 #include <SDL2/SDL.h>
 #include "drawMap.h"
 #include "../structs/graph.h"
@@ -31,6 +32,9 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
     size_t maxX = G->inters[0].x;
     size_t minY = G->inters[0].y;
     size_t maxY = G->inters[0].y;
+    long newRadiusL = 70/(log(G->order * 100));
+    int newRadius = (int) newRadiusL;
+    //printf("newRadius = %i\nnewRadiusL = %f\n", newRadius, log(G->order * 100));
 
     for (size_t i = 1; i < G->order; i++) {
         if (G->inters[i].x < minX)
@@ -42,8 +46,8 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
         if (G->inters[i].y > maxY)
             maxY = G->inters[i].y;
     }
-    //size_t diffX = maxX - minX;
-    //size_t diffY = maxY - minY;
+    //maxX = maxX - minX;
+    //maxY = maxY - minY;
 
     //if (diffX > diffY) diffX = diffY;
     maxX += (maxX / 10) + 2;
@@ -58,7 +62,7 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
         //printf("x %zu y %zu diffX %zu diffY %zu\n", x, y, diffX, diffY);
         int fx = (int) x;
         int fy = (int) y;
-        draw_vertex(renderer, fx, fy, VERTEX_RADIUS);
+        draw_vertex(renderer, fx, fy, newRadius);
     }
 
     // Set the draw color for edges
@@ -74,10 +78,10 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
     }
 
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-    draw_vertex(renderer, G->inters[path[pathLength - 1]].x * WINDOW_WIDTH / maxX + 50, G->inters[path[pathLength - 1]].y * WINDOW_HEIGHT / maxX + 50, VERTEX_RADIUS);
+    draw_vertex(renderer, G->inters[path[pathLength - 1]].x * WINDOW_WIDTH / maxX + 50, G->inters[path[pathLength - 1]].y * WINDOW_HEIGHT / maxX + 50, newRadius);
     for (size_t i = 0; i < pathLength - 1; i++) {
         size_t start = path[i];
-        draw_vertex(renderer, G->inters[start].x * WINDOW_WIDTH / maxX + 50, G->inters[start].y * WINDOW_HEIGHT / maxX + 50, VERTEX_RADIUS);
+        draw_vertex(renderer, G->inters[start].x * WINDOW_WIDTH / maxX + 50, G->inters[start].y * WINDOW_HEIGHT / maxX + 50, newRadius);
         size_t end = path[i + 1];
         SDL_RenderDrawLine(renderer, G->inters[start].x * WINDOW_WIDTH / maxX + 50, G->inters[start].y * WINDOW_HEIGHT / maxX + 50,
         G->inters[end].x * WINDOW_WIDTH / maxX + 50, G->inters[end].y * WINDOW_HEIGHT / maxX + 50);
@@ -121,7 +125,7 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
         }
 
         // Clear the screen
-        SDL_SetRenderDrawColor(renderer, 190, 190, 190, 255);
+        SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
         SDL_RenderClear(renderer);
 
         // Draw the map
