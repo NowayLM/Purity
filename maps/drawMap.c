@@ -24,28 +24,13 @@ void draw_vertex(SDL_Renderer *renderer, int x, int y, int radius) {
 }
 
 
-void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t pathLength) {
+void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t pathLength, size_t maxX, size_t maxY, size_t renderX, size_t renderY, size_t cZoom) {
     // Set the draw color for vertices
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
-    size_t minX = G->inters[0].x;
-    size_t maxX = G->inters[0].x;
-    size_t minY = G->inters[0].y;
-    size_t maxY = G->inters[0].y;
     long newRadiusL = 70/(log(G->order * 100));
     int newRadius = (int) newRadiusL;
-    //printf("newRadius = %i\nnewRadiusL = %f\n", newRadius, log(G->order * 100));
-
-    for (size_t i = 1; i < G->order; i++) {
-        if (G->inters[i].x < minX)
-            minX = G->inters[i].x;
-        if (G->inters[i].x > maxX)
-            maxX = G->inters[i].x;
-        if (G->inters[i].y < minY)
-            minY = G->inters[i].y;
-        if (G->inters[i].y > maxY)
-            maxY = G->inters[i].y;
-    }
+    //printf("newRadius = %i\nnewRadiusL = %f\n", newRadius, log(G->order * 100);
     //maxX = maxX - minX;
     //maxY = maxY - minY;
 
@@ -57,8 +42,8 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
 
     // Draw the vertices
     for (size_t i = 0; i < G->order; i++) {
-        size_t x = G->inters[i].x * WINDOW_WIDTH / maxX + 50;
-        size_t y = G->inters[i].y * WINDOW_HEIGHT / maxX + 50;
+        size_t x = (G->inters[i].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100) + 50;
+        size_t y = (G->inters[i].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100) + 50;
         //printf("x %zu y %zu diffX %zu diffY %zu\n", x, y, diffX, diffY);
         int fx = (int) x;
         int fy = (int) y;
@@ -95,6 +80,25 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
         fprintf(stderr, "Error initializing SDL: %s\n", SDL_GetError());
         return 1;
     }
+    size_t cZoom = 100;
+    size_t renderX = 0;
+    size_t renderY = 0;
+
+    size_t minX = G->inters[0].x;
+    size_t maxX = G->inters[0].x;
+    size_t minY = G->inters[0].y;
+    size_t maxY = G->inters[0].y;
+
+    for (size_t i = 1; i < G->order; i++) {
+        if (G->inters[i].x < minX)
+            minX = G->inters[i].x;
+        if (G->inters[i].x > maxX)
+            maxX = G->inters[i].x;
+        if (G->inters[i].y < minY)
+            minY = G->inters[i].y;
+        if (G->inters[i].y > maxY)
+            maxY = G->inters[i].y;
+    }
 
     // Create a window
     SDL_Window *window = SDL_CreateWindow("Map Visualization", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH + 100, WINDOW_HEIGHT + 100, SDL_WINDOW_SHOWN);
@@ -122,14 +126,41 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
             if (event.type == SDL_QUIT) {
                 running = false;
             }
+            else if (event.type == SDL_KEYDOWN) {
+                size_t moveSpeed = 10;
+                size_t zoomSpeed = 5;
+                switch (event.key.keysym.sym) {
+                    case SDLK_w:
+                        if (renderY >= moveSpeed)
+                            renderY -= moveSpeed;
+                        break;
+                    case SDLK_a:
+                        if (renderX >= moveSpeed)
+                            renderX -= moveSpeed;
+                        break;
+                    case SDLK_s:
+                        renderY += moveSpeed;
+                        break;
+                    case SDLK_d:
+                        renderX += moveSpeed;
+                        break;
+                    case SDLK_q:
+                        if (cZoom >= zoomSpeed)
+                            cZoom -= zoomSpeed;
+                        break;
+                    case SDLK_e:
+                        cZoom += zoomSpeed;
+                        break;
+                }
+            }
         }
 
         // Clear the screen
-        SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
+        SDL_SetRenderDrawColor(renderer, 210, 210, 210, 255);
         SDL_RenderClear(renderer);
 
         // Draw the map
-        draw_map(renderer, G, path, pathLength);
+        draw_map(renderer, G, path, pathLength, maxX, maxY, renderX, renderY, cZoom);
 
         // Present the rendered scene
         SDL_RenderPresent(renderer);
@@ -142,5 +173,3 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
 
     return 0;
 }
-
-
