@@ -43,16 +43,16 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
     if (maxX < maxY) maxX = maxY;
 
     int compute_pos(size_t i, int xOrY) {
-        ssize_t res;
+        double res;
         if (xOrY == 0) {
-            res = (G->inters[i].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100) + 50;
+            res = (G->inters[i].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100);
             if (res < 0) res = 0;
         }
         else {
-            res = (G->inters[i].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100) + 50;
+            res = (G->inters[i].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100);
             if (res < 0) res = 0;
         }
-        printf("inter %zu = %zd\n", i, res);
+        //printf("inter %zu = %f\n", i, res);
         return (int) res;
     }
 
@@ -74,14 +74,13 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
         }
     }
 
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-    draw_vertex(renderer, G->inters[path[pathLength - 1]].x * WINDOW_WIDTH / maxX + 50, G->inters[path[pathLength - 1]].y * WINDOW_HEIGHT / maxX + 50, newRadius);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+    draw_vertex(renderer, compute_pos(path[pathLength - 1], 0), compute_pos(path[pathLength - 1], 1), newRadius);
     for (size_t i = 0; i < pathLength - 1; i++) {
         size_t start = path[i];
-        draw_vertex(renderer, G->inters[start].x * WINDOW_WIDTH / maxX + 50, G->inters[start].y * WINDOW_HEIGHT / maxX + 50, newRadius);
+        draw_vertex(renderer, compute_pos(start, 0), compute_pos(start, 1), newRadius);
         size_t end = path[i + 1];
-        SDL_RenderDrawLine(renderer, G->inters[start].x * WINDOW_WIDTH / maxX + 50, G->inters[start].y * WINDOW_HEIGHT / maxX + 50,
-        G->inters[end].x * WINDOW_WIDTH / maxX + 50, G->inters[end].y * WINDOW_HEIGHT / maxX + 50);
+        SDL_RenderDrawLine(renderer, compute_pos(start, 0), compute_pos(start, 1), compute_pos(end, 0), compute_pos(end, 1));
     }
 }
 
@@ -131,43 +130,71 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
 
     // Main loop
     bool running = true;
+    double currentSpeedX = 0;
+    double currentSpeedY = 0;
+    double currentZoomSpeed = 0;
     while (running) {
         // Handle events
+        Uint32 start_time = SDL_GetTicks();
+        if (currentSpeedX > 0) currentSpeedX--;
+        else if (currentSpeedX < 0) currentSpeedX++;
+        if (currentSpeedY > 0) currentSpeedY--;
+        else if (currentSpeedY < 0) currentSpeedY++;
+        if (currentZoomSpeed > 0) currentZoomSpeed--;
+        else if (currentZoomSpeed < 0) currentZoomSpeed++;
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 running = false;
             }
             else if (event.type == SDL_KEYDOWN) {
-                size_t moveSpeed = 10;
-                size_t zoomSpeed = 5;
+                double maxSpeed = 15;
+                double zoomMaxSpeed = 10;
                 switch (event.key.keysym.sym) {
                     case SDLK_w:
-                        if (renderY >= moveSpeed)
-                            renderY -= moveSpeed;
+                        if (currentSpeedY > 2 - maxSpeed)
+                            currentSpeedY -= 3;
                         break;
                     case SDLK_a:
-                        if (renderX >= moveSpeed)
-                            renderX -= moveSpeed;
+                        if (currentSpeedX > 2 - maxSpeed)
+                            currentSpeedX -= 3;
                         break;
                     case SDLK_s:
-                        renderY += moveSpeed;
+                        if (currentSpeedY < maxSpeed - 2)
+                            currentSpeedY += 3;
                         break;
                     case SDLK_d:
-                        renderX += moveSpeed;
+                        if (currentSpeedX < maxSpeed - 2)
+                            currentSpeedX += 3;
                         break;
                     case SDLK_q:
-                        if (cZoom >= zoomSpeed)
-                            cZoom -= zoomSpeed;
+                        if (currentZoomSpeed > 1 - zoomMaxSpeed)
+                            currentZoomSpeed -= 2;
                         break;
                     case SDLK_e:
-                        cZoom += zoomSpeed;
+                        if (currentZoomSpeed < zoomMaxSpeed - 1)
+                            currentZoomSpeed += 2;
                         break;
                     case SDLK_t:
                         running = false;
                         break;
                 }
             }
+            if (currentZoomSpeed < 0) {
+                if (cZoom >= 0 - currentZoomSpeed)
+                    cZoom += currentZoomSpeed;
+            }
+            else cZoom += currentZoomSpeed;
+            if (currentSpeedX < 0) {
+                if (renderX >= 0 - currentSpeedX)
+                    renderX += currentSpeedX;
+            }
+            else renderX += currentSpeedX;
+            if (currentSpeedY < 0) {
+                if (renderY >= 0 - currentSpeedY)
+                    renderY += currentSpeedY;
+            }
+            else renderY += currentSpeedY;
         }
 
         // Clear the screen
@@ -179,6 +206,10 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
 
         // Present the rendered scene
         SDL_RenderPresent(renderer);
+
+        Uint32 frame_time = SDL_GetTicks() - start_time;
+        if (frame_time < 1000 / 60)
+            SDL_Delay(1000 / 60 - frame_time);
     }
 
     // Clean up
