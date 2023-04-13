@@ -9,7 +9,6 @@
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
-#define VERTEX_RADIUS 8
 
 void draw_vertex(SDL_Renderer *renderer, int x, int y, int radius) {
     for (int w = 0; w < radius * 2; w++) {
@@ -57,8 +56,15 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
     for (size_t i = 0; i < G->order; i++) {
         for (size_t j = 0; j < G->inters[i].nblinks; j++) {
             size_t end = G->inters[i].links[j].end;
-            SDL_RenderDrawLine(renderer, G->inters[i].x * WINDOW_WIDTH / maxX + 50, G->inters[i].y * WINDOW_HEIGHT / maxX + 50,
-            G->inters[end].x * WINDOW_WIDTH / maxX + 50, G->inters[end].y * WINDOW_HEIGHT / maxX + 50);
+            size_t x = (G->inters[i].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100) + 50;
+            size_t y = (G->inters[i].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100) + 50;
+            int fx = (int) x;
+            int fy = (int) y;
+            size_t xE = (G->inters[end].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100) + 50;
+            size_t yE = (G->inters[end].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100) + 50;
+            int fxE = (int) xE;
+            int fyE = (int) yE;
+            SDL_RenderDrawLine(renderer, fx, fy, fxE, fyE);
         }
     }
 
@@ -127,8 +133,8 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
                 running = false;
             }
             else if (event.type == SDL_KEYDOWN) {
-                size_t moveSpeed = 10;
-                size_t zoomSpeed = 5;
+                size_t moveSpeed = 5;
+                size_t zoomSpeed = 1;
                 switch (event.key.keysym.sym) {
                     case SDLK_w:
                         if (renderY >= moveSpeed)
