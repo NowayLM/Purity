@@ -6,6 +6,7 @@
 #include "drawMap.h"
 #include "../structs/graph.h"
 #include "../algo/dijkstra.h"
+#include <sys/types.h>
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
@@ -38,15 +39,27 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
     maxX += (maxX / 10) + 2;
     maxY += (maxY / 10) + 2;
 
+
     if (maxX < maxY) maxX = maxY;
+
+    int compute_pos(size_t i, int xOrY) {
+        ssize_t res;
+        if (xOrY == 0) {
+            res = (G->inters[i].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100) + 50;
+            if (res < 0) res = 0;
+        }
+        else {
+            res = (G->inters[i].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100) + 50;
+            if (res < 0) res = 0;
+        }
+        printf("inter %zu = %zd\n", i, res);
+        return (int) res;
+    }
 
     // Draw the vertices
     for (size_t i = 0; i < G->order; i++) {
-        size_t x = (G->inters[i].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100) + 50;
-        size_t y = (G->inters[i].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100) + 50;
-        //printf("x %zu y %zu diffX %zu diffY %zu\n", x, y, diffX, diffY);
-        int fx = (int) x;
-        int fy = (int) y;
+        int fx = compute_pos(i, 0);
+        int fy = compute_pos(i, 1);
         draw_vertex(renderer, fx, fy, newRadius);
     }
 
@@ -57,8 +70,7 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
     for (size_t i = 0; i < G->order; i++) {
         for (size_t j = 0; j < G->inters[i].nblinks; j++) {
             size_t end = G->inters[i].links[j].end;
-            SDL_RenderDrawLine(renderer, G->inters[i].x * WINDOW_WIDTH / maxX + 50, G->inters[i].y * WINDOW_HEIGHT / maxX + 50,
-            G->inters[end].x * WINDOW_WIDTH / maxX + 50, G->inters[end].y * WINDOW_HEIGHT / maxX + 50);
+            SDL_RenderDrawLine(renderer, compute_pos(i, 0), compute_pos(i, 1), compute_pos(end, 0), compute_pos(end, 1));
         }
     }
 
@@ -150,6 +162,9 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
                         break;
                     case SDLK_e:
                         cZoom += zoomSpeed;
+                        break;
+                    case SDLK_t:
+                        running = false;
                         break;
                 }
             }
