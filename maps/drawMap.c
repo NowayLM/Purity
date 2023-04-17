@@ -38,7 +38,6 @@ void intersection_point(double x1, double y1, double x2, double y2, double *inte
 }
 
 
-
 void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t pathLength, size_t maxX, size_t maxY, size_t renderX, size_t renderY, size_t cZoom) {
     // Set the draw color for vertices
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
