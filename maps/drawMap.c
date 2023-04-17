@@ -53,23 +53,18 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
     double res;
     if (xOrY == 0) {
         res = (G->inters[i].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100);
-    }
-    else {
+        if (res < 0) {
+            res = 0;
+        }
+    } else {
         res = (G->inters[i].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100);
+        if (res < 0) {
+            res = 0;
+        }
     }
-
-    if (res < 0 && xOrY == 0) {
-        double x1 = G->inters[i].x;
-        double y1 = G->inters[i].y;
-        double x2 = 0; // This can be any value, as long as it's non-negative and not equal to x1
-        double y2 = y1 + (y1 / x1) * (x2 - x1); // Choose y2 such that the line has the same slope as the original line
-        double intersect_x, intersect_y;
-        compute_intersection(x1, y1, x2, y2, &intersect_x, &intersect_y);
-        res = intersect_y;
-    }
-
     return (int) res;
-}
+    }
+
 
 
     // Draw the vertices
