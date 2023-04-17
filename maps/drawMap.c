@@ -78,12 +78,31 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
     // Draw the edges
-    for (size_t i = 0; i < G->order; i++) {
-        for (size_t j = 0; j < G->inters[i].nblinks; j++) {
-            size_t end = G->inters[i].links[j].end;
-            SDL_RenderDrawLine(renderer, compute_pos(i, 0), compute_pos(i, 1), compute_pos(end, 0), compute_pos(end, 1));
+for (size_t i = 0; i < G->order; i++) {
+    for (size_t j = 0; j < G->inters[i].nblinks; j++) {
+        size_t end = G->inters[i].links[j].end;
+        int start_x = compute_pos(i, 0);
+        int start_y = compute_pos(i, 1);
+        int end_x = compute_pos(end, 0);
+        int end_y = compute_pos(end, 1);
+
+        if (start_x < 0 && end_x >= 0) {
+            double intersection_x, intersection_y;
+            intersection_point(G->inters[i].x, G->inters[i].y, G->inters[end].x, G->inters[end].y, &intersection_x, &intersection_y);
+            int intersection_screen_x = compute_pos(intersection_x, 0);
+            int intersection_screen_y = compute_pos(intersection_y, 1);
+            SDL_RenderDrawLine(renderer, intersection_screen_x, intersection_screen_y, end_x, end_y);
+        } else if (start_x >= 0 && end_x < 0) {
+            double intersection_x, intersection_y;
+            intersection_point(G->inters[end].x, G->inters[end].y, G->inters[i].x, G->inters[i].y, &intersection_x, &intersection_y);
+            int intersection_screen_x = compute_pos(intersection_x, 0);
+            int intersection_screen_y = compute_pos(intersection_y, 1);
+            SDL_RenderDrawLine(renderer, start_x, start_y, intersection_screen_x, intersection_screen_y);
+        } else if (start_x >= 0 && end_x >= 0) {
+            SDL_RenderDrawLine(renderer, start_x, start_y, end_x, end_y);
         }
     }
+}
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
     draw_vertex(renderer, compute_pos(path[pathLength - 1], 0), compute_pos(path[pathLength - 1], 1), newRadius);
