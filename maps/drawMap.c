@@ -24,12 +24,19 @@ void draw_vertex(SDL_Renderer *renderer, int x, int y, int radius) {
     }
 }
 
-void compute_intersection(double x1, double y1, double x2, double y2, double* intersect_x, double* intersect_y) {
-    double slope = (y2 - y1) / (x2 - x1);
-    double y_intercept = y1 - slope * x1;
-    *intersect_x = 0;
-    *intersect_y = y_intercept;
+void intersection_point(double x1, double y1, double x2, double y2, double *intersection_x, double *intersection_y) {
+    if (x1 == x2) {
+        *intersection_x = x1;
+        *intersection_y = (y1 < y2) ? 0 : WINDOW_HEIGHT;
+    } else {
+        double m = (y2 - y1) / (x2 - x1);
+        double c = y1 - m * x1;
+
+        *intersection_x = 0;
+        *intersection_y = c;
+    }
 }
+
 
 
 void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t pathLength, size_t maxX, size_t maxY, size_t renderX, size_t renderY, size_t cZoom) {
@@ -77,7 +84,7 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
     // Set the draw color for edges
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
-    // Draw the edges
+        // Draw the edges
 for (size_t i = 0; i < G->order; i++) {
     for (size_t j = 0; j < G->inters[i].nblinks; j++) {
         size_t end = G->inters[i].links[j].end;
@@ -103,6 +110,7 @@ for (size_t i = 0; i < G->order; i++) {
         }
     }
 }
+
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
     draw_vertex(renderer, compute_pos(path[pathLength - 1], 0), compute_pos(path[pathLength - 1], 1), newRadius);
