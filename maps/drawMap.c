@@ -24,6 +24,13 @@ void draw_vertex(SDL_Renderer *renderer, int x, int y, int radius) {
     }
 }
 
+void compute_intersection(double x1, double y1, double x2, double y2, double* intersect_x, double* intersect_y) {
+    double slope = (y2 - y1) / (x2 - x1);
+    double y_intercept = y1 - slope * x1;
+    *intersect_x = 0;
+    *intersect_y = y_intercept;
+}
+
 
 void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t pathLength, size_t maxX, size_t maxY, size_t renderX, size_t renderY, size_t cZoom) {
     // Set the draw color for vertices
@@ -43,18 +50,27 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
     if (maxX < maxY) maxX = maxY;
 
     int compute_pos(size_t i, int xOrY) {
-        double res;
-        if (xOrY == 0) {
-            res = (G->inters[i].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100);
-            if (res < 0) res = 0;
-        }
-        else {
-            res = (G->inters[i].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100);
-            if (res < 0) res = 0;
-        }
-        //printf("inter %zu = %f\n", i, res);
-        return (int) res;
+    double res;
+    if (xOrY == 0) {
+        res = (G->inters[i].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100);
     }
+    else {
+        res = (G->inters[i].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100);
+    }
+
+    if (res < 0 && xOrY == 0) {
+        double x1 = G->inters[i].x;
+        double y1 = G->inters[i].y;
+        double x2 = 0; // This can be any value, as long as it's non-negative and not equal to x1
+        double y2 = y1 + (y1 / x1) * (x2 - x1); // Choose y2 such that the line has the same slope as the original line
+        double intersect_x, intersect_y;
+        compute_intersection(x1, y1, x2, y2, &intersect_x, &intersect_y);
+        res = intersect_y;
+    }
+
+    return (int) res;
+}
+
 
     // Draw the vertices
     for (size_t i = 0; i < G->order; i++) {
