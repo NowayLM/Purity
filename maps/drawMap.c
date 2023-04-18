@@ -98,12 +98,14 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
 }
 
 void screenToMap(int sX, int sY, size_t renderX, size_t renderY, size_t cZoom, double *mapX, double *mapY, size_t maxX) {
-    double scaleX = (double)WINDOW_WIDTH / (maxX * cZoom / 100);
-    double scaleY = (double)WINDOW_HEIGHT / (maxX * cZoom / 100);
+    double scaleFactor = (double) cZoom / 100;
+    double scaleX = (double)WINDOW_WIDTH / (maxX * scaleFactor);
+    double scaleY = (double)WINDOW_HEIGHT / (maxX * scaleFactor);
 
     *mapX = ((double)sX / scaleX) + renderX;
     *mapY = ((double)sY / scaleY) + renderY;
 }
+
 
 
 
