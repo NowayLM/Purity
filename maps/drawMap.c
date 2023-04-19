@@ -13,10 +13,10 @@
 #define VERTEX_RADIUS 8
 
 void draw_vertex(SDL_Renderer *renderer, int x, int y, int radius) {
-    for (int w = 0; w < radius * 2; w++) {
-        for (int h = 0; h < radius * 2; h++) {
-            int dx = radius - w;
-            int dy = radius - h;
+    for (int w = -radius; w < radius; w++) {
+        for (int h = -radius; h < radius; h++) {
+            int dx = w;
+            int dy = h;
             if ((dx * dx + dy * dy) <= (radius * radius)) {
                 SDL_RenderDrawPoint(renderer, x + dx, y + dy);
             }
