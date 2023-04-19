@@ -25,6 +25,33 @@ void draw_vertex(SDL_Renderer *renderer, int x, int y, int radius) {
 }
 
 
+int compute_pos(double x, int xOrY, size_t renderX, size_t renderY, size_t maxX, size_t cZoom, int graphOrNot, struct graph *G) {
+    double res;
+    if (graphOrNot == 0) {
+        if (xOrY == 0) {
+            res = (x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100) + 50;
+            if (res < 0) res = 0;
+        }
+        else {
+            res = (x - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100) + 50;
+            if (res < 0) res = 0;
+        }
+    }
+    else {
+        if (xOrY == 0) {
+            res = (G->inters[(size_t)x].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100) + 50;
+            if (res < 0) res = 0;
+        }
+        else {
+            res = (G->inters[(size_t)x].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100) + 50;
+            if (res < 0) res = 0;
+        }
+    }
+//    printf("%f -> %f\n", x, res);
+    return (int) res;
+}
+
+
 void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t pathLength, size_t maxX, size_t maxY, size_t renderX, size_t renderY, size_t cZoom) {
     // Set the draw color for vertices
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -42,24 +69,10 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
 
     if (maxX < maxY) maxX = maxY;
 
-    int compute_pos(size_t i, int xOrY) {
-        double res;
-        if (xOrY == 0) {
-            res = (G->inters[i].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100) + 50;
-            if (res < 0) res = 0;
-        }
-        else {
-            res = (G->inters[i].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100) + 50;
-            if (res < 0) res = 0;
-        }
-        //printf("inter %zu = %f\n", i, res);
-        return (int) res;
-    }
-
     // Draw the vertices
     for (size_t i = 0; i < G->order; i++) {
-        int fx = compute_pos(i, 0);
-        int fy = compute_pos(i, 1);
+        int fx = compute_pos(i, 0, renderX, renderY, maxX, cZoom, 1, G);
+        int fy = compute_pos(i, 1, renderX, renderY, maxX, cZoom, 1, G);
         draw_vertex(renderer, fx, fy, newRadius);
     }
 
@@ -70,23 +83,23 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
     for (size_t i = 0; i < G->order; i++) {
         for (size_t j = 0; j < G->inters[i].nblinks; j++) {
             size_t end = G->inters[i].links[j].end;
-            SDL_RenderDrawLine(renderer, compute_pos(i, 0), compute_pos(i, 1), compute_pos(end, 0), compute_pos(end, 1));
+            SDL_RenderDrawLine(renderer, compute_pos(i, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(i, 1, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 1, renderX, renderY, maxX, cZoom, 1, G));
         }
     }
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-    draw_vertex(renderer, compute_pos(path[pathLength - 1], 0), compute_pos(path[pathLength - 1], 1), newRadius);
+    draw_vertex(renderer, compute_pos(path[pathLength - 1], 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(path[pathLength - 1], 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
     for (size_t i = 0; i < pathLength - 1; i++) {
         size_t start = path[i];
-        draw_vertex(renderer, compute_pos(start, 0), compute_pos(start, 1), newRadius);
+        draw_vertex(renderer, compute_pos(start, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(start, 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
         size_t end = path[i + 1];
-        SDL_RenderDrawLine(renderer, compute_pos(start, 0), compute_pos(start, 1), compute_pos(end, 0), compute_pos(end, 1));
+        SDL_RenderDrawLine(renderer, compute_pos(start, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(start, 1, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 1, renderX, renderY, maxX, cZoom, 1, G));
     }
 }
 
 void screenToMap(int sX, int sY, size_t renderX, size_t renderY, size_t cZoom, double *mapX, double *mapY, size_t maxX) {
-    *mapX = ((double)sX * (maxX * cZoom / 100)) / WINDOW_WIDTH + renderX - 50;
-    *mapY = ((double)sY * (maxX * cZoom / 100)) / WINDOW_HEIGHT + renderY - 50;
+    *mapX = ((double)sX * (maxX * cZoom / 100)) / WINDOW_WIDTH + renderX;
+    *mapY = ((double)sY * (maxX * cZoom / 100)) / WINDOW_HEIGHT + renderY;
 }
 
 
@@ -120,6 +133,10 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
             maxY = G->inters[i].y;
     }
 
+    if (maxX < maxY) maxX = maxY;
+
+    maxX += (maxX / 10) + 2;
+
     // Create a window
     SDL_Window *window = SDL_CreateWindow("Map Visualization", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH + 100, WINDOW_HEIGHT + 100, SDL_WINDOW_SHOWN);
     if (!window) {
@@ -143,6 +160,9 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
     double currentSpeedX = 0;
     double currentSpeedY = 0;
     double currentZoomSpeed = 0;
+    size_t selectedInter;
+    double sX;
+    double sY;
     while (running) {
         // Handle events
         Uint32 start_time = SDL_GetTicks();
@@ -193,12 +213,16 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
             else if (event.type == SDL_MOUSEBUTTONDOWN) {
                 if (event.button.button == SDL_BUTTON_LEFT) {
                     if (selectedPoint == false) {
-                        selectedPoint = true;
                         SDL_GetMouseState(&mX, &mY);
                         screenToMap(mX, mY, renderX, renderY, cZoom, &mapMX, &mapMY, maxX);
+                        printf("mapMX = %f /// mapMY = %f\n", mapMX, mapMY);
                         for (size_t j = 0; j < G->order; j++) {
-                            if (mapMX < G->inters[j].x + 10 && mapMX > G->inters[j].x - 10) { // need to add case where inters[j].x < 10
-                                if (mapMY < G->inters[j].y + 10 && mapMY > G->inters[j].y - 10) {
+                            if ((size_t) mapMX < G->inters[j].x + 4 && (size_t) mapMX > G->inters[j].x - 4) { // need to add case where inters[j].x < 10
+                                if ((size_t) mapMY < G->inters[j].y + 4 && (size_t) mapMY > G->inters[j].y - 4) {
+                                    selectedInter = j;
+                                    sX = G->inters[j].x;
+                                    sY = G->inters[j].y;
+                                    selectedPoint = true;
                                 }
                             }
                         }
@@ -224,6 +248,9 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
             }
             else renderY += currentSpeedY;
         }
+        if (selectedInter == 72) {
+            running = false;
+        }
 
         // Clear the screen
         SDL_SetRenderDrawColor(renderer, 210, 210, 210, 255);
@@ -233,7 +260,7 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
         draw_map(renderer, G, path, pathLength, maxX, maxY, renderX, renderY, cZoom);
         if (selectedPoint == true) {
             SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-            draw_vertex(renderer, mX, mY, Radius);
+            draw_vertex(renderer, compute_pos(sX, 0, renderX, renderY, maxX, cZoom, 0, G), compute_pos(sY, 1, renderX, renderY, maxX, cZoom, 0, G), Radius);
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         }
 
