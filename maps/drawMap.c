@@ -45,11 +45,11 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
     int compute_pos(size_t i, int xOrY) {
         double res;
         if (xOrY == 0) {
-            res = (G->inters[i].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100);
+            res = (G->inters[i].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100) + 50;
             if (res < 0) res = 0;
         }
         else {
-            res = (G->inters[i].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100);
+            res = (G->inters[i].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100) + 50;
             if (res < 0) res = 0;
         }
         //printf("inter %zu = %f\n", i, res);
@@ -84,6 +84,11 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
     }
 }
 
+void screenToMap(int sX, int sY, size_t renderX, size_t renderY, size_t cZoom, double *mapX, double *mapY, size_t maxX) {
+    *mapX = ((double)sX * (maxX * cZoom / 100)) / WINDOW_WIDTH + renderX - 50;
+    *mapY = ((double)sY * (maxX * cZoom / 100)) / WINDOW_HEIGHT + renderY - 50;
+}
+
 
 int doAll(struct graph *G, size_t *path, size_t pathLength) {
     // Initialize SDL
@@ -91,9 +96,13 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
         fprintf(stderr, "Error initializing SDL: %s\n", SDL_GetError());
         return 1;
     }
+    int mX, mY;
+    double mapMX, mapMY;
     size_t cZoom = 100;
     size_t renderX = 0;
     size_t renderY = 0;
+    long RadiusL = 70/(log(G->order * 100));
+    int Radius = (int) RadiusL;
 
     size_t minX = G->inters[0].x;
     size_t maxX = G->inters[0].x;
@@ -129,6 +138,7 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
     }
 
     // Main loop
+    bool selectedPoint = false;
     bool running = true;
     double currentSpeedX = 0;
     double currentSpeedY = 0;
@@ -180,6 +190,24 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
                         break;
                 }
             }
+            else if (event.type == SDL_MOUSEBUTTONDOWN) {
+                if (event.button.button == SDL_BUTTON_LEFT) {
+                    if (selectedPoint == false) {
+                        selectedPoint = true;
+                        SDL_GetMouseState(&mX, &mY);
+                        screenToMap(mX, mY, renderX, renderY, cZoom, &mapMX, &mapMY, maxX);
+                        for (size_t j = 0; j < G->order; j++) {
+                            if (mapMX < G->inters[j].x + 10 && mapMX > G->inters[j].x - 10) { // need to add case where inters[j].x < 10
+                                if (mapMY < G->inters[j].y + 10 && mapMY > G->inters[j].y - 10) {
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        selectedPoint = false;
+                    }
+                }
+            }
             if (currentZoomSpeed < 0) {
                 if (cZoom >= 0 - currentZoomSpeed)
                     cZoom += currentZoomSpeed;
@@ -203,6 +231,11 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
 
         // Draw the map
         draw_map(renderer, G, path, pathLength, maxX, maxY, renderX, renderY, cZoom);
+        if (selectedPoint == true) {
+            SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+            draw_vertex(renderer, mX, mY, Radius);
+            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        }
 
         // Present the rendered scene
         SDL_RenderPresent(renderer);
