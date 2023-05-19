@@ -24,7 +24,8 @@ int main(int argc, char **argv)
     xmlNode *root_element = xmlDocGetRootElement(doc);
 
     // Parcours tous les noeuds fils du noeud racine
-    for (xmlNode *cur_node = root_element->children; cur_node; cur_node = cur_node->next) {
+    for (xmlNode *cur_node = root_element->children; cur_node; cur_node = cur_node->next) 
+    {
 
         // Si le noeud est un sommet
         if (xmlStrcmp(cur_node->name, (const xmlChar *)"node") == 0) {
@@ -71,9 +72,11 @@ int main(int argc, char **argv)
                 xmlFree(link_capacity);
                 xmlFree(link_speed);
             }
-
-            // Affiche la ligne complète
-            printf("%s\n", line);
+            if (link_count != 0)
+            {
+                // Affiche la ligne complète
+                printf("%s\n", line);
+            } 
 
             xmlFree(node_id);
             xmlFree(node_lat);
