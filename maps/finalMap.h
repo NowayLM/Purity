@@ -10,7 +10,7 @@
 
 void draw(SDL_Renderer *renderer, struct graph *G, size_t maxX, size_t maxY, size_t renderX, size_t renderY, size_t cZoom);
 
-int windowHandle(struct Graph *G);
+int windowHandle(struct graph *G);
 
 
 #endif
