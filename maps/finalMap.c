@@ -153,6 +153,8 @@ int windowHandle(struct graph *G) {
     size_t *path1;
     size_t *path2;
     size_t *path3;
+    bool drawNumbers = true;
+    bool drawCosts = true;
     bool pathsC = false;
     bool drawPath = false;
     while (running) {
@@ -204,6 +206,18 @@ int windowHandle(struct graph *G) {
                         if (selectedPoint == true && selectedPoint2 == true) {
                             pathsC = true;
                         }
+                        break;
+                    case SDLK_w:
+                        if (drawNumbers == true)
+                            drawNumbers = false;
+                        else
+                            drawNumbers = true;
+                        break;
+                    case SDLK_x:
+                        if (drawCosts == true)
+                            drawCosts = false;
+                        else
+                            drawCosts = true;
                         break;
                 }
             }
@@ -327,16 +341,42 @@ int windowHandle(struct graph *G) {
             }
 
         }
-        SDL_Color color = {255, 255, 255, 255};
-        for(size_t i = 0; i < G->order; i++) {
-            int rx = compute_pos(i, 0, renderX, renderY, maxX, cZoom, 1, G);
-            int ry = compute_pos(i, 1, renderX, renderY, maxX, cZoom, 1, G);
-            char str[20];
+        if (drawNumbers == true) {
+            SDL_Color color = {255, 255, 255, 255};
+            for(size_t i = 0; i < G->order; i++) {
+                int rx = compute_pos(i, 0, renderX, renderY, maxX, cZoom, 1, G);
+                int ry = compute_pos(i, 1, renderX, renderY, maxX, cZoom, 1, G);
+                char str[20];
 
-            sprintf(str, "%zu", i);
-            const char* const_str = str;
-            draw_text(renderer, const_str, rx, ry, font, color);
+                sprintf(str, "%zu", i);
+                const char* const_str = str;
+                draw_text(renderer, const_str, rx, ry, font, color);
+            }
         }
+
+        if (drawCosts == true) {
+            SDL_Color color = {255, 255, 255, 255};
+            for(size_t i = 0; i < G->order; i++) {
+                for(size_t j = 0; j < G->inters[i].nblinks; j++) {
+                    size_t end = G->inters[i].links[j].end;
+                    int rx1 = (G->inters[j].x + G->inters[end].x) / 2;
+                    int ry1 = (G->inters[j].y + G->inters[end].y) / 2;
+                
+
+                    int rx = compute_pos(rx1, 0, renderX, renderY, maxX, cZoom, 0, G);
+                    int ry = compute_pos(ry1, 1, renderX, renderY, maxX, cZoom, 0, G);
+                    char str[20];
+
+                    size_t cost1 = cost(j, end, G, 1);
+
+                    sprintf(str, "%zu", cost1);
+                    const char* const_str = str;
+                    draw_text(renderer, const_str, rx, ry, font, color);
+                }
+                
+            }
+        }
+        
 
         // Present the rendered scene
         SDL_RenderPresent(renderer);
