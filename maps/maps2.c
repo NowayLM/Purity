@@ -5,8 +5,22 @@
 
 #define MAX_LINE_LENGTH 1000
 
+void ecrireDansFichier(const char* nomFichier, const char* contenu) 
+{
+    FILE* fichier = fopen(nomFichier, "a"); // Ouvre le fichier en mode écriture ("w")
+
+    if (fichier != NULL) {
+        fprintf(fichier, "%s\n", contenu); // Écrit le contenu dans le fichier
+        fclose(fichier); // Ferme le fichier
+        printf("Écriture terminée avec succès.\n");
+    } else {
+        printf("Impossible d'ouvrir le fichier.\n");
+    }
+}
+
 int main(int argc, char **argv)
 {
+    const char* filename = "PurityMap.txt";
     // Vérifie que le nom de fichier est passé en argument de la ligne de commande
     if (argc != 2) {
         printf("Veuillez spécifier le nom de fichier XML en entrée.\n");
@@ -22,7 +36,7 @@ int main(int argc, char **argv)
 
     // Récupère le noeud racine
     xmlNode *root_element = xmlDocGetRootElement(doc);
-
+    int node_value = 0;
     // Parcours tous les noeuds fils du noeud racine
     for (xmlNode *cur_node = root_element->children; cur_node; cur_node = cur_node->next) 
     {
@@ -38,7 +52,7 @@ int main(int argc, char **argv)
             char *node_lon = (char *)xmlGetProp(cur_node, (const xmlChar *)"lon");
 
             // Construit la ligne dans le format de fichier personnalisé
-            sprintf(line, "/%s,%i,%i", node_id, (int) (atof(node_lat) * 100000), (int) (atof(node_lon) * 100000));
+            sprintf(line, "/%i,%i,%i", node_value, (int) (atof(node_lat) * 100000), (int) (atof(node_lon) * 100000));
 
             // Parcours les noeuds fils du sommet pour récupérer les liens
             int link_count = 0;
@@ -54,7 +68,7 @@ int main(int argc, char **argv)
                     xmlFree(tag_key);
                     xmlFree(tag_value);
                 }
-		link_count++;
+                link_count++;
             }
             // Ajoute les lignes pour chaque lien
             for (int i = 1; i <= link_count; i++) {
@@ -72,15 +86,15 @@ int main(int argc, char **argv)
                 xmlFree(link_capacity);
                 xmlFree(link_speed);
             }
-            if (link_count != 0)
-            {
-                // Affiche la ligne complète
-                printf("%s\n", line);
-            } 
+
+            // Affiche la ligne complète
+            ecrireDansFichier(filename,line);
+            //printf("%s\n", line);
 
             xmlFree(node_id);
             xmlFree(node_lat);
             xmlFree(node_lon);
+            node_value++;
         }
     }
 
