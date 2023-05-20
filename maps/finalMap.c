@@ -160,7 +160,20 @@ int windowHandle(struct Graph *G) {
                         }
                     }
                     else {
-                        selectedPoint = false;
+                        if (selectedPoint2 == false) {
+                            SDL_GetMouseState(&mX, &mY);
+                            screenToMap(mX, mY, renderX, renderY, cZoom, &mapMX, &mapMY, maxX);
+                            for (size_t j = 0; j < G->order; j++) {
+                                if (fabs((double) G->inters[j].x - mapMX) <= 4 && fabs((double) G->inters[j].y - mapMY) <= 4) {
+                                    selectedInter2 = j;
+                                    selectedPoint2 = true;
+                                }
+                            }
+                        }
+                        else {
+                            selectedPoint = false;
+                            selectedPoint2 = false;
+                        }
                     }
                 }
             }
@@ -196,6 +209,14 @@ int windowHandle(struct Graph *G) {
             int FX = compute_pos(selectedInter, 0, renderX, renderY, maxX, cZoom, 1, G);
             int FY = compute_pos(selectedInter, 1, renderX, renderY, maxX, cZoom, 1, G);
             draw_vertex(renderer, FX, FY, Radius);
+            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        }
+        if (selectedPoint2 == true) {
+            SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+            //sX = compute_pos(sX, )
+            int GX = compute_pos(selectedInter2, 0, renderX, renderY, maxX, cZoom, 1, G);
+            int GY = compute_pos(selectedInter2, 1, renderX, renderY, maxX, cZoom, 1, G);
+            draw_vertex(renderer, GX, GY, Radius);
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         }
 

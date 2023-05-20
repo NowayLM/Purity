@@ -11,5 +11,7 @@
 
 
 int main() {
-    windowHandle
+    struct graph *G = buildGraph("1.txt");
+    windowHandle(G);
+    return 0;
 }
