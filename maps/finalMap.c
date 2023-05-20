@@ -16,6 +16,7 @@
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
 
+
 void draw(SDL_Renderer *renderer, struct graph *G, size_t maxX, size_t maxY, size_t renderX, size_t renderY, size_t cZoom) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
@@ -133,6 +134,12 @@ int windowHandle(struct graph *G) {
 
     TTF_Font* font = TTF_OpenFont("maps/OpenSans-Semibold.ttf", 30);
     if (!font) {
+        fprintf(stderr, "Failed to load font: %s\n", TTF_GetError());
+        return 1;
+    }
+
+    TTF_Font* fontCosts = TTF_OpenFont("maps/OpenSans-Semibold.ttf", 20);
+    if (!fontCosts) {
         fprintf(stderr, "Failed to load font: %s\n", TTF_GetError());
         return 1;
     }
@@ -359,9 +366,15 @@ int windowHandle(struct graph *G) {
             for(size_t i = 0; i < G->order; i++) {
                 for(size_t j = 0; j < G->inters[i].nblinks; j++) {
                     size_t end = G->inters[i].links[j].end;
-                    int rx1 = (G->inters[i].x + G->inters[end].x) / 2;
-                    int ry1 = (G->inters[i].y + G->inters[end].y) / 2;
-                
+
+                    if (G->inters[i].x > G->inters[end].x) {
+                        int rx1 = (G->inters[i].x + G->inters[end].x) / 2 + 20;
+                        int ry1 = (G->inters[i].y + G->inters[end].y) / 2 + 20;
+                    }
+                    else {
+                        int rx1 = (G->inters[i].x + G->inters[end].x) / 2 - 20;
+                        int ry1 = (G->inters[i].y + G->inters[end].y) / 2 - 20;
+                    }
 
                     int rx = compute_pos(rx1, 0, renderX, renderY, maxX, cZoom, 0, G);
                     int ry = compute_pos(ry1, 1, renderX, renderY, maxX, cZoom, 0, G);
@@ -375,7 +388,7 @@ int windowHandle(struct graph *G) {
 
                     sprintf(str, "%zu", cost1);
                     const char* const_str = str;
-                    draw_text(renderer, const_str, rx, ry, font, color);
+                    draw_text(renderer, const_str, rx, ry, fontCosts, color);
                 }
                 
             }
