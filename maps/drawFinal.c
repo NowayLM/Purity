@@ -8,3 +8,8 @@
 #include "../algo/algo.h"
 #include "drawMap.h"
 #include "finalMap.h"
+
+
+int main() {
+    windowHandle
+}
