@@ -368,6 +368,7 @@ int windowHandle(struct graph *G) {
                     char str[20];
 
                     size_t cost1 = cost(j, end, G, 1);
+                    cost1 /= 10000;
 
                     sprintf(str, "%zu", cost1);
                     const char* const_str = str;
@@ -392,9 +393,9 @@ int windowHandle(struct graph *G) {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
-    free(path1);
-    free(path2);
-    free(path3);
+    if (path1) free(path1);
+    if (path2) free(path2);
+    if (path3) free(path3);
 
     return 0;
 }

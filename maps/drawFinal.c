@@ -13,5 +13,6 @@
 int main() {
     struct graph *G = buildGraph("maps/1.txt");
     windowHandle(G);
+    freeGraph(G);
     return 0;
 }
