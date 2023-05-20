@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -MMD -MP -g
-SDL_FLAGS = `sdl2-config --cflags --libs`
+SDL_FLAGS = `sdl2-config --cflags --libs` -lSDL2_ttf
 EXECUTABLE = pathfinder
 TEST_EXECUTABLE = testQueue
 SOURCES = maps/drawFinal.c structs/graph.c structs/queue.c algo/algo.c algo/dijkstra.c maps/drawMap.c maps/finalMap.c
