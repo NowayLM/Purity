@@ -355,7 +355,7 @@ int windowHandle(struct graph *G) {
         }
 
         if (drawCosts == true) {
-            SDL_Color color = {255, 255, 255, 255};
+            SDL_Color color = {0, 0, 0, 255};
             for(size_t i = 0; i < G->order; i++) {
                 for(size_t j = 0; j < G->inters[i].nblinks; j++) {
                     size_t end = G->inters[i].links[j].end;
