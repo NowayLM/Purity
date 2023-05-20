@@ -365,10 +365,13 @@ int windowHandle(struct graph *G) {
 
                     int rx = compute_pos(rx1, 0, renderX, renderY, maxX, cZoom, 0, G);
                     int ry = compute_pos(ry1, 1, renderX, renderY, maxX, cZoom, 0, G);
+
+                    printf("start = %zu, end = %zu, rx = %i, ry = %i\n", j, end, rx, ry);
+
                     char str[20];
 
                     size_t cost1 = cost(j, end, G, 1);
-                    printf("cost1 = %zu\n", cost1);
+                    //printf("cost1 = %zu\n", cost1);
                     cost1 /= 100000000000;
 
                     sprintf(str, "%zu", cost1);
