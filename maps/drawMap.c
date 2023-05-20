@@ -141,7 +141,7 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
 
     if (maxX < maxY) maxX = maxY;
 
-    maxX += (maxX / 10) + 2;
+    //maxX += (maxX / 10) + 2;
 
     // Create a window
     SDL_Window *window = SDL_CreateWindow("Map Visualization", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH + 100, WINDOW_HEIGHT + 100, SDL_WINDOW_SHOWN);
@@ -265,7 +265,9 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
         if (selectedPoint == true) {
             SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
             //sX = compute_pos(sX, )
-            draw_vertex(renderer, compute_pos(selectedInter, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(selectedInter, 1, renderX, renderY, maxX, cZoom, 1, G), Radius);
+            int FX = compute_pos(selectedInter, 0, renderX, renderY, maxX, cZoom, 1, G);
+            int FY = compute_pos(selectedInter, 1, renderX, renderY, maxX, cZoom, 1, G);
+            draw_vertex(renderer, FX, FY, Radius);
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         }
 
