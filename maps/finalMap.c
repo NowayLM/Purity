@@ -131,7 +131,7 @@ int windowHandle(struct graph *G) {
         return 1;
     }
 
-    TTF_Font* font = TTF_OpenFont("maps/OpenSans-Semibold.ttf", 12);
+    TTF_Font* font = TTF_OpenFont("maps/OpenSans-Semibold.ttf", 30);
     if (!font) {
         fprintf(stderr, "Failed to load font: %s\n", TTF_GetError());
         return 1;
@@ -279,8 +279,7 @@ int windowHandle(struct graph *G) {
         }
 
 
-        SDL_Color color = {255, 255, 255, 255};
-        draw_text(renderer, "test", 250, 250, font, color);
+        
         draw(renderer, G, maxX, maxY, renderX, renderY, cZoom);
         if (selectedPoint == true) {
             SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
@@ -327,6 +326,16 @@ int windowHandle(struct graph *G) {
                 SDL_RenderDrawLine(renderer, compute_pos(start, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(start, 1, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 1, renderX, renderY, maxX, cZoom, 1, G));
             }
 
+        }
+        SDL_Color color = {255, 255, 255, 255};
+        for(size_t i = 0; i < G->order; i++) {
+            int rx = compute_pos(i, 0, renderX, renderY, maxX, cZoom, 1, G);
+            int ry = compute_pos(i, 1, renderX, renderY, maxX, cZoom, 1, G);
+            char str[20];
+
+            sprintf(str, "%zu", i);
+            const char* const_str = str;
+            draw_text(renderer, const_str, rx, ry, font, color);
         }
 
         // Present the rendered scene
