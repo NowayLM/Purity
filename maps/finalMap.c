@@ -368,6 +368,7 @@ int windowHandle(struct graph *G) {
                     char str[20];
 
                     size_t cost1 = cost(j, end, G, 1);
+                    printf("cost1 = %zu\n", cost1);
                     cost1 /= 100000000000;
 
                     sprintf(str, "%zu", cost1);
@@ -393,9 +394,9 @@ int windowHandle(struct graph *G) {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
-    if (path1) free(path1);
-    if (path2) free(path2);
-    if (path3) free(path3);
+    if (path1 != NULL) free(path1);
+    if (path2 != NULL) free(path2);
+    if (path3 != NULL) free(path3);
 
     return 0;
 }
