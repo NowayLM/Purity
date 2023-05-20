@@ -224,9 +224,9 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
                         screenToMap(mX, mY, renderX, renderY, cZoom, &mapMX, &mapMY, maxX);
                         printf("mapMX = %f /// mapMY = %f\n", mapMX, mapMY);
                         for (size_t j = 0; j < G->order; j++) {
-                            int x1 = compute_pos(j, 0, renderX, renderY, maxX, cZoom, 1, G);
-                            int y1 = compute_pos(j, 1, renderX, renderY, maxX, cZoom, 1, G);
-                            if (fabs((double) x1 - mapMX) <= 4 && fabs((double) y1 - mapMY) <= 4) {
+                            //int x1 = compute_pos(j, 0, renderX, renderY, maxX, cZoom, 1, G);
+                            //int y1 = compute_pos(j, 1, renderX, renderY, maxX, cZoom, 1, G);
+                            if (fabs((double) G.inters[j].x - mapMX) <= 4 && fabs((double) G.inters[j].y - mapMY) <= 4) {
                                 selectedInter = j;
                                 //sX = G->inters[j].x;
                                 //sY = G->inters[j].y;
