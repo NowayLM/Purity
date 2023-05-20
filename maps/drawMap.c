@@ -226,7 +226,7 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
                         for (size_t j = 0; j < G->order; j++) {
                             //int x1 = compute_pos(j, 0, renderX, renderY, maxX, cZoom, 1, G);
                             //int y1 = compute_pos(j, 1, renderX, renderY, maxX, cZoom, 1, G);
-                            if (fabs((double) G.inters[j].x - mapMX) <= 4 && fabs((double) G.inters[j].y - mapMY) <= 4) {
+                            if (fabs((double) G->inters[j].x - mapMX) <= 4 && fabs((double) G->inters[j].y - mapMY) <= 4) {
                                 selectedInter = j;
                                 //sX = G->inters[j].x;
                                 //sY = G->inters[j].y;
