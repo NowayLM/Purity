@@ -10,6 +10,55 @@ typedef struct {
     double y;
 } Coordinate;
 
+
+int countNodeHighways(xmlNodePtr node) {
+    int count = 0;
+
+    // Parcourir les nœuds enfants du nœud actuel
+    xmlNodePtr child = node->children;
+    while (child != NULL) {
+        // Vérifier si le nœud est un élément "way"
+        if (child->type == XML_ELEMENT_NODE && xmlStrcmp(child->name, (const xmlChar*)"way") == 0) {
+            // Parcourir les sous-éléments du nœud "way"
+            xmlNodePtr subChild = child->children;
+            while (subChild != NULL) {
+            // Vérifier si le sous-élément est un élément "tag" avec l'attribut "k" égal à "highway"
+                if (subChild->type == XML_ELEMENT_NODE && xmlStrcmp(subChild->name, (const xmlChar*)"tag") == 0) 
+                {
+                    xmlChar* kAttr = xmlGetProp(subChild, (const xmlChar*)"k");
+                    if (kAttr != NULL && xmlStrcmp(kAttr, (const xmlChar*)"highway") == 0) 
+                    {
+                        count++;
+                    }
+                    xmlFree(kAttr);
+                }
+                subChild = subChild->next;
+            }
+        }
+        child = child->next;
+    }
+
+    return count;
+}
+
+//Fonction nous permettant de coompter lme nombre de fils d'un noeud
+int countNodeChildren(xmlNodePtr node) 
+{
+    int count = 0;
+    xmlNodePtr child = node->children;
+
+    // Parcourir les enfants du nœud
+    while (child != NULL) {
+        // Vérifier si l'élément est un nœud
+        if (child->type == XML_ELEMENT_NODE) {
+            count++;
+        }
+        child = child->next;
+    }
+
+    return count;
+}
+
 void updateMinMaxCoordinates(Coordinate* minCoord, double x, double y) {
     if (x < minCoord->x)
         minCoord->x = x;
@@ -32,7 +81,7 @@ Coordinate findMinCoordinates(xmlNodePtr root) {
             double lon = atof((const char*)lonAttr);
 
             // Mettre à jour les coordonnées minimales
-            updateMinMaxCoordinates(&minCoord, NULL, lon, lat);
+            updateMinMaxCoordinates(&minCoord, lon, lat);
 
             xmlFree((void*)latAttr);
             xmlFree((void*)lonAttr);
@@ -52,7 +101,6 @@ void ecrireDansFichier(const char* nomFichier, const char* contenu)
     if (fichier != NULL) {
         fprintf(fichier, "%s\n", contenu); // Écrit le contenu dans le fichier
         fclose(fichier); // Ferme le fichier
-        printf("Écriture terminée avec succès.\n");
     } else {
         printf("Impossible d'ouvrir le fichier.\n");
     }
@@ -60,13 +108,13 @@ void ecrireDansFichier(const char* nomFichier, const char* contenu)
 
 int main(int argc, char **argv)
 {
-    const char* filename = "PurityMap.txt";
     // Vérifie que le nom de fichier est passé en argument de la ligne de commande
-    if (argc != 2) {
-        printf("Veuillez spécifier le nom de fichier XML en entrée.\n");
+    if (argc != 3) {
+        printf("Veuillez spécifier le nom de fichier XML en entrée et le nom du fichier destination.\n");
         return 1;
     }
 
+    const char* filename = argv[2];
     // Ouvre le fichier XML en lecture
     xmlDoc *doc = xmlReadFile(argv[1], NULL, 0);
     if (doc == NULL) {
@@ -101,67 +149,58 @@ int main(int argc, char **argv)
             char *node_id = (char *)xmlGetProp(cur_node, (const xmlChar *)"id");
             char *node_lat = (char *)xmlGetProp(cur_node, (const xmlChar *)"lat");
             char *node_lon = (char *)xmlGetProp(cur_node, (const xmlChar *)"lon");
-
+            int childcount = countNodeHighways(cur_node);
             // Construit la ligne dans le format de fichier personnalisé
-            sprintf(line, "/%i,%i,%i,%f,%f", node_value, (int) (atof(node_lat) * 100000 - min), (int) (atof(node_lon) * 100000 - min));
+            sprintf(line, "/%i,%i,%i,%i", node_value, (int) (atof(node_lat) * 100000 - min), (int) (atof(node_lon) * 100000 - min),childcount);
 
             // Parcours les noeuds fils du sommet pour récupérer les liens
             int link_count = 0;
 
-            xmlNode* child = xmlFirstElementChild(cur_node);
-            while (child != NULL) 
-            {
-                // Vérifier si le fils est un élément "highway"
-                if (xmlStrcmp(child->name, (const xmlChar*)"highway") == 0) 
-                {
+                        xmlNode *child = xmlFirstElementChild(cur_node);
+            while (child != NULL) {
+
+                // Vérifier si le fils est un élément "way"
+                if (xmlStrcmp(child->name, (const xmlChar *)"way") == 0) {
                     link_count++;
-                    const xmlChar* linkid = xmlGetProp(child, (const xmlChar*)"nodeid");
-                    const xmlChar* maxspeed = xmlGetProp(child, (const xmlChar*)"maxspeed");
-                    const xmlChar* congestion = xmlGetProp(child, (const xmlChar*)"congestion");
+                    char link_id[20];
+                    char congestion[10];
+                    char maxspeed[10];
+
+                    xmlNode *link_child = xmlFirstElementChild(child);
+                    while (link_child != NULL) {
+                        // Vérifier si le fils est un élément "tag"
+                        if (xmlStrcmp(link_child->name, (const xmlChar *)"tag") == 0) {
+                            // Vérifier les attributs "k" et "v" pour extraire les informations de lien
+                            xmlChar *k_attr = xmlGetProp(link_child, (const xmlChar *)"k");
+                            xmlChar *v_attr = xmlGetProp(link_child, (const xmlChar *)"v");
+
+                            if (xmlStrcmp(k_attr, (const xmlChar *)"name") == 0) {
+                                // Ignorer l'attribut "name" pour l'instant
+                            } else if (xmlStrcmp(k_attr, (const xmlChar *)"congestion") == 0) {
+                                strcpy(congestion, (const char *)v_attr);
+                            } else if (xmlStrcmp(k_attr, (const xmlChar *)"maxspeed") == 0) {
+                                strcpy(maxspeed, (const char *)v_attr);
+                            }
+
+                            xmlFree(k_attr);
+                            xmlFree(v_attr);
+                        }
+
+                        link_child = xmlNextElementSibling(link_child);
+                    }
+
+                    sprintf(link_id, "m%i", link_count);
 
                     // Ajoute la ligne pour le lien au format de fichier personnalisé
                     char link_line[MAX_LINE_LENGTH];
                     memset(link_line, 0, MAX_LINE_LENGTH);
-                    sprintf(link_line, ",%s-%s-%s_", linkid, congestion, maxspeed);
+                    sprintf(link_line, "_%s-%s-%s", link_id, congestion, maxspeed);
                     strcat(line, link_line);
-
-                    xmlFree((void*)linkid);
-                    xmlFree((void*)congestion);
-                    xmlFree((void*)maxspeed);
                 }
+
                 // Passer au fils suivant
                 child = xmlNextElementSibling(child);
             }
-            /*for (xmlNode *node = cur_node->children; node; node = node->next) {
-                if (xmlStrcmp(node->name, (const xmlChar *)"tag") == 0) {
-                    char *tag_key = (char *)xmlGetProp(node, (const xmlChar *)"k");
-                    char *tag_value = (char *)xmlGetProp(node, (const xmlChar *)"v");
-
-                    // Si le tag correspond au nombre de liens, récupère la valeur
-                    if (strcmp(tag_key, "link_count") == 0) {
-                        link_count = atoi(tag_value);
-                    }
-                    xmlFree(tag_key);
-                    xmlFree(tag_value);
-                }
-                link_count++;
-            }*/
-            // Ajoute les lignes pour chaque lien
-            /*for (int i = 1; i <= link_count; i++) {
-                char *link_id = (char *)xmlGetProp(cur_node, (const xmlChar *)"link_id");
-                char *link_capacity = (char *)xmlGetProp(cur_node, (const xmlChar *)"link_capacity");
-                char *link_speed = (char *)xmlGetProp(cur_node, (const xmlChar *)"link_speed");
-
-                // Ajoute la ligne pour le lien au format de fichier personnalisé
-                char link_line[MAX_LINE_LENGTH];
-                memset(link_line, 0, MAX_LINE_LENGTH);
-                sprintf(link_line, ",%s-%s-%s_", link_id, link_capacity, link_speed);
-                strcat(line, link_line);
-
-                xmlFree(link_id);
-                xmlFree(link_capacity);
-                xmlFree(link_speed);
-            }*/
 
             // Affiche la ligne complète
             ecrireDansFichier(filename,line);
