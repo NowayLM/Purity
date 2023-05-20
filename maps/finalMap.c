@@ -207,7 +207,7 @@ int windowHandle(struct graph *G) {
                             pathsC = true;
                         }
                         break;
-                    case SDLK_w:
+                    case SDLK_z:
                         if (drawNumbers == true)
                             drawNumbers = false;
                         else
