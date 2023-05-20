@@ -10,4 +10,4 @@ maps2.o: maps2.c
 	$(CC) $(CFLAGS) -c maps2.c $(LIBS)
 
 clean:
-	rm -f maps2.o prog
+	rm -f maps2.o prog PurityMap.txt
