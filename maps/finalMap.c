@@ -10,6 +10,8 @@
 #include "../structs/graph.h"
 #include "../algo/dijkstra.h"
 #include <sys/types.h>
+#include <SDL2/SDL_ttf.h>
+
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
@@ -36,6 +38,41 @@ void draw(SDL_Renderer *renderer, struct graph *G, size_t maxX, size_t maxY, siz
             SDL_RenderDrawLine(renderer, compute_pos(i, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(i, 1, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 1, renderX, renderY, maxX, cZoom, 1, G));
         }
     }
+}
+
+
+void draw_text(SDL_Renderer* renderer, const char* text, int x, int y, TTF_Font* font, SDL_Color color) {
+    SDL_Surface* surface;
+    SDL_Texture* texture;
+    SDL_Rect textRect;
+
+    // Create surface from font
+    surface = TTF_RenderText_Solid(font, text, color);
+    if (!surface) {
+        fprintf(stderr, "Failed to create text surface: %s\n", TTF_GetError());
+        return;
+    }
+
+    // Create texture from surface
+    texture = SDL_CreateTextureFromSurface(renderer, surface);
+    if (!texture) {
+        fprintf(stderr, "Failed to create text texture: %s\n", SDL_GetError());
+        SDL_FreeSurface(surface);
+        return;
+    }
+
+    // Determine the positions of the text
+    textRect.x = x;
+    textRect.y = y;
+    textRect.w = surface->w;
+    textRect.h = surface->h;
+
+    // Copy the texture with the text to the renderer
+    SDL_RenderCopy(renderer, texture, NULL, &textRect);
+
+    // Clean up
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(texture);
 }
 
 
@@ -88,6 +125,18 @@ int windowHandle(struct graph *G) {
         SDL_Quit();
         return 1;
     }
+
+    if (TTF_Init() < 0) {
+        fprintf(stderr, "Failed to initialize SDL_ttf: %s\n", TTF_GetError());
+        return 1;
+    }
+
+    TTF_Font* font = TTF_OpenFont("arial/arial.ttf", 12);
+    if (!font) {
+        fprintf(stderr, "Failed to load font: %s\n", TTF_GetError());
+        return 1;
+    }
+
 
     // Main loop
     bool selectedPoint = false;
@@ -230,6 +279,8 @@ int windowHandle(struct graph *G) {
         }
 
 
+        SDL_Color color = {255, 255, 255, 255};
+        draw_text(renderer, "test", 250, 250, font, color);
         draw(renderer, G, maxX, maxY, renderX, renderY, cZoom);
         if (selectedPoint == true) {
             SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
@@ -287,6 +338,8 @@ int windowHandle(struct graph *G) {
     }
 
     // Clean up
+    TTF_CloseFont(font);
+    TTF_Quit();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
