@@ -63,8 +63,8 @@ void draw_map(SDL_Renderer *renderer, struct graph *G, size_t *path, size_t path
     //maxY = maxY - minY;
 
     //if (diffX > diffY) diffX = diffY;
-    maxX += (maxX / 10) + 2;
-    maxY += (maxY / 10) + 2;
+    //maxX += (maxX / 10) + 2;
+    //maxY += (maxY / 10) + 2;
 
 
     if (maxX < maxY) maxX = maxY;
@@ -139,9 +139,10 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
             maxY = G->inters[i].y;
     }
 
+    maxX += (maxX / 10) + 2;
+    maxY += (maxY / 10) + 2;
+    
     if (maxX < maxY) maxX = maxY;
-
-    //maxX += (maxX / 10) + 2;
 
     // Create a window
     SDL_Window *window = SDL_CreateWindow("Map Visualization", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH + 100, WINDOW_HEIGHT + 100, SDL_WINDOW_SHOWN);
