@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-#include <libxml/parser.h>
-#include <libxml/tree.h>
+#include "libxml/parser.h"
+#include "libxml2-v2.10.3/libxml/tree.h"
 
 #define MAX_LINE_LENGTH 1000
 
