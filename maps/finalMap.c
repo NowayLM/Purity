@@ -39,7 +39,7 @@ void draw(SDL_Renderer *renderer, struct graph *G, size_t maxX, size_t maxY, siz
 }
 
 
-int windowHandle(struct Graph *G) {
+int windowHandle(struct graph *G) {
     // Initialize SDL
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         fprintf(stderr, "Error initializing SDL: %s\n", SDL_GetError());
