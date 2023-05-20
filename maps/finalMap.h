@@ -1,5 +1,5 @@
-#ifndef DRAWMAP_H
-#define DRAWMAP_H
+#ifndef FINALMAP_H
+#define FINALMAP_H
 #include <stddef.h>
 #include <stdint.h>
 #include <stdbool.h>
