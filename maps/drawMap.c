@@ -167,8 +167,8 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
     double currentSpeedY = 0;
     double currentZoomSpeed = 0;
     size_t selectedInter;
-    double sX;
-    double sY;
+    //double sX;
+    //double sY;
     while (running) {
         // Handle events
         Uint32 start_time = SDL_GetTicks();
@@ -225,8 +225,8 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
                         for (size_t j = 0; j < G->order; j++) {
                             if (fabs((double) G->inters[j].x - mapMX) <= 4 && fabs((double) G->inters[j].y - mapMY) <= 4) {
                                 selectedInter = j;
-                                sX = G->inters[j].x;
-                                sY = G->inters[j].y;
+                                //sX = G->inters[j].x;
+                                //sY = G->inters[j].y;
                                 selectedPoint = true;
                             }
                         }
@@ -264,7 +264,8 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
         draw_map(renderer, G, path, pathLength, maxX, maxY, renderX, renderY, cZoom);
         if (selectedPoint == true) {
             SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-            draw_vertex(renderer, compute_pos(sX, 0, renderX, renderY, maxX, cZoom, 0, G), compute_pos(sY, 1, renderX, renderY, maxX, cZoom, 0, G), Radius);
+            //sX = compute_pos(sX, )
+            draw_vertex(renderer, compute_pos(selectedInter, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(selectedInter, 1, renderX, renderY, maxX, cZoom, 1, G), Radius);
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         }
 
