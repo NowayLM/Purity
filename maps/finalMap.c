@@ -371,12 +371,12 @@ int windowHandle(struct graph *G) {
                     int rx;
                     int ry;
                     if (G->inters[i].x > G->inters[end].x) {
-                        rx = compute_pos(rx1, 0, renderX, renderY, maxX, cZoom, 0, G) + 20;
-                        ry = compute_pos(ry1, 1, renderX, renderY, maxX, cZoom, 0, G) + 20;
+                        rx = compute_pos(rx1, 0, renderX, renderY, maxX, cZoom, 0, G) + 10;
+                        ry = compute_pos(ry1, 1, renderX, renderY, maxX, cZoom, 0, G) + 10;
                     }
                     else {
-                        rx = compute_pos(rx1, 0, renderX, renderY, maxX, cZoom, 0, G) - 20;
-                        ry = compute_pos(ry1, 1, renderX, renderY, maxX, cZoom, 0, G) - 20;
+                        rx = compute_pos(rx1, 0, renderX, renderY, maxX, cZoom, 0, G) - 10;
+                        ry = compute_pos(ry1, 1, renderX, renderY, maxX, cZoom, 0, G) - 10;
                     }
 
                     //printf("start = %zu, end = %zu, rx = %i, ry = %i\n", j, end, rx, ry);
