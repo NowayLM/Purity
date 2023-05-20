@@ -366,19 +366,18 @@ int windowHandle(struct graph *G) {
             for(size_t i = 0; i < G->order; i++) {
                 for(size_t j = 0; j < G->inters[i].nblinks; j++) {
                     size_t end = G->inters[i].links[j].end;
-                    int rx1;
-                    int ry1;
+                    int rx1 = (G->inters[i].x + G->inters[end].x) / 2;
+                    int ry1 = (G->inters[i].y + G->inters[end].y) / 2;
+                    int rx;
+                    int ry;
                     if (G->inters[i].x > G->inters[end].x) {
-                        rx1 = (G->inters[i].x + G->inters[end].x) / 2 + 20;
-                        ry1 = (G->inters[i].y + G->inters[end].y) / 2 + 20;
+                        rx = compute_pos(rx1, 0, renderX, renderY, maxX, cZoom, 0, G) + 20;
+                        ry = compute_pos(ry1, 1, renderX, renderY, maxX, cZoom, 0, G) + 20;
                     }
                     else {
-                        rx1 = (G->inters[i].x + G->inters[end].x) / 2 - 20;
-                        ry1 = (G->inters[i].y + G->inters[end].y) / 2 - 20;
+                        rx = compute_pos(rx1, 0, renderX, renderY, maxX, cZoom, 0, G) - 20;
+                        ry = compute_pos(ry1, 1, renderX, renderY, maxX, cZoom, 0, G) - 20;
                     }
-
-                    int rx = compute_pos(rx1, 0, renderX, renderY, maxX, cZoom, 0, G);
-                    int ry = compute_pos(ry1, 1, renderX, renderY, maxX, cZoom, 0, G);
 
                     //printf("start = %zu, end = %zu, rx = %i, ry = %i\n", j, end, rx, ry);
 
