@@ -29,21 +29,21 @@ int compute_pos(double x, int xOrY, size_t renderX, size_t renderY, size_t maxX,
     double res;
     if (graphOrNot == 0) {
         if (xOrY == 0) {
-            res = (x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100) + 50;
+            res = (x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100);
             if (res < 0) res = 0;
         }
         else {
-            res = (x - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100) + 50;
+            res = (x - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100);
             if (res < 0) res = 0;
         }
     }
     else {
         if (xOrY == 0) {
-            res = (G->inters[(size_t)x].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100) + 50;
+            res = (G->inters[(size_t)x].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100);
             if (res < 0) res = 0;
         }
         else {
-            res = (G->inters[(size_t)x].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100) + 50;
+            res = (G->inters[(size_t)x].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100);
             if (res < 0) res = 0;
         }
     }
@@ -224,7 +224,9 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
                         screenToMap(mX, mY, renderX, renderY, cZoom, &mapMX, &mapMY, maxX);
                         printf("mapMX = %f /// mapMY = %f\n", mapMX, mapMY);
                         for (size_t j = 0; j < G->order; j++) {
-                            if (fabs((double) G->inters[j].x - mapMX) <= 4 && fabs((double) G->inters[j].y - mapMY) <= 4) {
+                            int x1 = compute_pos(j, 0, renderX, renderY, maxX, cZoom, 1, G);
+                            int y1 = compute_pos(j, 1, renderX, renderY, maxX, cZoom, 1, G);
+                            if (fabs((double) x1 - mapMX) <= 4 && fabs((double) y1 - mapMY) <= 4) {
                                 selectedInter = j;
                                 //sX = G->inters[j].x;
                                 //sY = G->inters[j].y;
