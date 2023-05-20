@@ -33,6 +33,7 @@ size_t cost (size_t x, size_t y, struct graph *G, size_t mode) {
             else if (mode == 4) {
                 result = length / maxSpeed;  //ultra max speed mode
             }
+            printf("cost = %zu\n", result);
             return (result);
         }
     }

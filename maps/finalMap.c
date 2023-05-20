@@ -368,7 +368,7 @@ int windowHandle(struct graph *G) {
                     char str[20];
 
                     size_t cost1 = cost(j, end, G, 1);
-                    cost1 /= 10000;
+                    cost1 /= 100000000000;
 
                     sprintf(str, "%zu", cost1);
                     const char* const_str = str;
