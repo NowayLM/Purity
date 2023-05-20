@@ -366,7 +366,7 @@ int windowHandle(struct graph *G) {
                     int rx = compute_pos(rx1, 0, renderX, renderY, maxX, cZoom, 0, G);
                     int ry = compute_pos(ry1, 1, renderX, renderY, maxX, cZoom, 0, G);
 
-                    printf("start = %zu, end = %zu, rx = %i, ry = %i\n", j, end, rx, ry);
+                    //printf("start = %zu, end = %zu, rx = %i, ry = %i\n", j, end, rx, ry);
 
                     char str[20];
 
