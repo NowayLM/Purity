@@ -131,7 +131,7 @@ int windowHandle(struct graph *G) {
         return 1;
     }
 
-    TTF_Font* font = TTF_OpenFont("OpenSans-Semibold.ttf", 12);
+    TTF_Font* font = TTF_OpenFont("maps/OpenSans-Semibold.ttf", 12);
     if (!font) {
         fprintf(stderr, "Failed to load font: %s\n", TTF_GetError());
         return 1;
