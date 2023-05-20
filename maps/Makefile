@@ -1,7 +1,6 @@
 CC=gcc
 CFLAGS=-Wall -std=c99 -pedantic
-LIBS=-lxml2
-
+LIBS= -lxml2
 all: maps2
 
 maps2: maps2.o
