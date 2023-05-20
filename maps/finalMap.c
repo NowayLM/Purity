@@ -359,8 +359,8 @@ int windowHandle(struct graph *G) {
             for(size_t i = 0; i < G->order; i++) {
                 for(size_t j = 0; j < G->inters[i].nblinks; j++) {
                     size_t end = G->inters[i].links[j].end;
-                    int rx1 = (G->inters[j].x + G->inters[end].x) / 2;
-                    int ry1 = (G->inters[j].y + G->inters[end].y) / 2;
+                    int rx1 = (G->inters[i].x + G->inters[end].x) / 2;
+                    int ry1 = (G->inters[i].y + G->inters[end].y) / 2;
                 
 
                     int rx = compute_pos(rx1, 0, renderX, renderY, maxX, cZoom, 0, G);
