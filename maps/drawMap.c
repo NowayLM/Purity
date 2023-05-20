@@ -222,7 +222,7 @@ int doAll(struct graph *G, size_t *path, size_t pathLength) {
                     if (selectedPoint == false) {
                         SDL_GetMouseState(&mX, &mY);
                         screenToMap(mX, mY, renderX, renderY, cZoom, &mapMX, &mapMY, maxX);
-                        printf("mapMX = %f /// mapMY = %f\n", mapMX, mapMY);
+                        //printf("mapMX = %f /// mapMY = %f\n", mapMX, mapMY);
                         for (size_t j = 0; j < G->order; j++) {
                             //int x1 = compute_pos(j, 0, renderX, renderY, maxX, cZoom, 1, G);
                             //int y1 = compute_pos(j, 1, renderX, renderY, maxX, cZoom, 1, G);
