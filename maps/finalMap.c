@@ -50,8 +50,6 @@ int windowHandle(struct graph *G) {
     size_t cZoom = 100;
     size_t renderX = 0;
     size_t renderY = 0;
-    long RadiusL = 70/(log(G->order * 100));
-    int Radius = (int) RadiusL;
 
     size_t minX = G->inters[0].x;
     size_t maxX = G->inters[0].x;
@@ -100,6 +98,14 @@ int windowHandle(struct graph *G) {
     size_t selectedInter;
     size_t selectedInter2;
     bool selectedPoint2 = false;
+    size_t pl1;
+    size_t pl2;
+    size_t pl3;
+    size_t *path1;
+    size_t *path2;
+    size_t *path3;
+    bool pathsC = false;
+    bool drawPath = false;
     while (running) {
         // Handle events
         Uint32 start_time = SDL_GetTicks();
@@ -144,6 +150,11 @@ int windowHandle(struct graph *G) {
                         break;
                     case SDLK_t:
                         running = false;
+                        break;
+                    case SDLK_c:
+                        if (selectedPoint == true && selectedPoint2 == true) {
+                            pathsC = true;
+                        }
                         break;
                 }
             }
@@ -201,14 +212,32 @@ int windowHandle(struct graph *G) {
         SDL_SetRenderDrawColor(renderer, 210, 210, 210, 255);
         SDL_RenderClear(renderer);
 
+        long newRadiusL = 70/(log(G->order * 100));
+        int newRadius = (int) newRadiusL;
+
         // Draw the map
+        if (pathsC == true) {
+            printf("s = %i || e = %i\n", selectedPoint, selectedPoint2);
+            path1 = dijkstra(G, selectedPoint, selectedPoint2, &pl1, 1);
+            path2 = dijkstra(G, selectedPoint, selectedPoint2, &pl2, 3);
+            path3 = dijkstra(G, selectedPoint, selectedPoint2, &pl3, 4);
+            printf("[");
+    for (size_t i = 0; i < pl1 - 1; i++) {
+        printf("%zu, ", path1[i]);
+    }
+    printf("%zu]\n", path1[pl1 - 1]);
+            drawPath = true;
+            pathsC = false;
+        }
+
+
         draw(renderer, G, maxX, maxY, renderX, renderY, cZoom);
         if (selectedPoint == true) {
             SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
             //sX = compute_pos(sX, )
             int FX = compute_pos(selectedInter, 0, renderX, renderY, maxX, cZoom, 1, G);
             int FY = compute_pos(selectedInter, 1, renderX, renderY, maxX, cZoom, 1, G);
-            draw_vertex(renderer, FX, FY, Radius);
+            draw_vertex(renderer, FX, FY, newRadius);
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         }
         if (selectedPoint2 == true) {
@@ -216,8 +245,38 @@ int windowHandle(struct graph *G) {
             //sX = compute_pos(sX, )
             int GX = compute_pos(selectedInter2, 0, renderX, renderY, maxX, cZoom, 1, G);
             int GY = compute_pos(selectedInter2, 1, renderX, renderY, maxX, cZoom, 1, G);
-            draw_vertex(renderer, GX, GY, Radius);
+            draw_vertex(renderer, GX, GY, newRadius);
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        }
+        if (drawPath == true) {
+            SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+            draw_vertex(renderer, compute_pos(path1[pl1 - 1], 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(path1[pl1 - 1], 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
+            for (size_t i = 0; i < pl1 - 1; i++) {
+                size_t start = path1[i];
+                draw_vertex(renderer, compute_pos(start, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(start, 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
+                size_t end = path1[i + 1];
+                SDL_RenderDrawLine(renderer, compute_pos(start, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(start, 1, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 1, renderX, renderY, maxX, cZoom, 1, G));
+            }
+
+            SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+            draw_vertex(renderer, compute_pos(path2[pl2 - 1], 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(path2[pl2 - 1], 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
+            for (size_t i = 0; i < pl2 - 1; i++) {
+                size_t start = path2[i];
+                draw_vertex(renderer, compute_pos(start, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(start, 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
+                size_t end = path2[i + 1];
+                SDL_RenderDrawLine(renderer, compute_pos(start, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(start, 1, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 1, renderX, renderY, maxX, cZoom, 1, G));
+            }
+
+
+            SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+            draw_vertex(renderer, compute_pos(path3[pl3 - 1], 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(path3[pl3 - 1], 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
+            for (size_t i = 0; i < pl3 - 1; i++) {
+                size_t start = path3[i];
+                draw_vertex(renderer, compute_pos(start, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(start, 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
+                size_t end = path3[i + 1];
+                SDL_RenderDrawLine(renderer, compute_pos(start, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(start, 1, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 1, renderX, renderY, maxX, cZoom, 1, G));
+            }
+
         }
 
         // Present the rendered scene
@@ -232,6 +291,9 @@ int windowHandle(struct graph *G) {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
+    free(path1);
+    free(path2);
+    free(path3);
 
     return 0;
 }
