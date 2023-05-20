@@ -164,9 +164,13 @@ int windowHandle(struct graph *G) {
                         SDL_GetMouseState(&mX, &mY);
                         screenToMap(mX, mY, renderX, renderY, cZoom, &mapMX, &mapMY, maxX);
                         for (size_t j = 0; j < G->order; j++) {
+                            //printf("j = %zu\n", j);
                             if (fabs((double) G->inters[j].x - mapMX) <= 4 && fabs((double) G->inters[j].y - mapMY) <= 4) {
                                 selectedInter = j;
+                                //printf("fabs G[j].x - mapMX = %f\n", fabs((double) G->inters[j].x - mapMX));
+                                //printf("selectedInter = %zu", selectedInter);
                                 selectedPoint = true;
+                                break;
                             }
                         }
                     }
@@ -217,15 +221,10 @@ int windowHandle(struct graph *G) {
 
         // Draw the map
         if (pathsC == true) {
-            printf("s = %i || e = %i\n", selectedPoint, selectedPoint2);
-            path1 = dijkstra(G, selectedPoint, selectedPoint2, &pl1, 1);
-            path2 = dijkstra(G, selectedPoint, selectedPoint2, &pl2, 3);
-            path3 = dijkstra(G, selectedPoint, selectedPoint2, &pl3, 4);
-            printf("[");
-    for (size_t i = 0; i < pl1 - 1; i++) {
-        printf("%zu, ", path1[i]);
-    }
-    printf("%zu]\n", path1[pl1 - 1]);
+            //printf("s = %i || e = %i\n", selectedPoint, selectedPoint2);
+            path1 = dijkstra(G, selectedInter, selectedInter2, &pl1, 1);
+            path2 = dijkstra(G, selectedInter, selectedInter2, &pl2, 3);
+            path3 = dijkstra(G, selectedInter, selectedInter2, &pl3, 4);
             drawPath = true;
             pathsC = false;
         }
@@ -249,7 +248,7 @@ int windowHandle(struct graph *G) {
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         }
         if (drawPath == true) {
-            SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+            SDL_SetRenderDrawColor(renderer, 237, 208, 102, 255);
             draw_vertex(renderer, compute_pos(path1[pl1 - 1], 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(path1[pl1 - 1], 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
             for (size_t i = 0; i < pl1 - 1; i++) {
                 size_t start = path1[i];
@@ -258,7 +257,7 @@ int windowHandle(struct graph *G) {
                 SDL_RenderDrawLine(renderer, compute_pos(start, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(start, 1, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 1, renderX, renderY, maxX, cZoom, 1, G));
             }
 
-            SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+            SDL_SetRenderDrawColor(renderer, 98, 145, 81, 255);
             draw_vertex(renderer, compute_pos(path2[pl2 - 1], 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(path2[pl2 - 1], 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
             for (size_t i = 0; i < pl2 - 1; i++) {
                 size_t start = path2[i];
@@ -268,7 +267,7 @@ int windowHandle(struct graph *G) {
             }
 
 
-            SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+            SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
             draw_vertex(renderer, compute_pos(path3[pl3 - 1], 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(path3[pl3 - 1], 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
             for (size_t i = 0; i < pl3 - 1; i++) {
                 size_t start = path3[i];
