@@ -15,5 +15,7 @@ void draw_text(SDL_Renderer* renderer, const char* text, int x, int y, TTF_Font*
 
 int windowHandle(struct graph *G);
 
+int finalFunction(char* filepath);
+
 
 #endif

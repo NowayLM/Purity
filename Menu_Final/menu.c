@@ -11,6 +11,7 @@
 //#include "../algo/dijkstra.c"
 #include "../structs/graph.h"
 #include "../structs/queue.h"
+#include "../maps/finalMap.h"
 //#include "Interface.glade" //test
 //
 char *x=NULL;
@@ -25,45 +26,22 @@ void on_start_button_clicked(GtkWidget *button,gpointer user_data)
 	//GtkTextBuffer *buffer = gtk_text_view_get_buffer(text_view);
 
 	// ---------------------------
-	GtkEntry *entry = GTK_ENTRY(gtk_builder_get_object(user_data,"gtk_entry1")); //test entry
-	GtkEntry *entry2 = GTK_ENTRY(gtk_builder_get_object(user_data,"gtk_entry2"));
+	GtkEntry *entry = GTK_ENTRY(gtk_builder_get_object(user_data,"gtk_entry1"));
 	const char *entry_text = gtk_entry_get_text(entry); //test entry 
-	const char *entry_text2 = gtk_entry_get_text(entry2);
 	x = g_strdup(entry_text);
-	y = g_strdup(entry_text2);
-	g_print("\nLa valeur de depart est : %s\n",x);
-	g_print("\nLa valeur d'arrivee est : %s\n",y);
+	int index = atoi(x) ;
+	
+	char *L[] = {"../maps/1.txt","../maps/2.txt","../maps/3.txt","../maps/4.txt","../maps/5.txt","../maps/6.txt","../maps/7.txt"};
+	if (index-1<0 || index-1>7)
+	{
+		return -1;
+		}
+	finalFunction(L[index-1]);
 	//txt_buffer+=("\nLa valeur de depart est : %s\n",x);
 	//txt_buffer+=("\nLa valeur de d'arrivee  est : %s\n",y);
 	// -----------------------
 	//gtk_text_buffer_insert_at_cursor(buffer,"hello",-1); //TextView
 
-	int  x_value;
-	int  y_value;
-	size_t size_x;
-	size_t size_y;
-	x_value = atoi(x);
-	y_value = atoi(y);
-
-	size_x = (size_t) x_value;
-	size_y = (size_t) y_value;
-
-	size_t final_length;
-	size_t total_length =0;
-	struct graph *G = buildGraph("../maps/1.txt");
-	//size_t *path = groupeFunction("../maps/1.txt", size_x, size_y, &total_length);
-	size_t *path = dijkstra(G, size_x, size_y, &total_length, 1); 
-	final_length = compute_path_length(total_length, path, G);
-	g_print("\nOn calcule le chemin entre %zu et %zu \n", size_x, size_y);
-	g_print("\nLa distance  est : %zu\n",final_length);
-	g_print("\nLe chemin est le suivant : ");
-	for(size_t i =0; i<total_length-1;i++)
-	{
-		g_print("%zu -> ",path[i] );
-	}
-	g_print("%zu\n", path[total_length -1]);
-	free(path);
-	freeGraph(G);
 
 
 
@@ -73,12 +51,18 @@ void on_start_button_clicked(GtkWidget *button,gpointer user_data)
 	//g_print("le bouton a ete cliquer");
 }
 
+void on_header_quit_button_clicked(GtkButton *button,gpointer user_data)
+{
+	gtk_main_quit();
+}
+
 
 int main(int argc,char *argv[])
 {
 	GtkBuilder *builder;
 	GtkWidget *window;
 	GtkWidget *start_button; //test
+	GtkWidget *end_button; 
 	//GtkWidget *text_view;
 	//GtkTextBuffer *buffer;
 
@@ -88,12 +72,14 @@ int main(int argc,char *argv[])
 
 	window = GTK_WIDGET(gtk_builder_get_object(builder,"main_window"));
 	start_button = GTK_WIDGET(gtk_builder_get_object(builder,"start_button")); //test
+	end_button = GTK_WIDGET(gtk_builder_get_object(builder,"header_quit_button")); 
 
 	//gtk_builder_connect_signals(builder,NULL); //pas test
 	
-
+	gtk_builder_connect_signals(builder,NULL);
 
 	g_signal_connect(start_button,"clicked",G_CALLBACK(on_start_button_clicked),builder);//test
+	g_signal_connect(end_button,"clicked",G_CALLBACK(on_header_quit_button_clicked),NULL);
 
 	//text_view = GTK_WIDGET(gtk_builder_get_object(builder,"terminal_window"));
 	//buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(text_view));

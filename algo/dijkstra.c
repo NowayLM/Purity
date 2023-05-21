@@ -28,10 +28,10 @@ size_t cost (size_t x, size_t y, struct graph *G, size_t mode) {
                 result = ((length) * (10 * (traffic))) / maxSpeed; //speed mode
             }
             else if (mode == 3) {
-                result = ((500 * length) * (10 * (traffic))) / ((maxSpeed * 30) / 100);  //eco mode
+                result = (((500 * length) * (10 * (traffic))) / ((maxSpeed * 30) / 100)) / 1000;  //eco mode
             }
             else if (mode == 4) {
-                result = length / maxSpeed;  //ultra max speed mode
+                result = length / ((maxSpeed * 3) / 15);  //ultra max speed mode
             }
             //printf("cost = %zu\n", result);
             return (result);

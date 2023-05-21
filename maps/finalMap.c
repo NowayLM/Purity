@@ -132,13 +132,19 @@ int windowHandle(struct graph *G) {
         return 1;
     }
 
-    TTF_Font* font = TTF_OpenFont("maps/OpenSans-Semibold.ttf", 30);
+    TTF_Font* font = TTF_OpenFont("../maps/OpenSans-Semibold.ttf", 30);
     if (!font) {
         fprintf(stderr, "Failed to load font: %s\n", TTF_GetError());
         return 1;
     }
 
-    TTF_Font* fontCosts = TTF_OpenFont("maps/OpenSans-Semibold.ttf", 20);
+    TTF_Font* fontCosts = TTF_OpenFont("../maps/OpenSans-Semibold.ttf", 20);
+    if (!fontCosts) {
+        fprintf(stderr, "Failed to load font: %s\n", TTF_GetError());
+        return 1;
+    }
+
+    TTF_Font* bottomText = TTF_OpenFont("../maps/OpenSans-Semibold.ttf", 30);
     if (!fontCosts) {
         fprintf(stderr, "Failed to load font: %s\n", TTF_GetError());
         return 1;
@@ -161,9 +167,11 @@ int windowHandle(struct graph *G) {
     size_t *path2;
     size_t *path3;
     bool drawNumbers = true;
-    bool drawCosts = true;
+    bool drawCosts = false;
     bool pathsC = false;
     bool drawPath = false;
+    size_t mode = 1;
+    bool all = true;
     while (running) {
         // Handle events
         Uint32 start_time = SDL_GetTicks();
@@ -205,6 +213,19 @@ int windowHandle(struct graph *G) {
                     case SDLK_e:
                         if (currentZoomSpeed < zoomMaxSpeed - 1)
                             currentZoomSpeed += 2;
+                        break;
+                    case SDLK_i:
+                        if(mode != 1) mode = 1;
+                        break;
+                    case SDLK_o:
+                        if(mode != 3) mode = 3;
+                        break;
+                    case SDLK_p:
+                        if (mode != 4) mode = 4;
+                        break;
+                    case SDLK_u:
+                        if(all == true) all = false;
+                        else all = true;
                         break;
                     case SDLK_t:
                         running = false;
@@ -319,25 +340,26 @@ int windowHandle(struct graph *G) {
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         }
         if (drawPath == true) {
-            SDL_SetRenderDrawColor(renderer, 237, 208, 102, 255);
+            if(mode == 1 || all == true){SDL_SetRenderDrawColor(renderer, 237, 208, 102, 255);
             draw_vertex(renderer, compute_pos(path1[pl1 - 1], 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(path1[pl1 - 1], 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
             for (size_t i = 0; i < pl1 - 1; i++) {
                 size_t start = path1[i];
                 draw_vertex(renderer, compute_pos(start, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(start, 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
                 size_t end = path1[i + 1];
                 SDL_RenderDrawLine(renderer, compute_pos(start, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(start, 1, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 1, renderX, renderY, maxX, cZoom, 1, G));
-            }
+            }}
 
-            SDL_SetRenderDrawColor(renderer, 98, 145, 81, 255);
+            if(mode == 3 || all == true){SDL_SetRenderDrawColor(renderer, 98, 145, 81, 255);
             draw_vertex(renderer, compute_pos(path2[pl2 - 1], 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(path2[pl2 - 1], 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
             for (size_t i = 0; i < pl2 - 1; i++) {
                 size_t start = path2[i];
                 draw_vertex(renderer, compute_pos(start, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(start, 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
                 size_t end = path2[i + 1];
                 SDL_RenderDrawLine(renderer, compute_pos(start, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(start, 1, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 1, renderX, renderY, maxX, cZoom, 1, G));
-            }
+            }}
 
 
+            if (mode == 4 || all == true){
             SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
             draw_vertex(renderer, compute_pos(path3[pl3 - 1], 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(path3[pl3 - 1], 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
             for (size_t i = 0; i < pl3 - 1; i++) {
@@ -345,8 +367,12 @@ int windowHandle(struct graph *G) {
                 draw_vertex(renderer, compute_pos(start, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(start, 1, renderX, renderY, maxX, cZoom, 1, G), newRadius);
                 size_t end = path3[i + 1];
                 SDL_RenderDrawLine(renderer, compute_pos(start, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(start, 1, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 0, renderX, renderY, maxX, cZoom, 1, G), compute_pos(end, 1, renderX, renderY, maxX, cZoom, 1, G));
-            }
-
+            }}
+            SDL_Color text1 = {0, 0, 0, 255};
+            char string[50];
+            sprintf(string, "Computing path from %zu to %zu.", path1[0], path1[pl1 - 1]);
+            const char* const_string = string;
+            draw_text(renderer, const_string, 10, WINDOW_HEIGHT + 40, bottomText, text1);
         }
         if (drawNumbers == true) {
             SDL_Color color = {255, 255, 255, 255};
@@ -360,7 +386,7 @@ int windowHandle(struct graph *G) {
                 draw_text(renderer, const_str, rx, ry, font, color);
             }
         }
-
+        
         if (drawCosts == true) {
             SDL_Color color = {40, 40, 40, 255};
             for(size_t i = 0; i < G->order; i++) {
@@ -383,7 +409,7 @@ int windowHandle(struct graph *G) {
 
                     char str[20];
 
-                    size_t cost1 = cost(i, end, G, 1);
+                    size_t cost1 = cost(i, end, G, mode);
                     //printf("cost1 = %zu\n", cost1);
 
                     sprintf(str, "%zu", cost1);
@@ -394,6 +420,9 @@ int windowHandle(struct graph *G) {
             }
         }
         
+        SDL_Color text2 = {0, 0, 0, 255};
+        const char* commands = "Z for numbers, X for costs, C to compute, T to quit";
+        draw_text(renderer, commands, WINDOW_WIDTH - 650, WINDOW_HEIGHT + 40, bottomText, text2);
 
         // Present the rendered scene
         SDL_RenderPresent(renderer);
@@ -413,5 +442,13 @@ int windowHandle(struct graph *G) {
     if (path2 != NULL) free(path2);
     if (path3 != NULL) free(path3);
 
+    return 0;
+}
+
+
+int finalFunction(char* filepath) {
+    struct graph *G = buildGraph(filepath);
+    windowHandle(G);
+    freeGraph(G);
     return 0;
 }
