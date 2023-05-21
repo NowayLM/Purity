@@ -1,0 +1,1779 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version='0.6' generator='JOSM'>
+  <node id='-140724' action='modify' visible='true' lat='0.01307285965' lon='-0.01486223402' />
+  <node id='-140725' action='modify' visible='true' lat='0.01321081728' lon='-0.01507163402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140726' action='modify' visible='true' lat='0.01323330379' lon='-0.01510403402'>
+    <tag k='highway' v='traffic_signals' />
+    <tag k='traffic_signals:direction' v='backward' />
+  </node>
+  <node id='-140727' action='modify' visible='true' lat='0.01325730966' lon='-0.01513893402'>
+    <tag k='cycleway' v='asl' />
+    <tag k='direction' v='backward' />
+  </node>
+  <node id='-140728' action='modify' visible='true' lat='0.01409174642' lon='-0.01633723402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140729' action='modify' visible='true' lat='0.01417652766' lon='-0.01645993402'>
+    <tag k='highway' v='traffic_signals' />
+    <tag k='traffic_signals' v='signal' />
+  </node>
+  <node id='-140730' action='modify' visible='true' lat='0.01423760667' lon='-0.01654843402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140731' action='modify' visible='true' lat='0.01521928375' lon='-0.01797023402' />
+  <node id='-140732' action='modify' visible='true' lat='0.01525939588' lon='-0.01803073402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140733' action='modify' visible='true' lat='0.01540799329' lon='-0.01825473402' />
+  <node id='-140734' action='modify' visible='true' lat='0.01546907329' lon='-0.01834363402'>
+    <tag k='bus' v='yes' />
+    <tag k='name' v='Boucicaut' />
+    <tag k='network' v='RATP' />
+    <tag k='operator' v='RATP' />
+    <tag k='public_transport' v='stop_position' />
+    <tag k='source' v='survey' />
+  </node>
+  <node id='-140735' action='modify' visible='true' lat='0.01557771072' lon='-0.01850193402'>
+    <tag k='bus' v='yes' />
+    <tag k='name' v='Boucicaut' />
+    <tag k='network' v='RATP' />
+    <tag k='operator' v='RATP' />
+    <tag k='public_transport' v='stop_position' />
+    <tag k='source' v='survey' />
+  </node>
+  <node id='-140736' action='modify' visible='true' lat='0.01573132279' lon='-0.01872333402'>
+    <tag k='cycleway' v='asl' />
+    <tag k='direction' v='forward' />
+  </node>
+  <node id='-140737' action='modify' visible='true' lat='0.01577067549' lon='-0.01878003402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140738' action='modify' visible='true' lat='0.01587019688' lon='-0.01892083402'>
+    <tag k='highway' v='traffic_signals' />
+  </node>
+  <node id='-140739' action='modify' visible='true' lat='0.01263072842' lon='-0.02422513402' />
+  <node id='-140740' action='modify' visible='true' lat='0.01264622576' lon='-0.02419983402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140741' action='modify' visible='true' lat='0.01266992758' lon='-0.02416093402'>
+    <tag k='highway' v='traffic_signals' />
+  </node>
+  <node id='-140742' action='modify' visible='true' lat='0.01353261809' lon='-0.02274853402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140743' action='modify' visible='true' lat='0.013597495' lon='-0.02264213402' />
+  <node id='-140744' action='modify' visible='true' lat='0.01391443544' lon='-0.02212333402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140745' action='modify' visible='true' lat='0.01397217162' lon='-0.02202873402' />
+  <node id='-140746' action='modify' visible='true' lat='0.0142585741' lon='-0.02155973402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140747' action='modify' visible='true' lat='0.01435019273' lon='-0.02140963402' />
+  <node id='-140748' action='modify' visible='true' lat='0.01458174678' lon='-0.02103063402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140749' action='modify' visible='true' lat='0.01464069898' lon='-0.02093413402' />
+  <node id='-140750' action='modify' visible='true' lat='0.01468704029' lon='-0.02085793402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140751' action='modify' visible='true' lat='0.01522490553' lon='-0.01997733402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140752' action='modify' visible='true' lat='0.01532108352' lon='-0.01981993402' />
+  <node id='-140753' action='modify' visible='true' lat='0.01556783458' lon='-0.01941593402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140754' action='modify' visible='true' lat='0.01562678754' lon='-0.01931933402' />
+  <node id='-140755' action='modify' visible='true' lat='0.01580622968' lon='-0.01902553402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140756' action='modify' visible='true' lat='0.01596196939' lon='-0.01877063402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140757' action='modify' visible='true' lat='0.01599721979' lon='-0.01871293402'>
+    <tag k='cycleway' v='asl' />
+    <tag k='direction' v='backward' />
+  </node>
+  <node id='-140758' action='modify' visible='true' lat='0.01624883518' lon='-0.01830093402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140759' action='modify' visible='true' lat='0.01630672507' lon='-0.01820613402' />
+  <node id='-140760' action='modify' visible='true' lat='0.01637844174' lon='-0.01808873402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140761' action='modify' visible='true' lat='0.01650971989' lon='-0.01787383402' />
+  <node id='-140762' action='modify' visible='true' lat='0.0165559104' lon='-0.01779823402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140763' action='modify' visible='true' lat='0.01731714626' lon='-0.01655153402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='no' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140764' action='modify' visible='true' lat='0.0173779239' lon='-0.01645213402'>
+    <tag k='highway' v='traffic_signals' />
+  </node>
+  <node id='-140765' action='modify' visible='true' lat='0.01412942696' lon='-0.02037043402' />
+  <node id='-140766' action='modify' visible='true' lat='0.01417075402' lon='-0.02030063402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140767' action='modify' visible='true' lat='0.01462975939' lon='-0.01952763402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140768' action='modify' visible='true' lat='0.01468491315' lon='-0.01943473402' />
+  <node id='-140769' action='modify' visible='true' lat='0.01473748399' lon='-0.01934413402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140770' action='modify' visible='true' lat='0.01492999081' lon='-0.01901163402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140771' action='modify' visible='true' lat='0.01497663619' lon='-0.01893113402' />
+  <node id='-140772' action='modify' visible='true' lat='0.01503558869' lon='-0.01883863402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140773' action='modify' visible='true' lat='0.01534615364' lon='-0.01835173402'>
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140774' action='modify' visible='true' lat='0.01445700531' lon='-0.01860813402'>
+    <tag k='access' v='private' />
+    <tag k='barrier' v='gate' />
+  </node>
+  <node id='-140775' action='modify' visible='true' lat='0.01446718518' lon='-0.01861443402'>
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140776' action='modify' visible='true' lat='0.01492482488' lon='-0.01889903402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140777' action='modify' visible='true' lat='0.0150760046' lon='-0.01899053402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140778' action='modify' visible='true' lat='0.01552802617' lon='-0.01926033402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140779' action='modify' visible='true' lat='0.01187576869' lon='-0.01783403402' />
+  <node id='-140780' action='modify' visible='true' lat='0.01194201159' lon='-0.01790853402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='source' v='survey' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='wheelchair' v='yes' />
+  </node>
+  <node id='-140781' action='modify' visible='true' lat='0.01230315793' lon='-0.01831513402' />
+  <node id='-140782' action='modify' visible='true' lat='0.01283629634' lon='-0.01891513402' />
+  <node id='-140783' action='modify' visible='true' lat='0.01339785054' lon='-0.01954713402' />
+  <node id='-140784' action='modify' visible='true' lat='0.01416634783' lon='-0.02041073402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140785' action='modify' visible='true' lat='0.014558956' lon='-0.02083953402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140786' action='modify' visible='true' lat='0.01471773194' lon='-0.02102463402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140787' action='modify' visible='true' lat='0.0151790197' lon='-0.02154733402' />
+  <node id='-140788' action='modify' visible='true' lat='0.01573420967' lon='-0.02217663402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140789' action='modify' visible='true' lat='0.01582309514' lon='-0.02227733402' />
+  <node id='-140790' action='modify' visible='true' lat='0.017486716' lon='-0.02125743402'>
+    <tag k='highway' v='traffic_signals' />
+    <tag k='traffic_signals' v='signal' />
+  </node>
+  <node id='-140791' action='modify' visible='true' lat='0.01738780027' lon='-0.02131743402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140792' action='modify' visible='true' lat='0.01712144258' lon='-0.02148133402'>
+    <tag k='bus' v='yes' />
+    <tag k='name' v='Convention - Lourmel' />
+    <tag k='public_transport' v='stop_position' />
+  </node>
+  <node id='-140793' action='modify' visible='true' lat='0.01600907122' lon='-0.02216343402' />
+  <node id='-140794' action='modify' visible='true' lat='0.01529008776' lon='-0.02260203402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='no' />
+  </node>
+  <node id='-140795' action='modify' visible='true' lat='0.01519117488' lon='-0.02266223402' />
+  <node id='-140796' action='modify' visible='true' lat='0.01510624058' lon='-0.02271553402'>
+    <tag k='button_operated' v='no' />
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+    <tag k='traffic_signals:vibration' v='no' />
+  </node>
+  <node id='-140797' action='modify' visible='true' lat='0.01428546712' lon='-0.02323083402' />
+  <node id='-140798' action='modify' visible='true' lat='0.01375110307' lon='-0.02367243402' />
+  <node id='-140799' action='modify' visible='true' lat='0.01290026104' lon='-0.02439023402'>
+    <tag k='bus' v='yes' />
+    <tag k='name' v='Lourmel - Félix Faure' />
+    <tag k='public_transport' v='stop_position' />
+  </node>
+  <node id='-140800' action='modify' visible='true' lat='0.0127771936' lon='-0.02449403402'>
+    <tag k='highway' v='traffic_signals' />
+  </node>
+  <node id='-140801' action='modify' visible='true' lat='0.01275060499' lon='-0.02451523402'>
+    <tag k='button_operated' v='no' />
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+    <tag k='traffic_signals:vibration' v='yes' />
+  </node>
+  <node id='-140802' action='modify' visible='true' lat='0.01260839403' lon='-0.02462773402' />
+  <node id='-140803' action='modify' visible='true' lat='0.01509332571' lon='-0.02251633402'>
+    <tag k='button_operated' v='no' />
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+    <tag k='traffic_signals:vibration' v='no' />
+  </node>
+  <node id='-140804' action='modify' visible='true' lat='0.01442418663' lon='-0.02151923402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140805' action='modify' visible='true' lat='0.0167596656' lon='-0.02453613402' />
+  <node id='-140806' action='modify' visible='true' lat='0.01669022771' lon='-0.02447033402'>
+    <tag k='check_date:crossing' v='2021-06-21' />
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='no' />
+  </node>
+  <node id='-140807' action='modify' visible='true' lat='0.01628864397' lon='-0.02406783402' />
+  <node id='-140808' action='modify' visible='true' lat='0.01527155108' lon='-0.02276303402'>
+    <tag k='button_operated' v='no' />
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+    <tag k='traffic_signals:vibration' v='no' />
+  </node>
+  <node id='-140809' action='modify' visible='true' lat='0.01891394296' lon='-0.02331563402' />
+  <node id='-140810' action='modify' visible='true' lat='0.01879466448' lon='-0.02336123402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140811' action='modify' visible='true' lat='0.01729040411' lon='-0.02424333402' />
+  <node id='-140812' action='modify' visible='true' lat='0.01685934023' lon='-0.02447763402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='no' />
+  </node>
+  <node id='-140813' action='modify' visible='true' lat='0.01629274641' lon='-0.02586843402' />
+  <node id='-140814' action='modify' visible='true' lat='0.01624245362' lon='-0.02578083402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140815' action='modify' visible='true' lat='0.01590073706' lon='-0.02518723402' />
+  <node id='-140816' action='modify' visible='true' lat='0.0158887337' lon='-0.02513763402' />
+  <node id='-140817' action='modify' visible='true' lat='0.0158913167' lon='-0.02506643402' />
+  <node id='-140818' action='modify' visible='true' lat='0.01591547536' lon='-0.02502093402' />
+  <node id='-140819' action='modify' visible='true' lat='0.01668597332' lon='-0.02457423402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140820' action='modify' visible='true' lat='0.01747516823' lon='-0.02519823402'>
+    <tag k='junction' v='yes' />
+    <tag k='name' v='Rond-Point Saint-Charles' />
+    <tag k='ref:FR:FANTOIR' v='751158512Y' />
+    <tag k='wikidata' v='Q21098132' />
+    <tag k='wikipedia' v='fr:Rond-point Saint-Charles' />
+  </node>
+  <node id='-140821' action='modify' visible='true' lat='0.01726822029' lon='-0.02500823402'>
+    <tag k='check_date:crossing' v='2021-06-21' />
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140822' action='modify' visible='true' lat='0.01681542868' lon='-0.02458793402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140823' action='modify' visible='true' lat='0.01754354322' lon='-0.02133933402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140824' action='modify' visible='true' lat='0.01758046574' lon='-0.02139253402'>
+    <tag k='cycleway' v='asl' />
+    <tag k='direction' v='backward' />
+  </node>
+  <node id='-140825' action='modify' visible='true' lat='0.01777222003' lon='-0.02166903402'>
+    <tag k='bus' v='yes' />
+    <tag k='name' v='Convention - Lourmel' />
+    <tag k='network' v='RATP' />
+    <tag k='operator' v='RATP' />
+    <tag k='public_transport' v='stop_position' />
+    <tag k='source' v='survey' />
+  </node>
+  <node id='-140826' action='modify' visible='true' lat='0.0178355811' lon='-0.02176033402' />
+  <node id='-140827' action='modify' visible='true' lat='0.01794695692' lon='-0.02192103402'>
+    <tag k='bus' v='yes' />
+    <tag k='name' v='Convention - Lourmel' />
+    <tag k='network' v='RATP' />
+    <tag k='operator' v='RATP' />
+    <tag k='public_transport' v='stop_position' />
+    <tag k='source' v='survey' />
+  </node>
+  <node id='-140828' action='modify' visible='true' lat='0.0185395459' lon='-0.02277533402' />
+  <node id='-140829' action='modify' visible='true' lat='0.01886395234' lon='-0.02324323402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140830' action='modify' visible='true' lat='0.0159689587' lon='-0.01906533402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140831' action='modify' visible='true' lat='0.01601104646' lon='-0.01912633402'>
+    <tag k='cycleway' v='asl' />
+    <tag k='direction' v='backward' />
+  </node>
+  <node id='-140832' action='modify' visible='true' lat='0.01640503163' lon='-0.01969693402' />
+  <node id='-140833' action='modify' visible='true' lat='0.01697648847' lon='-0.02052213402' />
+  <node id='-140834' action='modify' visible='true' lat='0.01707297257' lon='-0.02065953402' />
+  <node id='-140835' action='modify' visible='true' lat='0.01743064854' lon='-0.02117633402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='highway' v='crossing' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140836' action='modify' visible='true' lat='0.01744067687' lon='-0.02119093402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140837' action='modify' visible='true' lat='0.01706659094' lon='-0.02045623402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140838' action='modify' visible='true' lat='0.01747532017' lon='-0.02015753402' />
+  <node id='-140839' action='modify' visible='true' lat='0.01786217149' lon='-0.01987473402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='incorrect' />
+  </node>
+  <node id='-140840' action='modify' visible='true' lat='0.01791823927' lon='-0.01983373402' />
+  <node id='-140841' action='modify' visible='true' lat='0.01850353459' lon='-0.02064813402' />
+  <node id='-140842' action='modify' visible='true' lat='0.01843515874' lon='-0.02068883402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140843' action='modify' visible='true' lat='0.01803143856' lon='-0.02093103402' />
+  <node id='-140844' action='modify' visible='true' lat='0.0176310633' lon='-0.02117093402'>
+    <tag k='cycleway' v='asl' />
+    <tag k='direction' v='forward' />
+  </node>
+  <node id='-140845' action='modify' visible='true' lat='0.01757499574' lon='-0.02120453402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140846' action='modify' visible='true' lat='0.0165712566' lon='-0.01795933402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140847' action='modify' visible='true' lat='0.01679506831' lon='-0.01827093402' />
+  <node id='-140848' action='modify' visible='true' lat='0.01683928374' lon='-0.01833243402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140849' action='modify' visible='true' lat='0.01734236897' lon='-0.01903233402' />
+  <node id='-140850' action='modify' visible='true' lat='0.01736637614' lon='-0.01906573402' />
+  <node id='-140851' action='modify' visible='true' lat='0.01784378613' lon='-0.01973013402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140852' action='modify' visible='true' lat='0.0179703565' lon='-0.01990633402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140853' action='modify' visible='true' lat='0.01844837807' lon='-0.02057143402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140854' action='modify' visible='true' lat='0.01649452565' lon='-0.01963603402'>
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140855' action='modify' visible='true' lat='0.01650668104' lon='-0.01962783402'>
+    <tag k='barrier' v='gate' />
+  </node>
+  <node id='-140856' action='modify' visible='true' lat='0.01721473604' lon='-0.01912013402'>
+    <tag k='barrier' v='gate' />
+  </node>
+  <node id='-140857' action='modify' visible='true' lat='0.01729769742' lon='-0.01906303402'>
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140858' action='modify' visible='true' lat='0.01728250302' lon='-0.01638363402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='no' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140859' action='modify' visible='true' lat='0.01702040012' lon='-0.01619403402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140860' action='modify' visible='true' lat='0.01694017402' lon='-0.01613613402' />
+  <node id='-140861' action='modify' visible='true' lat='0.01686511407' lon='-0.01608673402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140862' action='modify' visible='true' lat='0.01657930956' lon='-0.01589823402' />
+  <node id='-140863' action='modify' visible='true' lat='0.01631021974' lon='-0.01574823402' />
+  <node id='-140864' action='modify' visible='true' lat='0.0162195104' lon='-0.01569533402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140865' action='modify' visible='true' lat='0.01596394463' lon='-0.01555603402'>
+    <tag k='highway' v='traffic_signals' />
+    <tag k='traffic_signals' v='signal' />
+  </node>
+  <node id='-140866' action='modify' visible='true' lat='0.01579574575' lon='-0.01545593402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='highway' v='crossing' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140867' action='modify' visible='true' lat='0.0157045812' lon='-0.01540163402'>
+    <tag k='highway' v='traffic_signals' />
+  </node>
+  <node id='-140868' action='modify' visible='true' lat='0.01993305985' lon='-0.02047133402' />
+  <node id='-140869' action='modify' visible='true' lat='0.01984447348' lon='-0.02031913402'>
+    <tag k='crossing' v='unmarked' />
+    <tag k='crossing:markings' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140870' action='modify' visible='true' lat='0.01862539571' lon='-0.01816063402' />
+  <node id='-140871' action='modify' visible='true' lat='0.01831436155' lon='-0.01759833402' />
+  <node id='-140872' action='modify' visible='true' lat='0.01808279614' lon='-0.01725573402' />
+  <node id='-140873' action='modify' visible='true' lat='0.01799071718' lon='-0.01712103402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140874' action='modify' visible='true' lat='0.01783208636' lon='-0.01691163402' />
+  <node id='-140875' action='modify' visible='true' lat='0.01745526352' lon='-0.01652663402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing:bollard' v='no' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='no' />
+    <tag k='traffic_signals:sound' v='yes' />
+    <tag k='wheelchair' v='yes' />
+  </node>
+  <node id='-140876' action='modify' visible='true' lat='0.0181628715' lon='-0.01448283402' />
+  <node id='-140877' action='modify' visible='true' lat='0.01805757318' lon='-0.01453933402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140878' action='modify' visible='true' lat='0.01746696323' lon='-0.01481693402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+  </node>
+  <node id='-140879' action='modify' visible='true' lat='0.0167974994' lon='-0.01514853402' />
+  <node id='-140880' action='modify' visible='true' lat='0.01627344978' lon='-0.01538653402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140881' action='modify' visible='true' lat='0.01564593206' lon='-0.01570633402'>
+    <tag k='highway' v='traffic_signals' />
+    <tag k='traffic_signals' v='signal' />
+  </node>
+  <node id='-140882' action='modify' visible='true' lat='0.01559214507' lon='-0.01573173402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140883' action='modify' visible='true' lat='0.01532229904' lon='-0.01584913402' />
+  <node id='-140884' action='modify' visible='true' lat='0.01204183184' lon='-0.01741623402' />
+  <node id='-140885' action='modify' visible='true' lat='0.01220333734' lon='-0.01734893402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='source' v='survey' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+    <tag k='wheelchair' v='yes' />
+  </node>
+  <node id='-140886' action='modify' visible='true' lat='0.01225924901' lon='-0.01732573402' />
+  <node id='-140887' action='modify' visible='true' lat='0.01234053372' lon='-0.01728883402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140888' action='modify' visible='true' lat='0.01301709932' lon='-0.01699443402' />
+  <node id='-140889' action='modify' visible='true' lat='0.0136082825' lon='-0.01673603402' />
+  <node id='-140890' action='modify' visible='true' lat='0.01406105503' lon='-0.01651603402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140891' action='modify' visible='true' lat='0.01427467952' lon='-0.01640853402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140892' action='modify' visible='true' lat='0.01467017509' lon='-0.01619683402' />
+  <node id='-140893' action='modify' visible='true' lat='0.01518935161' lon='-0.01592003402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140894' action='modify' visible='true' lat='0.0156453243' lon='-0.01547043402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing:bollard' v='contrasted' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+    <tag k='wheelchair' v='yes' />
+  </node>
+  <node id='-140895' action='modify' visible='true' lat='0.01562481231' lon='-0.01533683402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='highway' v='crossing' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140896' action='modify' visible='true' lat='0.01546709806' lon='-0.01520883402'>
+    <tag k='bus' v='yes' />
+    <tag k='public_transport' v='stop_position' />
+  </node>
+  <node id='-140897' action='modify' visible='true' lat='0.01409645649' lon='-0.01408923402' />
+  <node id='-140898' action='modify' visible='true' lat='0.01371296691' lon='-0.01380543402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing:bollard' v='contrasted' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+    <tag k='wheelchair' v='yes' />
+  </node>
+  <node id='-140899' action='modify' visible='true' lat='0.01356756349' lon='-0.01372643402'>
+    <tag k='highway' v='traffic_signals' />
+  </node>
+  <node id='-140900' action='modify' visible='true' lat='0.01351879187' lon='-0.01383053402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing:bollard' v='contrasted' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+    <tag k='wheelchair' v='yes' />
+  </node>
+  <node id='-140901' action='modify' visible='true' lat='0.01335075032' lon='-0.01420803402' />
+  <node id='-140902' action='modify' visible='true' lat='0.01325472675' lon='-0.01442363402' />
+  <node id='-140903' action='modify' visible='true' lat='0.01322069311' lon='-0.01450383402' />
+  <node id='-140904' action='modify' visible='true' lat='0.01315262587' lon='-0.01466383402'>
+    <tag k='cycleway' v='asl' />
+    <tag k='direction' v='forward' />
+  </node>
+  <node id='-140905' action='modify' visible='true' lat='0.01313424165' lon='-0.01470703402'>
+    <tag k='highway' v='traffic_signals' />
+  </node>
+  <node id='-140906' action='modify' visible='true' lat='0.01312558132' lon='-0.01472743402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140907' action='modify' visible='true' lat='0.01301497222' lon='-0.01501933402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140908' action='modify' visible='true' lat='0.01287762269' lon='-0.01537243402' />
+  <node id='-140909' action='modify' visible='true' lat='0.01280834028' lon='-0.01554553402'>
+    <tag k='bus' v='yes' />
+    <tag k='name' v='Convention - Lecourbe' />
+    <tag k='public_transport' v='stop_position' />
+  </node>
+  <node id='-140910' action='modify' visible='true' lat='0.01235557519' lon='-0.01665743402' />
+  <node id='-140911' action='modify' visible='true' lat='0.01213906935' lon='-0.01718383402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140912' action='modify' visible='true' lat='0.01124312154' lon='-0.01222013402'>
+    <tag k='highway' v='traffic_signals' />
+    <tag k='survey:date' v='2018-05-27' />
+  </node>
+  <node id='-140913' action='modify' visible='true' lat='0.01133853485' lon='-0.01235783402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140914' action='modify' visible='true' lat='0.01158086695' lon='-0.01271003402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='no' />
+  </node>
+  <node id='-140915' action='modify' visible='true' lat='0.011661999' lon='-0.01283113402' />
+  <node id='-140916' action='modify' visible='true' lat='0.01175437417' lon='-0.01296053402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140917' action='modify' visible='true' lat='0.01264470641' lon='-0.01423413402'>
+    <tag k='bus' v='yes' />
+    <tag k='name' v='Convention - Lecourbe' />
+    <tag k='public_transport' v='stop_position' />
+    <tag k='source' v='survey' />
+  </node>
+  <node id='-140918' action='modify' visible='true' lat='0.01268983104' lon='-0.01430053402' />
+  <node id='-140919' action='modify' visible='true' lat='0.01282885152' lon='-0.01450533402' />
+  <node id='-140920' action='modify' visible='true' lat='0.01285027437' lon='-0.01453633402' />
+  <node id='-140921' action='modify' visible='true' lat='0.01294067582' lon='-0.01466743402'>
+    <tag k='cycleway' v='asl' />
+    <tag k='direction' v='forward' />
+  </node>
+  <node id='-140922' action='modify' visible='true' lat='0.01296103516' lon='-0.01469693402'>
+    <tag k='highway' v='traffic_signals' />
+    <tag k='traffic_signals:direction' v='forward' />
+  </node>
+  <node id='-140923' action='modify' visible='true' lat='0.01297789998' lon='-0.01472133402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing:island' v='no' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140924' action='modify' visible='true' lat='0.01303654706' lon='-0.01480833402' />
+  <node id='-140925' action='modify' visible='true' lat='0.01282626862' lon='-0.01535053402' />
+  <node id='-140926' action='modify' visible='true' lat='0.01277901682' lon='-0.01533033402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_sign:backward' v='FR:B51' />
+    <tag k='traffic_sign:forward' v='FR:B30' />
+  </node>
+  <node id='-140927' action='modify' visible='true' lat='0.01143896204' lon='-0.01464443402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140928' action='modify' visible='true' lat='0.01133655973' lon='-0.01459193402' />
+  <node id='-140929' action='modify' visible='true' lat='0.01163130859' lon='-0.01404923402' />
+  <node id='-140930' action='modify' visible='true' lat='0.01171608708' lon='-0.01409313402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140931' action='modify' visible='true' lat='0.01265245509' lon='-0.01456303402' />
+  <node id='-140932' action='modify' visible='true' lat='0.01271869866' lon='-0.01455223402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_sign:forward' v='FR:B51' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140933' action='modify' visible='true' lat='0.01121076005' lon='-0.01484493402'>
+    <tag k='noexit' v='yes' />
+  </node>
+  <node id='-140934' action='modify' visible='true' lat='0.01177032713' lon='-0.01379133402'>
+    <tag k='noexit' v='yes' />
+  </node>
+  <node id='-140935' action='modify' visible='true' lat='0.01020619324' lon='-0.01488003402' />
+  <node id='-140936' action='modify' visible='true' lat='0.01031467123' lon='-0.01496863402'>
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140937' action='modify' visible='true' lat='0.01032181195' lon='-0.01497443402' />
+  <node id='-140938' action='modify' visible='true' lat='0.01044852174' lon='-0.01507783402' />
+  <node id='-140939' action='modify' visible='true' lat='0.01089018451' lon='-0.01542643402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='no' />
+  </node>
+  <node id='-140940' action='modify' visible='true' lat='0.01097830466' lon='-0.01549593402' />
+  <node id='-140941' action='modify' visible='true' lat='0.01102980942' lon='-0.01553943402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='no' />
+  </node>
+  <node id='-140942' action='modify' visible='true' lat='0.01225621033' lon='-0.01658813402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_sign:forward' v='FR:B51' />
+  </node>
+  <node id='-140943' action='modify' visible='true' lat='0.01230847563' lon='-0.01661883402' />
+  <node id='-140944' action='modify' visible='true' lat='0.01092148234' lon='-0.01556583402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='no' />
+  </node>
+  <node id='-140945' action='modify' visible='true' lat='0.01059179218' lon='-0.01597133402' />
+  <node id='-140946' action='modify' visible='true' lat='0.01050534371' lon='-0.01608623402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140947' action='modify' visible='true' lat='0.01030585929' lon='-0.01635123402' />
+  <node id='-140948' action='modify' visible='true' lat='0.01023931396' lon='-0.01689773402' />
+  <node id='-140949' action='modify' visible='true' lat='0.01019358307' lon='-0.01728173402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='no' />
+    <tag k='traffic_sign:forward' v='FR:B51' />
+  </node>
+  <node id='-140950' action='modify' visible='true' lat='0.01018522693' lon='-0.01741233402' />
+  <node id='-140951' action='modify' visible='true' lat='0.007824882' lon='-0.01712293402'>
+    <tag k='highway' v='traffic_signals' />
+    <tag k='traffic_signals' v='signal' />
+  </node>
+  <node id='-140952' action='modify' visible='true' lat='0.00793928168' lon='-0.01713703402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing:island' v='no' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140953' action='modify' visible='true' lat='0.00876758307' lon='-0.01723313402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+  </node>
+  <node id='-140954' action='modify' visible='true' lat='0.00887575516' lon='-0.01724583402' />
+  <node id='-140955' action='modify' visible='true' lat='0.00931437024' lon='-0.01729373402' />
+  <node id='-140956' action='modify' visible='true' lat='0.01008951121' lon='-0.01740013402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing:island' v='no' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140957' action='modify' visible='true' lat='0.01027744838' lon='-0.01741663402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:island' v='no' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140958' action='modify' visible='true' lat='0.01135008169' lon='-0.01751973402'>
+    <tag k='bus' v='yes' />
+    <tag k='name' v='Duranton' />
+    <tag k='public_transport' v='stop_position' />
+  </node>
+  <node id='-140959' action='modify' visible='true' lat='0.01168296572' lon='-0.01755783402' />
+  <node id='-140960' action='modify' visible='true' lat='0.01191557519' lon='-0.01746603402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='source' v='survey' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+    <tag k='wheelchair' v='yes' />
+  </node>
+  <node id='-140961' action='modify' visible='true' lat='0.01198956673' lon='-0.01743683402' />
+  <node id='-140962' action='modify' visible='true' lat='0.01192286799' lon='-0.01771543402' />
+  <node id='-140963' action='modify' visible='true' lat='0.01190797853' lon='-0.01775293402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='highway' v='crossing' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140964' action='modify' visible='true' lat='0.01184325499' lon='-0.01791683402'>
+    <tag k='crossing' v='traffic_signals' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+    <tag k='traffic_signals:sound' v='yes' />
+  </node>
+  <node id='-140965' action='modify' visible='true' lat='0.01173523062' lon='-0.01819873402'>
+    <tag k='bus' v='yes' />
+    <tag k='name' v='Duranton' />
+    <tag k='public_transport' v='stop_position' />
+  </node>
+  <node id='-140966' action='modify' visible='true' lat='0.01162462355' lon='-0.01847103402' />
+  <node id='-140967' action='modify' visible='true' lat='0.01159438895' lon='-0.01855073402' />
+  <node id='-140968' action='modify' visible='true' lat='0.01137606209' lon='-0.01911023402' />
+  <node id='-140969' action='modify' visible='true' lat='0.01136086887' lon='-0.01914653402' />
+  <node id='-140970' action='modify' visible='true' lat='0.01130495786' lon='-0.01929913402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140971' action='modify' visible='true' lat='0.01109817863' lon='-0.01985763402' />
+  <node id='-140972' action='modify' visible='true' lat='0.01055654429' lon='-0.02118373402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140973' action='modify' visible='true' lat='0.01052828521' lon='-0.02124243402' />
+  <node id='-140974' action='modify' visible='true' lat='0.01034019549' lon='-0.02163193402'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140975' action='modify' visible='true' lat='0.01027516943' lon='-0.02176043402' />
+  <node id='-140976' action='modify' visible='true' lat='0.01388799837' lon='-0.02194353402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <node id='-140977' action='modify' visible='true' lat='0.01306435126' lon='-0.02106073402'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140978' action='modify' visible='true' lat='0.01295936387' lon='-0.02094823402' />
+  <node id='-140979' action='modify' visible='true' lat='0.01289068912' lon='-0.02087083402'>
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='-140980' action='modify' visible='true' lat='0.01142726325' lon='-0.01921963402'>
+    <tag k='crossing' v='uncontrolled' />
+    <tag k='crossing_ref' v='zebra' />
+    <tag k='highway' v='crossing' />
+    <tag k='kerb' v='lowered' />
+    <tag k='tactile_paving' v='yes' />
+  </node>
+  <way id='-112912' action='modify' visible='true'>
+    <nd ref='-140724' />
+    <nd ref='-140725' />
+    <nd ref='-140726' />
+    <nd ref='-140727' />
+    <nd ref='-140728' />
+    <nd ref='-140729' />
+    <nd ref='-140730' />
+    <nd ref='-140731' />
+    <nd ref='-140732' />
+    <nd ref='-140733' />
+    <nd ref='-140734' />
+    <nd ref='-140735' />
+    <nd ref='-140736' />
+    <nd ref='-140737' />
+    <nd ref='-140738' />
+    <tag k='cycleway:both' v='no' />
+    <tag k='highway' v='secondary' />
+    <tag k='lane_markings' v='no' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue de la Convention' />
+    <tag k='sidewalk' v='both' />
+    <tag k='source' v='cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre;mise à jour : 2009' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112913' action='modify' visible='true'>
+    <nd ref='-140739' />
+    <nd ref='-140740' />
+    <nd ref='-140741' />
+    <nd ref='-140742' />
+    <nd ref='-140743' />
+    <nd ref='-140744' />
+    <nd ref='-140745' />
+    <nd ref='-140746' />
+    <nd ref='-140747' />
+    <nd ref='-140748' />
+    <nd ref='-140749' />
+    <nd ref='-140750' />
+    <nd ref='-140751' />
+    <nd ref='-140752' />
+    <nd ref='-140753' />
+    <nd ref='-140754' />
+    <nd ref='-140755' />
+    <nd ref='-140738' />
+    <nd ref='-140756' />
+    <nd ref='-140757' />
+    <nd ref='-140758' />
+    <nd ref='-140759' />
+    <nd ref='-140760' />
+    <nd ref='-140761' />
+    <nd ref='-140762' />
+    <nd ref='-140763' />
+    <nd ref='-140764' />
+    <tag k='cycleway:both' v='no' />
+    <tag k='highway' v='tertiary' />
+    <tag k='lanes' v='2' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Avenue Félix Faure' />
+    <tag k='sidewalk' v='both' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112914' action='modify' visible='true'>
+    <nd ref='-140765' />
+    <nd ref='-140766' />
+    <nd ref='-140767' />
+    <nd ref='-140768' />
+    <nd ref='-140769' />
+    <nd ref='-140770' />
+    <nd ref='-140771' />
+    <nd ref='-140772' />
+    <nd ref='-140773' />
+    <nd ref='-140733' />
+    <tag k='cycleway:left' v='opposite' />
+    <tag k='highway' v='residential' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue de Plélo' />
+    <tag k='oneway' v='yes' />
+    <tag k='oneway:bicycle' v='no' />
+    <tag k='sidewalk' v='both' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112915' action='modify' visible='true'>
+    <nd ref='-140774' />
+    <nd ref='-140775' />
+    <nd ref='-140776' />
+    <nd ref='-140771' />
+    <nd ref='-140777' />
+    <nd ref='-140778' />
+    <nd ref='-140754' />
+    <tag k='cycleway:both' v='no' />
+    <tag k='highway' v='residential' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue Houdart de Lamotte' />
+    <tag k='sidewalk' v='both' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112916' action='modify' visible='true'>
+    <nd ref='-140779' />
+    <nd ref='-140780' />
+    <nd ref='-140781' />
+    <nd ref='-140782' />
+    <nd ref='-140783' />
+    <nd ref='-140765' />
+    <nd ref='-140784' />
+    <nd ref='-140785' />
+    <nd ref='-140749' />
+    <tag k='cycleway:left' v='lane' />
+    <tag k='cycleway:left:lane' v='advisory' />
+    <tag k='cycleway:left:oneway' v='-1' />
+    <tag k='cycleway:right' v='no' />
+    <tag k='highway' v='residential' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue Duranton' />
+    <tag k='oneway' v='yes' />
+    <tag k='oneway:bicycle' v='no' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112917' action='modify' visible='true'>
+    <nd ref='-140749' />
+    <nd ref='-140786' />
+    <nd ref='-140787' />
+    <nd ref='-140788' />
+    <nd ref='-140789' />
+    <tag k='cycleway:left' v='opposite' />
+    <tag k='highway' v='residential' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue Duranton' />
+    <tag k='oneway' v='yes' />
+    <tag k='oneway:bicycle' v='no' />
+    <tag k='sidewalk' v='both' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112918' action='modify' visible='true'>
+    <nd ref='-140790' />
+    <nd ref='-140791' />
+    <nd ref='-140792' />
+    <nd ref='-140793' />
+    <nd ref='-140789' />
+    <nd ref='-140794' />
+    <nd ref='-140795' />
+    <nd ref='-140796' />
+    <nd ref='-140797' />
+    <nd ref='-140798' />
+    <nd ref='-140799' />
+    <nd ref='-140800' />
+    <nd ref='-140801' />
+    <nd ref='-140802' />
+    <tag k='cycleway:left' v='lane' />
+    <tag k='cycleway:left:lane' v='exclusive' />
+    <tag k='cycleway:left:oneway' v='-1' />
+    <tag k='cycleway:right' v='no' />
+    <tag k='highway' v='residential' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue de Lourmel' />
+    <tag k='oneway' v='yes' />
+    <tag k='oneway:bicycle' v='no' />
+    <tag k='sidewalk' v='both' />
+    <tag k='source:maxspeed' v='sign' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112919' action='modify' visible='true'>
+    <nd ref='-140795' />
+    <nd ref='-140803' />
+    <nd ref='-140804' />
+    <nd ref='-140747' />
+    <tag k='cycleway:both' v='no' />
+    <tag k='cycleway:left' v='opposite' />
+    <tag k='highway' v='residential' />
+    <tag k='lane_markings' v='no' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='maxspeed:type' v='sign' />
+    <tag k='name' v='Rue Tisserand' />
+    <tag k='oneway' v='yes' />
+    <tag k='oneway:bicycle' v='no' />
+    <tag k='sidewalk' v='both' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112920' action='modify' visible='true'>
+    <nd ref='-140805' />
+    <nd ref='-140806' />
+    <nd ref='-140807' />
+    <nd ref='-140808' />
+    <nd ref='-140795' />
+    <tag k='cycleway:left' v='opposite' />
+    <tag k='highway' v='residential' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='maxspeed:type' v='sign' />
+    <tag k='name' v='Rue des Cévennes' />
+    <tag k='oneway' v='yes' />
+    <tag k='oneway:bicycle' v='no' />
+    <tag k='sidewalk' v='both' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112921' action='modify' visible='true'>
+    <nd ref='-140809' />
+    <nd ref='-140810' />
+    <nd ref='-140811' />
+    <nd ref='-140812' />
+    <nd ref='-140805' />
+    <tag k='cycleway' v='opposite' />
+    <tag k='highway' v='residential' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='maxspeed:type' v='sign' />
+    <tag k='name' v='Rue Lacordaire' />
+    <tag k='oneway' v='yes' />
+    <tag k='oneway:bicycle' v='no' />
+    <tag k='sidewalk' v='both' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112922' action='modify' visible='true'>
+    <nd ref='-140813' />
+    <nd ref='-140814' />
+    <nd ref='-140815' />
+    <nd ref='-140816' />
+    <nd ref='-140817' />
+    <nd ref='-140818' />
+    <nd ref='-140819' />
+    <nd ref='-140805' />
+    <tag k='cycleway:left' v='opposite' />
+    <tag k='highway' v='residential' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='maxspeed:type' v='sign' />
+    <tag k='name' v='Rue Lacordaire' />
+    <tag k='oneway' v='yes' />
+    <tag k='oneway:bicycle' v='no' />
+    <tag k='sidewalk' v='both' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112923' action='modify' visible='true'>
+    <nd ref='-140820' />
+    <nd ref='-140821' />
+    <nd ref='-140822' />
+    <nd ref='-140805' />
+    <tag k='cycleway:left' v='opposite' />
+    <tag k='highway' v='residential' />
+    <tag k='lane_markings' v='no' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='maxspeed:type' v='sign' />
+    <tag k='name' v='Rue des Cévennes' />
+    <tag k='oneway' v='yes' />
+    <tag k='oneway:bicycle' v='no' />
+    <tag k='sidewalk' v='both' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112924' action='modify' visible='true'>
+    <nd ref='-140790' />
+    <nd ref='-140823' />
+    <nd ref='-140824' />
+    <nd ref='-140825' />
+    <nd ref='-140826' />
+    <nd ref='-140827' />
+    <nd ref='-140828' />
+    <nd ref='-140829' />
+    <nd ref='-140809' />
+    <tag k='bicycle:lanes:backward' v='yes|designated' />
+    <tag k='busway:left' v='lane' />
+    <tag k='cycleway:left' v='share_busway' />
+    <tag k='foot' v='designated' />
+    <tag k='highway' v='secondary' />
+    <tag k='lanes' v='3' />
+    <tag k='lanes:backward' v='2' />
+    <tag k='lanes:forward' v='1' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='maxspeed:type' v='sign' />
+    <tag k='name' v='Rue de la Convention' />
+    <tag k='psv:lanes:backward' v='yes|designated' />
+    <tag k='shoulder' v='no' />
+    <tag k='sidewalk' v='both' />
+    <tag k='source' v='cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre ; mise à jour : 2009' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112925' action='modify' visible='true'>
+    <nd ref='-140738' />
+    <nd ref='-140830' />
+    <nd ref='-140831' />
+    <nd ref='-140832' />
+    <nd ref='-140833' />
+    <nd ref='-140834' />
+    <nd ref='-140835' />
+    <nd ref='-140836' />
+    <nd ref='-140790' />
+    <tag k='bicycle:lanes:backward' v='yes|designated' />
+    <tag k='busway:left' v='lane' />
+    <tag k='cycleway:left' v='share_busway' />
+    <tag k='foot' v='designated' />
+    <tag k='highway' v='secondary' />
+    <tag k='lanes' v='3' />
+    <tag k='lanes:backward' v='2' />
+    <tag k='lanes:forward' v='1' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue de la Convention' />
+    <tag k='psv:lanes:backward' v='yes|designated' />
+    <tag k='shoulder' v='no' />
+    <tag k='sidewalk' v='both' />
+    <tag k='source' v='cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre;mise à jour : 2009' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112926' action='modify' visible='true'>
+    <nd ref='-140833' />
+    <nd ref='-140837' />
+    <nd ref='-140838' />
+    <nd ref='-140839' />
+    <nd ref='-140840' />
+    <tag k='highway' v='residential' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue Sarasate' />
+    <tag k='oneway' v='yes' />
+    <tag k='sidewalk' v='both' />
+    <tag k='surface' v='concrete' />
+  </way>
+  <way id='-112927' action='modify' visible='true'>
+    <nd ref='-140841' />
+    <nd ref='-140842' />
+    <nd ref='-140843' />
+    <nd ref='-140844' />
+    <nd ref='-140845' />
+    <nd ref='-140790' />
+    <tag k='bicycle:lanes' v='yes|designated' />
+    <tag k='busway:right' v='lane' />
+    <tag k='cycleway:left' v='lane' />
+    <tag k='cycleway:left:lane' v='exclusive' />
+    <tag k='cycleway:left:oneway' v='-1' />
+    <tag k='cycleway:right' v='share_busway' />
+    <tag k='highway' v='residential' />
+    <tag k='lanes' v='2' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue de Lourmel' />
+    <tag k='oneway' v='yes' />
+    <tag k='oneway:bicycle' v='no' />
+    <tag k='psv:lanes' v='yes|designated' />
+    <tag k='sidewalk' v='both' />
+    <tag k='source:maxspeed' v='sign' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112928' action='modify' visible='true'>
+    <nd ref='-140761' />
+    <nd ref='-140846' />
+    <nd ref='-140847' />
+    <nd ref='-140848' />
+    <nd ref='-140849' />
+    <nd ref='-140850' />
+    <nd ref='-140851' />
+    <nd ref='-140840' />
+    <nd ref='-140852' />
+    <nd ref='-140853' />
+    <nd ref='-140841' />
+    <tag k='highway' v='residential' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue Oscar Roty' />
+    <tag k='oneway' v='yes' />
+    <tag k='sidewalk' v='both' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112929' action='modify' visible='true'>
+    <nd ref='-140832' />
+    <nd ref='-140854' />
+    <nd ref='-140855' />
+    <nd ref='-140856' />
+    <nd ref='-140857' />
+    <nd ref='-140849' />
+    <tag k='access' v='private' />
+    <tag k='highway' v='service' />
+  </way>
+  <way id='-112930' action='modify' visible='true'>
+    <nd ref='-140764' />
+    <nd ref='-140858' />
+    <nd ref='-140859' />
+    <nd ref='-140860' />
+    <nd ref='-140861' />
+    <nd ref='-140862' />
+    <nd ref='-140863' />
+    <nd ref='-140864' />
+    <nd ref='-140865' />
+    <nd ref='-140866' />
+    <nd ref='-140867' />
+    <tag k='highway' v='residential' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue de Javel' />
+    <tag k='oneway' v='yes' />
+    <tag k='sidewalk' v='separate' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112931' action='modify' visible='true'>
+    <nd ref='-140868' />
+    <nd ref='-140869' />
+    <nd ref='-140870' />
+    <nd ref='-140871' />
+    <nd ref='-140872' />
+    <nd ref='-140873' />
+    <nd ref='-140874' />
+    <nd ref='-140875' />
+    <nd ref='-140764' />
+    <tag k='cycleway:both' v='no' />
+    <tag k='highway' v='residential' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue de Javel' />
+    <tag k='note' v='vitesse 30 temporaire le temps des travaux' />
+    <tag k='oneway' v='yes' />
+    <tag k='sidewalk' v='both' />
+    <tag k='source:maxspeed' v='FR:urban' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112932' action='modify' visible='true'>
+    <nd ref='-140876' />
+    <nd ref='-140877' />
+    <nd ref='-140878' />
+    <nd ref='-140879' />
+    <nd ref='-140880' />
+    <nd ref='-140865' />
+    <tag k='highway' v='residential' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue des Frères Morane' />
+    <tag k='oneway' v='yes' />
+    <tag k='sidewalk' v='separate' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112933' action='modify' visible='true'>
+    <nd ref='-140865' />
+    <nd ref='-140881' />
+    <nd ref='-140882' />
+    <nd ref='-140883' />
+    <tag k='highway' v='residential' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue de la Croix Nivert' />
+    <tag k='oneway' v='yes' />
+    <tag k='sidewalk' v='separate' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112934' action='modify' visible='true'>
+    <nd ref='-140884' />
+    <nd ref='-140885' />
+    <nd ref='-140886' />
+    <nd ref='-140887' />
+    <nd ref='-140888' />
+    <nd ref='-140889' />
+    <nd ref='-140890' />
+    <nd ref='-140729' />
+    <nd ref='-140891' />
+    <nd ref='-140892' />
+    <nd ref='-140893' />
+    <nd ref='-140883' />
+    <nd ref='-140894' />
+    <nd ref='-140867' />
+    <tag k='cycleway:both' v='no' />
+    <tag k='highway' v='tertiary' />
+    <tag k='lanes' v='2' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue de la Croix Nivert' />
+    <tag k='sidewalk' v='separate' />
+    <tag k='source' v='survey' />
+    <tag k='source:maxspeed' v='sign' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112935' action='modify' visible='true'>
+    <nd ref='-140867' />
+    <nd ref='-140895' />
+    <nd ref='-140896' />
+    <nd ref='-140897' />
+    <nd ref='-140898' />
+    <nd ref='-140899' />
+    <tag k='highway' v='residential' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue de Javel' />
+    <tag k='oneway' v='yes' />
+    <tag k='sidewalk' v='separate' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112936' action='modify' visible='true'>
+    <nd ref='-140899' />
+    <nd ref='-140900' />
+    <nd ref='-140901' />
+    <nd ref='-140902' />
+    <nd ref='-140903' />
+    <nd ref='-140904' />
+    <nd ref='-140905' />
+    <nd ref='-140906' />
+    <nd ref='-140724' />
+    <nd ref='-140907' />
+    <nd ref='-140908' />
+    <nd ref='-140909' />
+    <nd ref='-140910' />
+    <nd ref='-140911' />
+    <nd ref='-140884' />
+    <tag k='bicycle:backward' v='use_sidepath' />
+    <tag k='bus:lanes' v='yes|designated' />
+    <tag k='busway:right' v='lane' />
+    <tag k='cycleway:right' v='share_busway' />
+    <tag k='highway' v='secondary' />
+    <tag k='lanes' v='2' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue Lecourbe' />
+    <tag k='oneway' v='yes' />
+    <tag k='psv:lanes' v='yes|designated' />
+    <tag k='sidewalk' v='both' />
+    <tag k='source' v='survey' />
+    <tag k='source:maxspeed' v='FR:urban' />
+    <tag k='surface' v='asphalt' />
+    <tag k='taxi:lanes' v='yes|designated' />
+  </way>
+  <way id='-112937' action='modify' visible='true'>
+    <nd ref='-140912' />
+    <nd ref='-140913' />
+    <nd ref='-140914' />
+    <nd ref='-140915' />
+    <nd ref='-140916' />
+    <nd ref='-140917' />
+    <nd ref='-140918' />
+    <nd ref='-140919' />
+    <nd ref='-140920' />
+    <nd ref='-140921' />
+    <nd ref='-140922' />
+    <nd ref='-140923' />
+    <nd ref='-140924' />
+    <nd ref='-140724' />
+    <tag k='cycleway:both' v='no' />
+    <tag k='highway' v='secondary' />
+    <tag k='lane_markings' v='no' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue de la Convention' />
+    <tag k='sidewalk' v='both' />
+    <tag k='source' v='cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre;mise à jour : 2009' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112938' action='modify' visible='true'>
+    <nd ref='-140908' />
+    <nd ref='-140925' />
+    <nd ref='-140926' />
+    <nd ref='-140927' />
+    <nd ref='-140928' />
+    <tag k='cycleway:left' v='opposite' />
+    <tag k='highway' v='residential' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue François Mouthon' />
+    <tag k='oneway' v='yes' />
+    <tag k='oneway:bicycle' v='no' />
+    <tag k='sidewalk' v='both' />
+    <tag k='surface' v='asphalt' />
+    <tag k='zone:maxspeed' v='FR:30' />
+  </way>
+  <way id='-112939' action='modify' visible='true'>
+    <nd ref='-140929' />
+    <nd ref='-140930' />
+    <nd ref='-140931' />
+    <nd ref='-140932' />
+    <nd ref='-140919' />
+    <tag k='cycleway:left' v='opposite' />
+    <tag k='highway' v='residential' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue du Commandant Léandri' />
+    <tag k='oneway' v='yes' />
+    <tag k='oneway:bicycle' v='no' />
+    <tag k='sidewalk' v='both' />
+    <tag k='surface' v='asphalt' />
+    <tag k='zone:maxspeed' v='FR:30' />
+  </way>
+  <way id='-112940' action='modify' visible='true'>
+    <nd ref='-140928' />
+    <nd ref='-140929' />
+    <tag k='cycleway:left' v='opposite' />
+    <tag k='highway' v='residential' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue Jacques Mawas' />
+    <tag k='oneway' v='yes' />
+    <tag k='oneway:bicycle' v='no' />
+    <tag k='surface' v='concrete' />
+    <tag k='zone:maxspeed' v='FR:30' />
+  </way>
+  <way id='-112941' action='modify' visible='true'>
+    <nd ref='-140933' />
+    <nd ref='-140928' />
+    <tag k='highway' v='residential' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue Jacques Mawas' />
+    <tag k='surface' v='concrete' />
+    <tag k='zone:maxspeed' v='FR:30' />
+  </way>
+  <way id='-112942' action='modify' visible='true'>
+    <nd ref='-140929' />
+    <nd ref='-140934' />
+    <tag k='highway' v='residential' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue Jacques Mawas' />
+    <tag k='surface' v='sett' />
+    <tag k='zone:maxspeed' v='FR:30' />
+  </way>
+  <way id='-112943' action='modify' visible='true'>
+    <nd ref='-140935' />
+    <nd ref='-140936' />
+    <nd ref='-140937' />
+    <nd ref='-140938' />
+    <nd ref='-140939' />
+    <nd ref='-140940' />
+    <nd ref='-140941' />
+    <nd ref='-140942' />
+    <nd ref='-140943' />
+    <nd ref='-140910' />
+    <tag k='access' v='permit' />
+    <tag k='bicycle' v='yes' />
+    <tag k='cycleway:left' v='opposite' />
+    <tag k='foot' v='yes' />
+    <tag k='highway' v='residential' />
+    <tag k='lanes' v='1' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='motor_vehicle' v='permissive' />
+    <tag k='name' v='Rue Saint-Lambert' />
+    <tag k='oneway' v='yes' />
+    <tag k='oneway:bicycle' v='no' />
+    <tag k='parking:lane:left' v='parallel' />
+    <tag k='sidewalk' v='both' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112944' action='modify' visible='true'>
+    <nd ref='-140940' />
+    <nd ref='-140944' />
+    <nd ref='-140945' />
+    <nd ref='-140946' />
+    <nd ref='-140947' />
+    <nd ref='-140948' />
+    <nd ref='-140949' />
+    <nd ref='-140950' />
+    <tag k='access' v='permissive' />
+    <tag k='bicycle' v='yes' />
+    <tag k='cycleway:left' v='opposite' />
+    <tag k='foot' v='yes' />
+    <tag k='highway' v='residential' />
+    <tag k='horse' v='no' />
+    <tag k='lanes' v='1' />
+    <tag k='maxspeed' v='10' />
+    <tag k='motor_vehicle' v='no' />
+    <tag k='name' v='Rue Théodore Deck' />
+    <tag k='oneway' v='yes' />
+    <tag k='oneway:bicycle' v='no' />
+    <tag k='parking' v='surface' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112945' action='modify' visible='true'>
+    <nd ref='-140951' />
+    <nd ref='-140952' />
+    <nd ref='-140953' />
+    <nd ref='-140954' />
+    <nd ref='-140955' />
+    <nd ref='-140956' />
+    <nd ref='-140950' />
+    <nd ref='-140957' />
+    <nd ref='-140958' />
+    <nd ref='-140959' />
+    <tag k='cycleway:both' v='no' />
+    <tag k='highway' v='tertiary' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='maxspeed:type' v='sign' />
+    <tag k='name' v='Rue de la Croix Nivert' />
+    <tag k='source' v='survey' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112946' action='modify' visible='true'>
+    <nd ref='-140959' />
+    <nd ref='-140960' />
+    <nd ref='-140961' />
+    <nd ref='-140884' />
+    <tag k='cycleway:right' v='no' />
+    <tag k='highway' v='tertiary' />
+    <tag k='lanes' v='2' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue de la Croix Nivert' />
+    <tag k='oneway' v='no' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112947' action='modify' visible='true'>
+    <nd ref='-140884' />
+    <nd ref='-140962' />
+    <nd ref='-140963' />
+    <nd ref='-140779' />
+    <nd ref='-140964' />
+    <nd ref='-140965' />
+    <nd ref='-140966' />
+    <nd ref='-140967' />
+    <nd ref='-140968' />
+    <nd ref='-140969' />
+    <nd ref='-140970' />
+    <nd ref='-140971' />
+    <nd ref='-140972' />
+    <nd ref='-140973' />
+    <nd ref='-140974' />
+    <nd ref='-140975' />
+    <tag k='bicycle:backward' v='use_sidepath' />
+    <tag k='cycleway:left' v='separate' />
+    <tag k='cycleway:right' v='lane' />
+    <tag k='cycleway:right:lane' v='exclusive' />
+    <tag k='highway' v='secondary' />
+    <tag k='lanes' v='1' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue Lecourbe' />
+    <tag k='oneway' v='yes' />
+    <tag k='source' v='survey' />
+    <tag k='source:maxspeed' v='FR:urban' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='-112948' action='modify' visible='true'>
+    <nd ref='-140745' />
+    <nd ref='-140976' />
+    <nd ref='-140977' />
+    <nd ref='-140978' />
+    <nd ref='-140979' />
+    <nd ref='-140980' />
+    <nd ref='-140969' />
+    <tag k='cycleway:left' v='opposite' />
+    <tag k='highway' v='residential' />
+    <tag k='lit' v='yes' />
+    <tag k='maxspeed' v='30' />
+    <tag k='name' v='Rue Jean Maridor' />
+    <tag k='oneway' v='yes' />
+    <tag k='oneway:bicycle' v='no' />
+    <tag k='surface' v='asphalt' />
+  </way>
+</osm>
