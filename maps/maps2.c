@@ -1,220 +1,276 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#define M_PI 3.14
+#include <math.h>
 #include "libxml/parser.h"
 #include "libxml/tree.h"
 
 #define MAX_LINE_LENGTH 1000
 
-typedef struct {
-    double x;
-    double y;
-} Coordinate;
+typedef struct 
+{
+    xmlNodePtr way;
+    xmlChar** nodes;
+    int nodecount;
 
+} Ways;
 
-int countNodeHighways(xmlNodePtr node) {
-    int count = 0;
+typedef struct 
+{   
+    double lat;
+    double lon;
+    xmlNodePtr node;
 
-    // Parcourir les nœuds enfants du nœud actuel
-    xmlNodePtr child = node->children;
-    while (child != NULL) {
-        // Vérifier si le nœud est un élément "way"
-        if (child->type == XML_ELEMENT_NODE && xmlStrcmp(child->name, (const xmlChar*)"way") == 0) {
-            // Parcourir les sous-éléments du nœud "way"
-            xmlNodePtr subChild = child->children;
-            while (subChild != NULL) {
-            // Vérifier si le sous-élément est un élément "tag" avec l'attribut "k" égal à "highway"
-                if (subChild->type == XML_ELEMENT_NODE && xmlStrcmp(subChild->name, (const xmlChar*)"tag") == 0) 
-                {
-                    xmlChar* kAttr = xmlGetProp(subChild, (const xmlChar*)"k");
-                    if (kAttr != NULL && xmlStrcmp(kAttr, (const xmlChar*)"highway") == 0) 
-                    {
-                        count++;
+} Nodes;
+
+xmlChar** countNodeOccurrences(xmlNodePtr rootNode, const xmlChar* nodeId, int* occurrenceCount) {
+    xmlChar** wayid = NULL;
+    xmlNodePtr wayNode;
+    // Parcourir les nœuds du document
+    for (wayNode = rootNode->children; wayNode != NULL; wayNode = wayNode->next) {
+        // Vérifier si le nœud est de type "way"
+        if (xmlStrcmp(wayNode->name, (const xmlChar*)"way") == 0) {
+            // Vérifier si le nœud est référencé dans les nœuds de la way
+            xmlNodePtr ndNode;
+            wayid = realloc(wayid,(*occurrenceCount + 1) * sizeof(xmlChar));
+            for (ndNode = wayNode->children; ndNode != NULL; ndNode = ndNode->next) {
+                if (xmlStrcmp(ndNode->name, (const xmlChar*)"nd") == 0) {
+                    xmlChar* ref = xmlGetProp(ndNode, (const xmlChar*)"ref");
+                    if (ref != NULL && xmlStrcmp(ref, nodeId) == 0) {
+                        (*occurrenceCount)++;
+                        wayid[*occurrenceCount] = ref;
                     }
-                    xmlFree(kAttr);
+                    xmlFree(ref);
                 }
-                subChild = subChild->next;
             }
         }
-        child = child->next;
     }
-
-    return count;
+    return wayid;
 }
 
-//Fonction nous permettant de coompter lme nombre de fils d'un noeud
-int countNodeChildren(xmlNodePtr node) 
-{
+
+Ways countNodesInWay(xmlNodePtr wayNode) {
     int count = 0;
-    xmlNodePtr child = node->children;
+    Ways way;
+    way.way = wayNode;
+    way.nodes = NULL;
+    way.nodecount = 0;
 
-    // Parcourir les enfants du nœud
-    while (child != NULL) {
-        // Vérifier si l'élément est un nœud
-        if (child->type == XML_ELEMENT_NODE) {
-            count++;
-        }
-        child = child->next;
-    }
-
-    return count;
-}
-
-void updateMinMaxCoordinates(Coordinate* minCoord, double x, double y) {
-    if (x < minCoord->x)
-        minCoord->x = x;
-    if (y < minCoord->y)
-        minCoord->y = y;
-}
-
-Coordinate findMinCoordinates(xmlNodePtr root) {
-    Coordinate minCoord = { 999, 999 };  // Valeurs initiales élevées pour les coordonnées minimales
-
-    // Parcourir les fils du nœud racine
-    xmlNodePtr child = xmlFirstElementChild(root);
-    while (child != NULL) {
-        // Vérifier si le fils est un élément "node"
-        if (xmlStrcmp(child->name, (const xmlChar*)"node") == 0) {
-            const xmlChar* latAttr = xmlGetProp(child, (const xmlChar*)"lat");
-            const xmlChar* lonAttr = xmlGetProp(child, (const xmlChar*)"lon");
-
-            double lat = atof((const char*)latAttr);
-            double lon = atof((const char*)lonAttr);
-
-            // Mettre à jour les coordonnées minimales
-            updateMinMaxCoordinates(&minCoord, lon, lat);
-
-            xmlFree((void*)latAttr);
-            xmlFree((void*)lonAttr);
+    // Parcourir les enfants du nœud way
+    xmlNodePtr childNode = wayNode->children;
+    while (childNode != NULL) {
+        // Vérifier si le nœud est de type "nd"
+        if (xmlStrcmp(childNode->name, (const xmlChar*)"nd") == 0) {
+            xmlChar* ref = xmlGetProp(childNode, (const xmlChar*)"ref");
+            if (ref != NULL) {
+                way.nodes = realloc(way.nodes, (count + 1) * sizeof(xmlNodePtr));
+                if (way.nodes == NULL) {
+                    printf("Erreur lors de l'allocation mémoire pour les nœuds.\n");
+                    return way;
+                }
+                way.nodes[count] = ref;
+                count++;
+            }
         }
 
-        // Passer au fils suivant
-        child = xmlNextElementSibling(child);
+        // Passer au prochain nœud enfant
+        childNode = childNode->next;
     }
+    way.nodecount = count;
 
-    return minCoord;
+    return way;
 }
 
-void ecrireDansFichier(const char* nomFichier, const char* contenu) 
-{
-    FILE* fichier = fopen(nomFichier, "a"); // Ouvre le fichier en mode écriture ("w")
 
-    if (fichier != NULL) {
-        fprintf(fichier, "%s\n", contenu); // Écrit le contenu dans le fichier
-        fclose(fichier); // Ferme le fichier
-    } else {
-        printf("Impossible d'ouvrir le fichier.\n");
-    }
-}
 
-int main(int argc, char **argv)
-{
+/*int main(int argc, char **argv) {
+
+    xmlNodePtr rootNode, wayNode;
+
     // Vérifie que le nom de fichier est passé en argument de la ligne de commande
-    if (argc != 3) {
-        printf("Veuillez spécifier le nom de fichier XML en entrée et le nom du fichier destination.\n");
+    if (argc != 2) {
+        printf("Veuillez spécifier le nom de fichier XML en entrée.\n");
         return 1;
     }
 
-    const char* filename = argv[2];
     // Ouvre le fichier XML en lecture
-    xmlDoc *doc = xmlReadFile(argv[1], NULL, 0);
+    xmlDoc* doc = xmlReadFile(argv[1], NULL, 0);
     if (doc == NULL) {
         printf("Erreur lors de l'ouverture du fichier %s.\n", argv[1]);
         return 1;
     }
-    
-    // Récupère le noeud racine
-    xmlNode *root_element = xmlDocGetRootElement(doc);
-    Coordinate minCoordinates = findMinCoordinates(root_element);
-    double min;
-    if (minCoordinates.x < minCoordinates.y)
-    {
-        min = minCoordinates.x;
-    }
-    else
-    {
-        min = minCoordinates.y;
-    }
-    min = min * 100000;
-    int node_value = 0;
-    // Parcours tous les noeuds fils du noeud racine
-    for (xmlNode *cur_node = root_element->children; cur_node; cur_node = cur_node->next) 
-    {   
+    // Obtenir le nœud racine du document
+    rootNode = xmlDocGetRootElement(doc);
 
-        // Si le noeud est un sommet
-        if (xmlStrcmp(cur_node->name, (const xmlChar *)"node") == 0) {
-            char line[MAX_LINE_LENGTH];
-            memset(line, 0, MAX_LINE_LENGTH);
+    // Parcourir les nœuds du document
+    for (wayNode = rootNode->children; wayNode != NULL; wayNode = wayNode->next) {
+        // Vérifier si le nœud est de type "way"
+        if (xmlStrcmp(wayNode->name, (const xmlChar*)"way") == 0) {
+            // Compter les nœuds associés à cette way
+            Ways way = countNodesInWay(wayNode);
+            const xmlChar* id = xmlGetProp(wayNode, (const xmlChar*)"id");
+            printf("La way : %s a %d nœud qui sont les noeuds : \n ",id, way.nodecount);
+            for(size_t i = 0; i < way.nodecount;i++)
+            {
+                int occurrenceCount = countNodeOccurrences(rootNode, way.nodes[i]);
+                printf("Occurrences du nœud avec l'ID %s dans les ways : %d\n", way.nodes[i], occurrenceCount);
 
-            // Récupère l'ID, la latitude et la longitude du sommet
-            char *node_id = (char *)xmlGetProp(cur_node, (const xmlChar *)"id");
-            char *node_lat = (char *)xmlGetProp(cur_node, (const xmlChar *)"lat");
-            char *node_lon = (char *)xmlGetProp(cur_node, (const xmlChar *)"lon");
-            int childcount = countNodeHighways(cur_node);
-            // Construit la ligne dans le format de fichier personnalisé
-            sprintf(line, "/%i,%i,%i,%i", node_value, (int) (atof(node_lat) * 100000 - min), (int) (atof(node_lon) * 100000 - min),childcount);
-
-            // Parcours les noeuds fils du sommet pour récupérer les liens
-            int link_count = 0;
-
-                        xmlNode *child = xmlFirstElementChild(cur_node);
-            while (child != NULL) {
-
-                // Vérifier si le fils est un élément "way"
-                if (xmlStrcmp(child->name, (const xmlChar *)"way") == 0) {
-                    link_count++;
-                    char link_id[20];
-                    char congestion[10];
-                    char maxspeed[10];
-
-                    xmlNode *link_child = xmlFirstElementChild(child);
-                    while (link_child != NULL) {
-                        // Vérifier si le fils est un élément "tag"
-                        if (xmlStrcmp(link_child->name, (const xmlChar *)"tag") == 0) {
-                            // Vérifier les attributs "k" et "v" pour extraire les informations de lien
-                            xmlChar *k_attr = xmlGetProp(link_child, (const xmlChar *)"k");
-                            xmlChar *v_attr = xmlGetProp(link_child, (const xmlChar *)"v");
-
-                            if (xmlStrcmp(k_attr, (const xmlChar *)"name") == 0) {
-                                // Ignorer l'attribut "name" pour l'instant
-                            } else if (xmlStrcmp(k_attr, (const xmlChar *)"congestion") == 0) {
-                                strcpy(congestion, (const char *)v_attr);
-                            } else if (xmlStrcmp(k_attr, (const xmlChar *)"maxspeed") == 0) {
-                                strcpy(maxspeed, (const char *)v_attr);
-                            }
-
-                            xmlFree(k_attr);
-                            xmlFree(v_attr);
-                        }
-
-                        link_child = xmlNextElementSibling(link_child);
-                    }
-
-                    sprintf(link_id, "m%i", link_count);
-
-                    // Ajoute la ligne pour le lien au format de fichier personnalisé
-                    char link_line[MAX_LINE_LENGTH];
-                    memset(link_line, 0, MAX_LINE_LENGTH);
-                    sprintf(link_line, "_%s-%s-%s", link_id, congestion, maxspeed);
-                    strcat(line, link_line);
-                }
-
-                // Passer au fils suivant
-                child = xmlNextElementSibling(child);
+                //printf("%s, ", way.nodes[i]);
             }
-
-            // Affiche la ligne complète
-            ecrireDansFichier(filename,line);
-            //printf("%s\n", line);
-
-            xmlFree(node_id);
-            xmlFree(node_lat);
-            xmlFree(node_lon);
-            node_value++;
+            printf("\n");
         }
     }
 
-    // Libère la mémoire allouée
+    // Libérer les ressources
     xmlFreeDoc(doc);
+    xmlCleanupParser();
+
+    return 0;
+}*/
+
+
+typedef struct {
+    double lat;
+    double lon;
+} Coordinate;
+
+double calculateDistance(Coordinate coord1, Coordinate coord2) {
+    double dLat = (coord2.lat - coord1.lat) * M_PI / 180.0;
+    double dLon = (coord2.lon - coord1.lon) * M_PI / 180.0;
+    double a = sin(dLat / 2.0) * sin(dLat / 2.0) +
+               cos(coord1.lat * M_PI / 180.0) * cos(coord2.lat * M_PI / 180.0) *
+               sin(dLon / 2.0) * sin(dLon / 2.0);
+    double c = 2 * atan2(sqrt(a), sqrt(1 - a));
+    double distance = 6371.0 * c; // Rayon de la Terre en kilomètres
+    return distance;
+}
+
+xmlNodePtr findClosestNode(xmlNodePtr rootNode, xmlNodePtr targetNode, xmlNodePtr wayNode) {
+    double targetLat, targetLon;
+    sscanf((const char*)xmlGetProp(targetNode, (const xmlChar*)"lat"), "%lf", &targetLat);
+    sscanf((const char*)xmlGetProp(targetNode, (const xmlChar*)"lon"), "%lf", &targetLon);
+
+    double closestDistance = INFINITY;
+    xmlNodePtr closestNode = NULL;
+
+    xmlNodePtr ndNode;
+    for (ndNode = wayNode->children; ndNode != NULL; ndNode = ndNode->next) {
+        if (xmlStrcmp(ndNode->name, (const xmlChar*)"nd") == 0) {
+            xmlChar* ref = xmlGetProp(ndNode, (const xmlChar*)"ref");
+            xmlNodePtr relatedNode = NULL;
+            xmlNodePtr childNode;
+            for (childNode = rootNode->children; childNode != NULL; childNode = childNode->next) {
+                if (xmlStrcmp(childNode->name, (const xmlChar*)"node") == 0) {
+                    xmlChar* nodeId = xmlGetProp(childNode, (const xmlChar*)"id");
+                    if (xmlStrcmp(nodeId, ref) == 0) {
+                        relatedNode = childNode;
+                        break;
+                    }
+                    xmlFree(nodeId);
+                }
+            }
+            if (relatedNode != NULL) {
+                double nodeLat, nodeLon;
+                sscanf((const char*)xmlGetProp(relatedNode, (const xmlChar*)"lat"), "%lf", &nodeLat);
+                sscanf((const char*)xmlGetProp(relatedNode, (const xmlChar*)"lon"), "%lf", &nodeLon);
+                Coordinate targetCoord = { targetLat, targetLon };
+                Coordinate nodeCoord = { nodeLat, nodeLon };
+                double distance = calculateDistance(targetCoord, nodeCoord);
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestNode = relatedNode;
+                }
+            }
+            xmlFree(ref);
+        }
+    }
+
+    return closestNode;
+}
+
+xmlNodePtr findClosestNodeInWay(xmlNodePtr rootNode, xmlNodePtr targetNode, const char* wayId) {
+    xmlNodePtr wayNode;
+    for (wayNode = rootNode->children; wayNode != NULL; wayNode = wayNode->next) {
+        if (xmlStrcmp(wayNode->name, (const xmlChar*)"way") == 0) {
+            xmlChar* id = xmlGetProp(wayNode, (const xmlChar*)"id");
+            if (xmlStrcmp(id, (const xmlChar*)wayId) == 0) {
+                xmlNodePtr closestNode = findClosestNode(rootNode, targetNode, wayNode);
+                xmlFree(id);
+                return closestNode;
+            }
+            xmlFree(id);
+        }
+    }
+
+    return NULL;
+}
+
+int main(int argc, char** argv) {
+    // Vérifier que le nom de fichier est passé en argument de la ligne de commande
+    if (argc != 2) {
+        printf("Veuillez spécifier le nom de fichier XML en entrée.\n");
+        return 1;
+    }
+
+    // Ouvre le fichier XML en lecture
+    xmlDoc* doc = xmlReadFile(argv[1], NULL, 0);
+    if (doc == NULL) {
+        printf("Erreur lors de l'ouverture du fichier %s.\n", argv[1]);
+        return 1;
+    }
+
+    xmlNodePtr rootNode = xmlDocGetRootElement(doc);
+    xmlNodePtr targetNode = rootNode->children;
+    const char* wayId = "YOUR_WAY_ID_HERE";
+    // Parcourir les nœuds du document
+    for (xmlNodePtr wayNode = rootNode->children; wayNode != NULL; wayNode = wayNode->next) {
+        // Vérifier si le nœud est de type "way"
+        if (xmlStrcmp(wayNode->name, (const xmlChar*)"way") == 0) {
+            // Compter les nœuds associés à cette way
+            Ways way = countNodesInWay(wayNode);
+            const xmlChar* id = xmlGetProp(wayNode, (const xmlChar*)"id");
+            printf("La way : %s a %d nœud qui sont les noeuds : \n ",id, way.nodecount);
+            for(size_t i = 0; i < way.nodecount;i++)
+            {
+                int occ = 0;
+                xmlChar** wayid = countNodeOccurrences(rootNode, way.nodes[i],&occ);
+                for(size_t i = 0; i < occ;i++)
+                {
+                    wayId = wayid[i];
+                    xmlNodePtr closestNode = findClosestNodeInWay(rootNode, targetNode, wayId);
+                    if (closestNode != NULL) {
+                        xmlChar* nodeId = xmlGetProp(closestNode, (const xmlChar*)"id");
+                        printf("Le noeud le plus proche du noeud %s via la way %s est le noeud %s.\n",
+                            (const char*)xmlGetProp(targetNode, (const xmlChar*)"id"),
+                            wayId,
+                            (const char*)nodeId);
+                        xmlFree(nodeId);
+                    } else {
+                        printf("Aucun noeud trouvé pour la way %s.\n", wayId);
+                    }
+                }
+
+                //printf("%s, ", way.nodes[i]);
+            }
+            printf("\n");
+        }
+    }
+    xmlNodePtr closestNode = findClosestNodeInWay(rootNode, targetNode, wayId);
+    if (closestNode != NULL) {
+        xmlChar* nodeId = xmlGetProp(closestNode, (const xmlChar*)"id");
+        printf("Le noeud le plus proche du noeud %s via la way %s est le noeud %s.\n",
+               (const char*)xmlGetProp(targetNode, (const xmlChar*)"id"),
+               wayId,
+               (const char*)nodeId);
+        xmlFree(nodeId);
+    } else {
+        printf("Aucun noeud trouvé pour la way %s.\n", wayId);
+    }
+
+    // Libérer les ressources
+    xmlFreeDoc(doc);
+    xmlCleanupParser();
 
     return 0;
 }
