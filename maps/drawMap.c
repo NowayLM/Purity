@@ -29,21 +29,21 @@ int compute_pos(double x, int xOrY, size_t renderX, size_t renderY, size_t maxX,
     double res;
     if (graphOrNot == 0) {
         if (xOrY == 0) {
-            res = (x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100);
+            res = (x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100) + 50;
             if (res < 0) res = 0;
         }
         else {
-            res = (x - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100);
+            res = (x - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100) + 50;
             if (res < 0) res = 0;
         }
     }
     else {
         if (xOrY == 0) {
-            res = (G->inters[(size_t)x].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100);
+            res = (G->inters[(size_t)x].x - renderX) * WINDOW_WIDTH / (maxX * cZoom / 100) + 50;
             if (res < 0) res = 0;
         }
         else {
-            res = (G->inters[(size_t)x].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100);
+            res = (G->inters[(size_t)x].y - renderY) * WINDOW_HEIGHT / (maxX * cZoom / 100) + 50;
             if (res < 0) res = 0;
         }
     }
@@ -102,8 +102,8 @@ void screenToMap(int sX, int sY, size_t renderX, size_t renderY, size_t cZoom, d
     double scaleX = (double)WINDOW_WIDTH / (maxX * scaleFactor);
     double scaleY = (double)WINDOW_HEIGHT / (maxX * scaleFactor);
 
-    *mapX = ((double)sX / scaleX) + renderX;
-    *mapY = ((double)sY / scaleY) + renderY;
+    *mapX = ((double)(sX - 50) / scaleX) + renderX;
+    *mapY = ((double)(sY - 50) / scaleY) + renderY;
 }
 
 
