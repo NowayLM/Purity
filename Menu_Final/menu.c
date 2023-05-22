@@ -31,11 +31,8 @@ void on_start_button_clicked(GtkWidget *button,gpointer user_data)
 	x = g_strdup(entry_text);
 	int index = atoi(x) ;
 	
-	char *L[] = {"../maps/1.txt","../maps/2.txt","../maps/3.txt","../maps/4.txt","../maps/5.txt","../maps/6.txt","../maps/7.txt"};
-	if (index-1<0 || index-1>7)
-	{
-		return -1;
-		}
+	char *L[] = {"../maps/1.txt","../maps/2.txt","../maps/3.txt","../maps/4.txt","../maps/5.txt","../maps/6.txt","../maps/7.txt","../maps/8.txt","../maps/9.txt","../maps/10.txt","../maps/11.txt"};
+	
 	finalFunction(L[index-1]);
 	//txt_buffer+=("\nLa valeur de depart est : %s\n",x);
 	//txt_buffer+=("\nLa valeur de d'arrivee  est : %s\n",y);
