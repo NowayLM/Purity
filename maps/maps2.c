@@ -321,29 +321,44 @@ void trouverFrereLePlusProche(Nodes* liste, Ways* wayList, xmlChar* nodeid) {
         // Vérifier si le nodeid est présent dans la way
         for (size_t i = 0; i < currentWay->nodecount; i++) {
             if (xmlStrcmp(currentWay->nodes[i], nodeid) == 0) {
-                // Le nodeid est présent dans la way, chercher le frère le plus proche
-                double minDistance = INFINITY;
-                Nodes* frerePlusProche = NULL;
+                // Le nodeid est présent dans la way, chercher les frères les plus proches
 
-                for (size_t j = 0; j < currentWay->nodecount; j++) {
-                    // Exclure le nœud lui-même de la recherche
-                    if (i != j) {
-                        Nodes* frere = chercherNoeud(liste, currentWay->nodes[j]);
-                        double distance = sqrt(pow(frere->lat - noeud->lat, 2) + pow(frere->lon - noeud->lon, 2));
-                        if (distance < minDistance) {
-                            minDistance = distance;
-                            frerePlusProche = frere;
-                        }
+                double minDistanceGauche = INFINITY;
+                Nodes* frereGauche = NULL;
+
+                // Rechercher le frère le plus proche à gauche
+                if (i > 0) {
+                    xmlChar* frereGaucheId = currentWay->nodes[i - 1];
+                    Nodes* frere = chercherNoeud(liste, frereGaucheId);
+                    double distance = sqrt(pow(frere->lat - noeud->lat, 2) + pow(frere->lon - noeud->lon, 2));
+                    if (distance < minDistanceGauche) {
+                        minDistanceGauche = distance;
+                        frereGauche = frere;
                     }
                 }
 
-                if (frerePlusProche != NULL) {
-                    // Ajouter le frère le plus proche à la liste des frères du nœud
-                    ajouterFrere(noeud, frerePlusProche);
-                    ajouterFrere(frerePlusProche, noeud);
-                    //printf("Le frere le plus proche pour le Node ID %s est le Node ID %s.\n", nodeid, (char *)frerePlusProche->nodeid);
-                } else {
-                    //printf("Aucun frere trouvé pour le Node ID %s.\n", nodeid);
+                double minDistanceDroite = INFINITY;
+                Nodes* frereDroite = NULL;
+
+                // Rechercher le frère le plus proche à droite
+                if (i < currentWay->nodecount - 1) {
+                    xmlChar* frereDroiteId = currentWay->nodes[i + 1];
+                    Nodes* frere = chercherNoeud(liste, frereDroiteId);
+                    double distance = sqrt(pow(frere->lat - noeud->lat, 2) + pow(frere->lon - noeud->lon, 2));
+                    if (distance < minDistanceDroite) {
+                        minDistanceDroite = distance;
+                        frereDroite = frere;
+                    }
+                }
+
+                // Ajouter les frères les plus proches à la liste des frères du nœud
+                if (frereGauche != NULL) {
+                    ajouterFrere(noeud, frereGauche);
+                    ajouterFrere(frereGauche, noeud);
+                }
+                if (frereDroite != NULL) {
+                    ajouterFrere(noeud, frereDroite);
+                    ajouterFrere(frereDroite, noeud);
                 }
 
                 return;
